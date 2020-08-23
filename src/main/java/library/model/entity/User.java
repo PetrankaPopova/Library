@@ -1,6 +1,6 @@
 package library.model.entity;
 
-import org.apache.tomcat.jni.Address;
+import java.util.List;
 
 import javax.persistence.*;
 
@@ -11,8 +11,11 @@ public class User extends BaseEntity {
     private String username;
     private String password;
     private String email;
-    private Address address;
+    private List<Address> address;
 
+    public User() {
+
+    }
 
     @Column(name = "username", unique = true,nullable = false)
     public String getUsername() {
@@ -42,17 +45,19 @@ public class User extends BaseEntity {
         this.email = email;
     }
 
-    @ManyToOne
-    public Address getAddress() {
-        return address;
-    }
+    @OneToMany
+	public List<Address> getAddress() {
+		return address;
+	}
 
-    public void setAddress(Address address) {
-        this.address = address;
-    }
+	public void setAddress(List<Address> address) {
+		this.address = address;
+	}
 
-    public User() {
+    
+	
 
+    
 
-    }
+    
 }
