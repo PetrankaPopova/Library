@@ -5,7 +5,11 @@ import library.error.exception.UserPasswordsNotMatchException;
 import library.error.exception.UserWithUsernameAlreadyExistException;
 import library.model.service.UserEditServiceModel;
 import library.model.service.UserServiceModel;
+import library.repository.UserRepository;
 import library.service.UserService;
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,9 +17,20 @@ import java.util.List;
 @Service
 public class UserServiceImp implements UserService {
 
+    private UserRepository userRepository;
+    private ModelMapper modelMapper;
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
+
+    @Autowired
+    public UserServiceImp(UserRepository userRepository, ModelMapper modelMapper, BCryptPasswordEncoder bCryptPasswordEncoder) {
+        this.userRepository = userRepository;
+        this.modelMapper = modelMapper;
+        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
+    }
 
     @Override
     public UserServiceModel registerUser(UserServiceModel userServiceModel) {
+
         return null;
     }
 
