@@ -8,6 +8,7 @@ import javax.persistence.Table;
 @Table(name = "addresses")
 public class Address extends BaseEntity{
 
+	private String country;
     private String street;
     private String city;
     private String state;
@@ -51,6 +52,13 @@ public class Address extends BaseEntity{
 	public void setZip(String zip) {
 		this.zip = zip;
 	}
-    
-   
+
+	@Column(name = "country", nullable = false)
+	public String getCountry() {
+		return country;
+	}
+
+	public void setCountry(String country) {
+		this.country = country;
+	}
 }

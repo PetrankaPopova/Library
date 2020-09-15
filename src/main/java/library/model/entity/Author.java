@@ -2,6 +2,7 @@ package library.model.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -11,7 +12,7 @@ public class Author extends BaseEntity{
 	private String firstName;
 	private String lastName;
 	private String nationality;
-	private String country;
+	private Address address;
 
 	public Author() {
 		super();
@@ -44,14 +45,12 @@ public class Author extends BaseEntity{
 		this.nationality = nationality;
 	}
 
-	@Column(name = "country")
-	public String getCountry() {
-		return country;
+	@OneToOne
+	public Address getAddress() {
+		return address;
 	}
 
-	public void setCountry(String country) {
-		this.country = country;
+	public void setAddress(Address address) {
+		this.address = address;
 	}
-	
-
 }

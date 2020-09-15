@@ -27,7 +27,7 @@ public class Book extends BaseEntity{
 	private int quantity;
 	private BigDecimal discount;
 
-	private List<String> category; // Category category!
+	private List<Category> category;
 	private Size size;
 	private List<String> photos;
 
@@ -172,12 +172,12 @@ public class Book extends BaseEntity{
 		this.discount = discount;
 	}
 
-	@ElementCollection
-	public List<String> getCategory() {
+	@OneToMany
+	public List<Category> getCategory() {
 		return category;
 	}
 
-	public void setCategory(List<String> category) {
+	public void setCategory(List<Category> category) {
 		this.category = category;
 	}
 
