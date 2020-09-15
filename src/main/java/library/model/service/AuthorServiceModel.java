@@ -1,6 +1,6 @@
 package library.model.service;
 
-public class AuthorServiceModel {
+public class AuthorServiceModel extends BaseServiceModel{
 
     private String firstName;
     private String lastName;

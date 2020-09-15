@@ -4,7 +4,7 @@ import library.model.entity.Address;
 
 import java.util.List;
 
-public class UserEditServiceModel {
+public class UserEditServiceModel extends BaseServiceModel {
 
     private String username;
     private String password;
