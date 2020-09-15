@@ -12,7 +12,7 @@ public class Author extends BaseEntity{
 	private String firstName;
 	private String lastName;
 	private String nationality;
-	private Address address;
+	private String country;
 
 	public Author() {
 		super();
@@ -45,12 +45,12 @@ public class Author extends BaseEntity{
 		this.nationality = nationality;
 	}
 
-	@OneToOne
-	public Address getAddress() {
-		return address;
+	@Column(name = "country")
+	public String getCountry() {
+		return country;
 	}
 
-	public void setAddress(Address address) {
-		this.address = address;
+	public void setCountry(String country) {
+		this.country = country;
 	}
 }

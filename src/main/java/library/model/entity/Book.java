@@ -22,7 +22,7 @@ public class Book extends BaseEntity{
 	private String content;
 	private String description;
 	private String language;
-	private double rating;
+	private double rating; //???
 	private BigDecimal price;
 	private int quantity;
 	private BigDecimal discount;
