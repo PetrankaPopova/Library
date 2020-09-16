@@ -2,7 +2,9 @@ package library.service.imp;
 
 import library.model.service.CategoryServiceModel;
 import library.service.CategoryService;
+import org.springframework.stereotype.Service;
 
+@Service
 public class CategoryServiceImpl implements CategoryService {
 
     @Override

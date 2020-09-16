@@ -1,9 +1,24 @@
 package library.service.imp;
 
+import library.model.entity.Author;
 import library.model.service.AuthorServiceModel;
+import library.repository.AuthorRepository;
 import library.service.AuthorService;
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class AuthorServiceImpl implements AuthorService {
+
+    private final AuthorRepository authorRepository;
+    private final ModelMapper modelMapper;
+
+    @Autowired
+    public AuthorServiceImpl(AuthorRepository authorRepository, ModelMapper modelMapper) {
+        this.authorRepository = authorRepository;
+        this.modelMapper = modelMapper;
+    }
 
     @Override
     public AuthorServiceModel getAuthorByName(String name) {
@@ -16,8 +31,10 @@ public class AuthorServiceImpl implements AuthorService {
     }
 
     @Override
-    public AuthorServiceModel addNewAuthorByName(AuthorServiceModel authorName) {
-        return null;
+    public AuthorServiceModel addNewAuthorByName(AuthorServiceModel authorServiceModel) {
+        Author author = this.modelMapper.map(authorServiceModel, Author.class);
+        Author authorReturnFromDb = this.authorRepository.saveAndFlush(author);
+        return this.modelMapper.map(authorReturnFromDb, AuthorServiceModel.class);
     }
 
     @Override

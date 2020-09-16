@@ -2,7 +2,9 @@ package library.service.imp;
 
 import library.model.service.BookServiceModel;
 import library.service.BookService;
+import org.springframework.stereotype.Service;
 
+@Service
 public class BookServiceImpl implements BookService {
 
     @Override
