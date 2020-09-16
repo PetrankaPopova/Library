@@ -9,10 +9,12 @@ import javax.persistence.Table;
 public class Address extends BaseEntity{
 
 	private String country;
-    private String street;
-    private String city;
-    private String state;
-    private String zip;
+	private String street;
+	private String city;
+	private String state;
+	private String postCode;
+	private String region;
+	private String streetNumber;
 
     public Address() {
     }
@@ -44,15 +46,6 @@ public class Address extends BaseEntity{
 		this.state = state;
 	}
 
-	@Column(name = "zip", nullable = false)
-	public String getZip() {
-		return zip;
-	}
-
-	public void setZip(String zip) {
-		this.zip = zip;
-	}
-
 	@Column(name = "country", nullable = false)
 	public String getCountry() {
 		return country;
@@ -60,5 +53,32 @@ public class Address extends BaseEntity{
 
 	public void setCountry(String country) {
 		this.country = country;
+	}
+
+	@Column(name = "post_code", nullable = false)
+	public String getPostCode() {
+		return postCode;
+	}
+
+	public void setPostCode(String postCode) {
+		this.postCode = postCode;
+	}
+
+	@Column(name = "region")
+	public String getRegion() {
+		return region;
+	}
+
+	public void setRegion(String region) {
+		this.region = region;
+	}
+
+	@Column(name = "street_number")
+	public String getStreetNumber() {
+		return streetNumber;
+	}
+
+	public void setStreetNumber(String streetNumber) {
+		this.streetNumber = streetNumber;
 	}
 }
