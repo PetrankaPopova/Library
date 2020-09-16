@@ -8,6 +8,9 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 public class AuthorServiceImpl implements AuthorService {
 
@@ -18,6 +21,13 @@ public class AuthorServiceImpl implements AuthorService {
     public AuthorServiceImpl(AuthorRepository authorRepository, ModelMapper modelMapper) {
         this.authorRepository = authorRepository;
         this.modelMapper = modelMapper;
+    }
+
+    @Override
+    public List<AuthorServiceModel> getAllAuthors() {
+        return this.authorRepository.findAll().stream()
+                .map(author -> this.modelMapper.map(author, AuthorServiceModel.class))
+                .collect(Collectors.toList());
     }
 
     @Override

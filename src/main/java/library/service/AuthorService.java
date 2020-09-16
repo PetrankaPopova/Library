@@ -2,7 +2,11 @@ package library.service;
 
 import library.model.service.AuthorServiceModel;
 
+import java.util.List;
+
 public interface AuthorService {
+
+    List<AuthorServiceModel> getAllAuthors();
 
     AuthorServiceModel getAuthorByFirstName(String name);
 
