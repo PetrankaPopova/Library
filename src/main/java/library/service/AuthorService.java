@@ -4,7 +4,9 @@ import library.model.service.AuthorServiceModel;
 
 public interface AuthorService {
 
-    AuthorServiceModel getAuthorByName(String name);
+    AuthorServiceModel getAuthorByFirstName(String name);
+
+    AuthorServiceModel getAuthorByLastName(String name);
 
     AuthorServiceModel getAuthorBySymbolsFromName(String symbols);
 

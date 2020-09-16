@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
+import static java.util.Optional.ofNullable;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
@@ -48,10 +49,26 @@ class AuthorServiceTest {
     void addNewAuthorByName_whenAuthorDateIsCorrect_returnAuthorServiceModel() {
         Mockito.when(this.mockedAuthorRepository.saveAndFlush(Mockito.any()))
                 .thenReturn(this.returnedAuthorFromDb);
+
         Author author = this.modelMapper.map(authorServiceModel, Author.class);
         Author authorReturnFromDb = this.mockedAuthorRepository.saveAndFlush(author);
+
         AuthorServiceModel actualAuthor = this.modelMapper.map(authorReturnFromDb, AuthorServiceModel.class);
         AuthorServiceModel expectedAuthor = this.authorServiceImpl.addNewAuthorByName(this.authorServiceModel);
+
+        Assertions.assertEquals(expectedAuthor.getFirstName(), actualAuthor.getFirstName());
+    }
+
+    @Test
+    void getAuthorByFirstName_whenAuthorFirstNameIsCorrect_returnAuthorServiceModel() {
+        Mockito.when(this.mockedAuthorRepository.findAuthorByFirstName(Mockito.any()))
+                .thenReturn(ofNullable(this.returnedAuthorFromDb));
+
+        Author authorReturnFromDb = this.mockedAuthorRepository.findAuthorByFirstName("Ivan").orElse(null);
+
+        AuthorServiceModel actualAuthor = this.modelMapper.map(authorReturnFromDb, AuthorServiceModel.class);
+        AuthorServiceModel expectedAuthor = this.authorServiceImpl.getAuthorByFirstName("Ivan");
+
         Assertions.assertEquals(expectedAuthor.getFirstName(), actualAuthor.getFirstName());
     }
 
@@ -66,25 +83,7 @@ class AuthorServiceTest {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    /*@Test
-    void getAuthorByName() {
-    }
-
+/*
     @Test
     void getAuthorBySymbolsFromName() {
     }
