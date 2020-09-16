@@ -2,7 +2,6 @@ package library.model.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -13,12 +12,16 @@ public class BookStore extends BaseEntity {
     private String storeName;
     private String storePhoneNumber;
     private String storeHoursOfOperation;
-    private Address address;
+    private String country;
+    private String region;
+    private String postCode;
+    private String city;
+    private String streetAddress;
+    private String streetNumber;
     private String vatNumber;
     private String information;
     private String termsAndConditions;
     private String faq;
-
 
     public BookStore() {
     }
@@ -50,13 +53,58 @@ public class BookStore extends BaseEntity {
         this.storeHoursOfOperation = storeHoursOfOperation;
     }
 
-    @OneToOne
-    public Address getAddress() {
-        return address;
+    @Column(name = "country", nullable = false)
+    public String getCountry() {
+        return country;
     }
 
-    public void setAddress(Address address) {
-        this.address = address;
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    @Column(name = "region", nullable = false)
+    public String getRegion() {
+        return region;
+    }
+
+    public void setRegion(String region) {
+        this.region = region;
+    }
+
+    @Column(name = "postCode", nullable = false)
+    public String getPostCode() {
+        return postCode;
+    }
+
+    public void setPostCode(String postCode) {
+        this.postCode = postCode;
+    }
+
+    @Column(name = "city", nullable = false)
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    @Column(name = "streetAddress", nullable = false)
+    public String getStreetAddress() {
+        return streetAddress;
+    }
+
+    public void setStreetAddress(String streetAddress) {
+        this.streetAddress = streetAddress;
+    }
+
+    @Column(name = "streetNumber", nullable = false)
+    public String getStreetNumber() {
+        return streetNumber;
+    }
+
+    public void setStreetNumber(String streetNumber) {
+        this.streetNumber = streetNumber;
     }
 
     @Column(name = "vatNumber", nullable = false)
