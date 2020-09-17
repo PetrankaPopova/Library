@@ -72,6 +72,20 @@ class AuthorServiceTest {
         Assertions.assertEquals(expectedAuthor.getFirstName(), actualAuthor.getFirstName());
     }
 
+    @Test
+    void getAuthorByLastName_whenAuthorFirstNameIsCorrect_returnAuthorServiceModel() {
+        Mockito.when(this.mockedAuthorRepository.findAuthorByLastName(Mockito.any()))
+                .thenReturn(ofNullable(this.returnedAuthorFromDb));
+
+        Author authorReturnFromDb = this.mockedAuthorRepository.findAuthorByLastName("Pencheva").orElse(null);
+
+        AuthorServiceModel actualAuthor = this.modelMapper.map(authorReturnFromDb, AuthorServiceModel.class);
+        AuthorServiceModel expectedAuthor = this.authorServiceImpl.getAuthorByLastName("Pencheva");
+
+        Assertions.assertEquals(expectedAuthor.getFirstName(), actualAuthor.getFirstName());
+    }
+
+
 
 
 

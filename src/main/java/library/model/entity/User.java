@@ -9,6 +9,8 @@ import javax.persistence.*;
 public class User extends BaseEntity {
 
     private String username;
+    private String firstName;
+    private String lastName;
     private String password;
     private String email;
     private List<Address> address;
@@ -17,7 +19,7 @@ public class User extends BaseEntity {
 
     }
 
-    @Column(name = "username", unique = true,nullable = false)
+    @Column(name = "username", unique = true, nullable = false)
     public String getUsername() {
         return username;
     }
@@ -36,7 +38,7 @@ public class User extends BaseEntity {
         this.password = password;
     }
 
-    @Column(name = "email", unique = true,nullable = false)
+    @Column(name = "email", unique = true, nullable = false)
     public String getEmail() {
         return email;
     }
@@ -45,19 +47,32 @@ public class User extends BaseEntity {
         this.email = email;
     }
 
+    @Column(name = "first_name", nullable = false)
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    @Column(name = "last_name", nullable = false)
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
     @OneToMany
-	public List<Address> getAddress() {
-		return address;
-	}
+    public List<Address> getAddress() {
+        return address;
+    }
 
-	public void setAddress(List<Address> address) {
-		this.address = address;
-	}
+    public void setAddress(List<Address> address) {
+        this.address = address;
+    }
 
-    
-	
 
-    
-
-    
 }

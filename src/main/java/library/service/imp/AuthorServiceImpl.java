@@ -31,14 +31,15 @@ public class AuthorServiceImpl implements AuthorService {
     }
 
     @Override
-    public AuthorServiceModel getAuthorByFirstName(String name) {
-        Author authorReturnFromDb = this.authorRepository.findAuthorByFirstName(name).orElse(null);
+    public AuthorServiceModel getAuthorByFirstName(String firstName) {
+        Author authorReturnFromDb = this.authorRepository.findAuthorByFirstName(firstName).orElse(null);
         return this.modelMapper.map(authorReturnFromDb, AuthorServiceModel.class);
     }
 
     @Override
-    public AuthorServiceModel getAuthorByLastName(String name) {
-        return null;
+    public AuthorServiceModel getAuthorByLastName(String lastName) {
+        Author authorReturnFromDb = this.authorRepository.findAuthorByLastName(lastName).orElse(null);
+        return this.modelMapper.map(authorReturnFromDb, AuthorServiceModel.class);
     }
 
     @Override
