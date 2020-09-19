@@ -1,6 +1,5 @@
 package library.model.service;
 
-import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 
@@ -10,6 +9,7 @@ public class BannerServiceModel {
     private LocalDateTime startingDate;
     private LocalDateTime endingDate;
     private double price;
+
 
 
     public BannerServiceModel() {
