@@ -4,8 +4,6 @@ public class AuthorViewModel {
 
     private String firstName;
     private String lastName;
-    private String nationality;
-    private String country;
 
     public AuthorViewModel() {
     }
@@ -24,21 +22,5 @@ public class AuthorViewModel {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
-    }
-
-    public String getNationality() {
-        return nationality;
-    }
-
-    public void setNationality(String nationality) {
-        this.nationality = nationality;
-    }
-
-    public String getCountry() {
-        return country;
-    }
-
-    public void setCountry(String country) {
-        this.country = country;
     }
 }

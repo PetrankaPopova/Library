@@ -11,8 +11,6 @@ public class Author extends BaseEntity{
 	
 	private String firstName;
 	private String lastName;
-	private String nationality;
-	private String country;
 
 	public Author() {
 		super();
@@ -36,21 +34,4 @@ public class Author extends BaseEntity{
 		this.lastName = lastName;
 	}
 
-	@Column(name = "nationality")
-	public String getNationality() {
-		return nationality;
-	}
-
-	public void setNationality(String nationality) {
-		this.nationality = nationality;
-	}
-
-	@Column(name = "country")
-	public String getCountry() {
-		return country;
-	}
-
-	public void setCountry(String country) {
-		this.country = country;
-	}
 }
