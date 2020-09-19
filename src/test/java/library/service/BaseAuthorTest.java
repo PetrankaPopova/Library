@@ -9,8 +9,6 @@ public abstract class BaseAuthorTest {
         Author author = new Author();
         author.setFirstName("Ivan");
         author.setLastName("Petrov");
-        author.setNationality("Bulgarian");
-        author.setCountry("Bulgaria");
         return author;
     }
 
@@ -18,8 +16,6 @@ public abstract class BaseAuthorTest {
         AuthorServiceModel authorServiceModel = new AuthorServiceModel();
         authorServiceModel.setFirstName("Ivan");
         authorServiceModel.setLastName("Petrov");
-        authorServiceModel.setNationality("Bulgarian");
-        authorServiceModel.setCountry("Bulgaria");
         return authorServiceModel;
     }
 
