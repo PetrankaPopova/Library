@@ -8,9 +8,7 @@ public interface AuthorService {
 
     List<AuthorServiceModel> getAllAuthors();
 
-    AuthorServiceModel getAuthorByFirstName(String name);
-
-    AuthorServiceModel getAuthorByLastName(String name);
+    AuthorServiceModel getAuthorByName(String name);
 
     AuthorServiceModel getAuthorBySymbolsFromName(String symbols);
 

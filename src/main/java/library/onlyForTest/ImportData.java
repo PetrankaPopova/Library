@@ -30,26 +30,22 @@ public class ImportData implements CommandLineRunner {
 
     void AddAuthorsToDB() {
         AuthorServiceModel authorServiceModel1 = new AuthorServiceModel();
-        authorServiceModel1.setFirstName("Ivan");
-        authorServiceModel1.setLastName("Petrov");
+        authorServiceModel1.setName("Ivan Petrov");
         Author authorForDb1 = this.modelMapper.map(authorServiceModel1, Author.class);
         this.authorRepository.saveAndFlush(authorForDb1);
 
         AuthorServiceModel authorServiceModel2 = new AuthorServiceModel();
-        authorServiceModel2.setFirstName("Desislava");
-        authorServiceModel2.setLastName("Petrova");
+        authorServiceModel2.setName("Desislava Petrova");
         Author authorForDb2 = this.modelMapper.map(authorServiceModel2, Author.class);
         this.authorRepository.saveAndFlush(authorForDb2);
 
         AuthorServiceModel authorServiceModel3 = new AuthorServiceModel();
-        authorServiceModel3.setFirstName("Veronika");
-        authorServiceModel3.setLastName("Pencheva");
+        authorServiceModel3.setName("Veronika Pencheva");
         Author authorForDb3 = this.modelMapper.map(authorServiceModel3, Author.class);
         this.authorRepository.saveAndFlush(authorForDb3);
 
         AuthorServiceModel authorServiceModel4 = new AuthorServiceModel();
-        authorServiceModel4.setFirstName("Peter");
-        authorServiceModel4.setLastName("Müller");
+        authorServiceModel4.setName("Peter Müller");
         Author authorForDb4 = this.modelMapper.map(authorServiceModel4, Author.class);
         this.authorRepository.saveAndFlush(authorForDb4);
     }

@@ -31,14 +31,8 @@ public class AuthorServiceImpl implements AuthorService {
     }
 
     @Override
-    public AuthorServiceModel getAuthorByFirstName(String firstName) {
-        Author authorReturnFromDb = this.authorRepository.findAuthorByFirstName(firstName).orElse(null);
-        return this.modelMapper.map(authorReturnFromDb, AuthorServiceModel.class);
-    }
-
-    @Override
-    public AuthorServiceModel getAuthorByLastName(String lastName) {
-        Author authorReturnFromDb = this.authorRepository.findAuthorByLastName(lastName).orElse(null);
+    public AuthorServiceModel getAuthorByName(String firstName) {
+        Author authorReturnFromDb = this.authorRepository.findAuthorByName(firstName).orElse(null);
         return this.modelMapper.map(authorReturnFromDb, AuthorServiceModel.class);
     }
 
@@ -61,6 +55,9 @@ public class AuthorServiceImpl implements AuthorService {
 
     @Override
     public AuthorServiceModel deleteAuthorById(String id) {
-        return null;
+        Author deletedAuthor = this.authorRepository.findById(id).orElse(null);
+        AuthorServiceModel deletedAuthorServiceModel = this.modelMapper.map(deletedAuthor, AuthorServiceModel.class);
+        this.authorRepository.deleteById(id);
+        return deletedAuthorServiceModel;
     }
 }
