@@ -1,5 +1,6 @@
 package library.service.imp;
 
+import library.error.exception.AuthorWithThisNameIsNotExist;
 import library.model.entity.Author;
 import library.model.service.AuthorServiceModel;
 import library.repository.AuthorRepository;
@@ -37,8 +38,14 @@ public class AuthorServiceImpl implements AuthorService {
     }
 
     @Override
-    public AuthorServiceModel getAuthorBySymbolsFromName(String symbols) {
-        return null;
+    public List<AuthorServiceModel> getAuthorsBySymbolsFromName(String symbols) {
+        List<Author> foundAuthors = this.authorRepository.searchByTitleLike(symbols);
+        if (foundAuthors == null){
+            return null;
+            //throw new AuthorWithThisNameIsNotExist("Author with this name is not exist!");
+        }
+        return foundAuthors.stream().map(author -> this.modelMapper.map(author, AuthorServiceModel.class))
+                .collect(Collectors.toList());
     }
 
     @Override
@@ -49,8 +56,11 @@ public class AuthorServiceImpl implements AuthorService {
     }
 
     @Override
-    public AuthorServiceModel deleteAuthorByName(AuthorServiceModel authorName) {
-        return null;
+    public AuthorServiceModel deleteAuthorByName(String authorName) {
+        Author deletedAuthor = this.authorRepository.findAuthorByName(authorName).orElse(null);
+        AuthorServiceModel deletedAuthorServiceModel = this.modelMapper.map(deletedAuthor, AuthorServiceModel.class);
+        this.authorRepository.deleteById(authorName);
+        return deletedAuthorServiceModel;
     }
 
     @Override

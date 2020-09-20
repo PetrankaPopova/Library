@@ -10,11 +10,11 @@ public interface AuthorService {
 
     AuthorServiceModel getAuthorByName(String name);
 
-    AuthorServiceModel getAuthorBySymbolsFromName(String symbols);
+    List<AuthorServiceModel> getAuthorsBySymbolsFromName(String symbols);
 
-    AuthorServiceModel addNewAuthorByName(AuthorServiceModel authorName);
+    AuthorServiceModel addNewAuthorByName(AuthorServiceModel asm);
 
-    AuthorServiceModel deleteAuthorByName(AuthorServiceModel authorName);
+    AuthorServiceModel deleteAuthorByName(String authorName);
 
     AuthorServiceModel deleteAuthorById(String id);
 }
