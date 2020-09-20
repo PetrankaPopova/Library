@@ -2,24 +2,30 @@ package library.service.imp;
 
 import library.model.entity.Banner;
 import library.model.service.BannerServiceModel;
+import library.model.views.BannerViewModel;
 import library.repository.BannerRepository;
 import library.service.BannerService;
 import org.modelmapper.ModelMapper;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class BannerServiceImpl implements BannerService {
 
     private final ModelMapper modelMapper;
-    private final BannerRepository bannnerRepository;
+    private final BannerRepository bannerRepository;
 
     public BannerServiceImpl(ModelMapper modelMapper, BannerRepository bannnerRepository) {
         this.modelMapper = modelMapper;
-        this.bannnerRepository = bannnerRepository;
+        this.bannerRepository = bannnerRepository;
     }
 
 
     @Override
-    public BannerServiceModel add(BannerServiceModel bannerServiceModel) {
-        return null;
+    public void add(BannerServiceModel bannerServiceModel) {
+        Banner banner = this.modelMapper.map(bannerServiceModel, Banner.class);
+        this.bannerRepository.saveAndFlush(banner);
+
     }
 
     @Override
@@ -28,12 +34,24 @@ public class BannerServiceImpl implements BannerService {
     }
 
     @Override
-    public BannerServiceModel delete(BannerServiceModel bannerServiceModel) {
-        return null;
+    public void delete(String id) {
+        this.bannerRepository.deleteById(id);
     }
 
     @Override
     public Banner findByCompanyName(String name) {
-        return this.bannnerRepository.findByCompanyName(name).orElse(null);
+        return this.bannerRepository.findByCompanyName(name).orElse(null);
+    }
+
+    @Override
+    public List<BannerViewModel> findAllItems() {
+        return this.bannerRepository.findAll().stream()
+                .map(banner -> {
+                    BannerViewModel bannerViewModel = this.modelMapper
+                            .map(banner, BannerViewModel.class);
+                    bannerViewModel.setImgurl(String.format("/img/%s-%s.jpg"
+                            , banner.getCompanyName(), banner.getCount()));
+                    return bannerViewModel;
+                }).collect(Collectors.toList());
     }
 }
