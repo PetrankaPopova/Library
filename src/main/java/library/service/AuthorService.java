@@ -8,15 +8,13 @@ public interface AuthorService {
 
     List<AuthorServiceModel> getAllAuthors();
 
-    AuthorServiceModel getAuthorByFirstName(String name);
+    AuthorServiceModel getAuthorByName(String name);
 
-    AuthorServiceModel getAuthorByLastName(String name);
+    List<AuthorServiceModel> getAuthorsBySymbolsFromName(String symbols);
 
-    AuthorServiceModel getAuthorBySymbolsFromName(String symbols);
+    AuthorServiceModel addNewAuthorByName(AuthorServiceModel asm);
 
-    AuthorServiceModel addNewAuthorByName(AuthorServiceModel authorName);
-
-    AuthorServiceModel deleteAuthorByName(AuthorServiceModel authorName);
+    AuthorServiceModel deleteAuthorByName(String authorName);
 
     AuthorServiceModel deleteAuthorById(String id);
 }

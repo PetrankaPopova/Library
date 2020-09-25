@@ -7,15 +7,13 @@ public abstract class BaseAuthorTest {
 
     protected static Author getReturnedAuthorFromDb() {
         Author author = new Author();
-        author.setFirstName("Ivan");
-        author.setLastName("Petrov");
+        author.setName("Ivan Petrov");
         return author;
     }
 
     protected static AuthorServiceModel getAuthorServiceModel() {
         AuthorServiceModel authorServiceModel = new AuthorServiceModel();
-        authorServiceModel.setFirstName("Ivan");
-        authorServiceModel.setLastName("Petrov");
+        authorServiceModel.setName("Ivan Petrov");
         return authorServiceModel;
     }
 

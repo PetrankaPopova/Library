@@ -2,25 +2,16 @@ package library.model.views;
 
 public class AuthorViewModel {
 
-    private String firstName;
-    private String lastName;
+    private String name;
 
     public AuthorViewModel() {
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getName() {
+        return name;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setName(String name) {
+        this.name = name;
     }
 }
