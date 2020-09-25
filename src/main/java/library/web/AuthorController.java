@@ -29,8 +29,14 @@ public class AuthorController {
     @GetMapping("/author/all")
     @ResponseBody
     public List<AuthorViewModel> getAllAuthors(){
-        return this.authorService.getAllAuthors()
+        return this.authorService.getAllAuthors() //List<AuthorServiceModel>
                 .stream().map(authorServiceModel -> this.modelMapper.map(authorServiceModel, AuthorViewModel.class))
                 .collect(Collectors.toList());
+    }
+
+    @GetMapping("/ajdshgfasdhf")
+    public String findAuthorByFirstName(/* ... */){
+        this.authorService.getAuthorByFirstName("Ivan");
+        return null;
     }
 }

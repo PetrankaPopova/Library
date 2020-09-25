@@ -3,12 +3,15 @@ package library.service;
 import library.error.exception.UserCannotSaveException;
 import library.error.exception.UserPasswordsNotMatchException;
 import library.error.exception.UserWithUsernameAlreadyExistException;
+import library.model.entity.User;
 import library.model.service.UserEditServiceModel;
 import library.model.service.UserServiceModel;
 
 import java.util.List;
 
 public interface UserService  {
+
+    List<UserServiceModel> getAllUser();
 
     UserServiceModel registerUser(UserServiceModel userServiceModel);
 
