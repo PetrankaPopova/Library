@@ -36,7 +36,7 @@ public class AuthorController {
 
     @GetMapping("/ajdshgfasdhf")
     public String findAuthorByFirstName(/* ... */){
-        this.authorService.getAuthorByFirstName("Ivan");
+        //this.authorService.getAuthorByFirstName("Ivan");
         return null;
     }
 }

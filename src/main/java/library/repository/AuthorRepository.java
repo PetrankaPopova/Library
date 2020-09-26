@@ -15,6 +15,10 @@ public interface AuthorRepository extends JpaRepository<Author, String> {
     Optional<Author> findAuthorByName(String name);
 
     @Query("SELECT a FROM Author a WHERE a.name LIKE %:authorName%")
-    List<Author> searchByTitleLike(@Param("authorName") String authorName);
+    List<Author> searchByPartOfAuthorName(@Param("authorName") String authorName);
+
+    //List<Author> getAuthorByName
+
+
 
 }

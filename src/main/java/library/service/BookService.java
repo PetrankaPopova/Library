@@ -2,16 +2,18 @@ package library.service;
 
 import library.model.service.BookServiceModel;
 
+import java.util.List;
+
 public interface BookService {
 
     BookServiceModel addNewBook (BookServiceModel bookServiceModel);
 
-    BookServiceModel deleteBookByName (BookServiceModel bookServiceModel);
+    BookServiceModel deleteBookByName (String bookName);
 
-    BookServiceModel getAllBooksByCategory (BookServiceModel bookServiceModel);
+    List<BookServiceModel> getAllBooksByCategory (String category);
 
-    BookServiceModel getAllBooksByAuthor (BookServiceModel bookServiceModel);
+    List<BookServiceModel> getAllBooksByAuthor (String authorName);
 
-    BookServiceModel getAllBooksByPartOfName (BookServiceModel bookServiceModel);
+    List<BookServiceModel> getAllBooksByPartOfTitle(String strFromTitle);
 
 }

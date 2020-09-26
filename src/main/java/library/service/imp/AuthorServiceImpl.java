@@ -1,6 +1,5 @@
 package library.service.imp;
 
-import library.error.exception.AuthorWithThisNameIsNotExist;
 import library.model.entity.Author;
 import library.model.service.AuthorServiceModel;
 import library.repository.AuthorRepository;
@@ -39,7 +38,7 @@ public class AuthorServiceImpl implements AuthorService {
 
     @Override
     public List<AuthorServiceModel> getAuthorsBySymbolsFromName(String symbols) {
-        List<Author> foundAuthors = this.authorRepository.searchByTitleLike(symbols);
+        List<Author> foundAuthors = this.authorRepository.searchByPartOfAuthorName(symbols);
         if (foundAuthors == null){
             return null;
             //throw new AuthorWithThisNameIsNotExist("Author with this name is not exist!");
