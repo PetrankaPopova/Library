@@ -1,5 +1,6 @@
 package library.model.entity;
 
+import java.util.Arrays;
 import java.util.List;
 
 import javax.persistence.*;
@@ -73,6 +74,5 @@ public class User extends BaseEntity {
     public void setAddress(List<Address> address) {
         this.address = address;
     }
-
 
 }

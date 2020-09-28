@@ -9,7 +9,9 @@ public class UserEditServiceModel extends BaseServiceModel {
     private String username;
     private String password;
     private String email;
-    private List<Address> address;
+    private String confirmPassword;
+    private String userAddress;
+    private String userPhone;
 
     public UserEditServiceModel() {
     }
@@ -38,11 +40,27 @@ public class UserEditServiceModel extends BaseServiceModel {
         this.email = email;
     }
 
-    public List<Address> getAddress() {
-        return address;
+    public String getConfirmPassword() {
+        return confirmPassword;
     }
 
-    public void setAddress(List<Address> address) {
-        this.address = address;
+    public void setConfirmPassword(String confirmPassword) {
+        this.confirmPassword = confirmPassword;
+    }
+
+    public String getUserAddress() {
+        return userAddress;
+    }
+
+    public void setUserAddress(String userAddress) {
+        this.userAddress = userAddress;
+    }
+
+    public String getUserPhone() {
+        return userPhone;
+    }
+
+    public void setUserPhone(String userPhone) {
+        this.userPhone = userPhone;
     }
 }

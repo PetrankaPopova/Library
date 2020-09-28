@@ -30,9 +30,7 @@ public class UserController {
     @GetMapping("/user/all")
     @ResponseBody
     public List<UserViewModel> getAllAuthors(){
-        List<UserServiceModel> userServiceModelsList = this.userService.getAllUser();
-        return userServiceModelsList.stream().map(userServiceModel -> this.modelMapper
-                .map(userServiceModel, UserViewModel.class))
-                .collect(Collectors.toList());
+        //List<UserServiceModel> userServiceModelsList = this.userService.getAllUser();
+        return null;
     }
 }
