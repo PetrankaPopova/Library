@@ -19,7 +19,7 @@ public interface UserService  {
 
     UserServiceModel findByUsername(String username);
 
-    UserEditServiceModel editUserProfile(UserEditServiceModel userEditServiceModel, String oldPassword) throws UserPasswordsNotMatchException, UserWithUsernameAlreadyExistException;
+    UserEditServiceModel editUserProfile(UserEditServiceModel userEditServiceModel);
 
     List<BookServiceModel> getAllBoughtBooks ();
 

@@ -57,11 +57,12 @@ public class UserServiceImp implements UserService {
 
     @Override
     public UserServiceModel findByUsername(String username) {
+
         return null;
     }
 
     @Override
-    public UserEditServiceModel editUserProfile(UserEditServiceModel userEditServiceModel, String oldPassword) throws UserPasswordsNotMatchException, UserWithUsernameAlreadyExistException {
+    public UserEditServiceModel editUserProfile(UserEditServiceModel userEditServiceModel){
         return null;
     }
 
