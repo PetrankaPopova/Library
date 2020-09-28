@@ -197,8 +197,6 @@ public class Book extends BaseEntity {
 		this.content = content;
 	}
 
-
-
 	@Column(name = "language")
 	public String getLanguage() {
 		return language;
