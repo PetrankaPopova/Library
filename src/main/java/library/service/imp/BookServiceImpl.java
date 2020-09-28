@@ -1,8 +1,6 @@
 package library.service.imp;
 
-import library.model.entity.Author;
 import library.model.entity.Book;
-import library.model.service.AuthorServiceModel;
 import library.model.service.BookServiceModel;
 import library.repository.BookRepository;
 import library.service.BookService;

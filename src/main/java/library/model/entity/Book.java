@@ -1,5 +1,10 @@
 package library.model.entity;
 
+import library.model.entity.Author;
+import library.model.entity.BaseEntity;
+import library.model.entity.Category;
+import library.model.entity.Size;
+
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -8,25 +13,24 @@ import javax.validation.constraints.Digits;
 
 @Entity
 @Table(name = "books")
-public class Book extends BaseEntity{
+public class Book extends BaseEntity {
 
-	private String title;
 	private String isbn;
-
 	private Author author;
 	private String yearOfIssue;
 	private String publishingHouse;
-	private String availabilityStatus;
 	private int numberOfPages;
 	private String coverType;
 	private String content;
-	private String description;
 	private String language;
+
+	private String title;
+	private String availabilityStatus;
+	private String description;
 	private double rating; //???
 	private BigDecimal price;
 	private int quantity;
 	private BigDecimal discount;
-
 	private List<Category> category;
 	private Size size;
 	private List<String> photos;
@@ -35,6 +39,7 @@ public class Book extends BaseEntity{
 		super();
 	}
 
+
 	@Column(name = "title")
 	public String getTitle() {
 		return title;
@@ -42,42 +47,6 @@ public class Book extends BaseEntity{
 
 	public void setTitle(String title) {
 		this.title = title;
-	}
-
-	@Column(name = "isbn")
-	public String getIsbn() {
-		return isbn;
-	}
-
-	public void setIsbn(String isbn) {
-		this.isbn = isbn;
-	}
-
-	@ManyToOne
-	public Author getAuthor() {
-		return author;
-	}
-
-	public void setAuthor(Author author) {
-		this.author = author;
-	}
-
-	@Column(name = "year_of_issue")
-	public String getYearOfIssue() {
-		return yearOfIssue;
-	}
-
-	public void setYearOfIssue(String yearOfIssue) {
-		this.yearOfIssue = yearOfIssue;
-	}
-
-	@Column(name = "publishing_house")
-	public String getPublishingHouse() {
-		return publishingHouse;
-	}
-
-	public void setPublishingHouse(String publishingHouse) {
-		this.publishingHouse = publishingHouse;
 	}
 
 	@Column(name = "availability_status")
@@ -89,33 +58,6 @@ public class Book extends BaseEntity{
 		this.availabilityStatus = availabilityStatus;
 	}
 
-	@Column(name = "number_of_pages")
-	public int getNumberOfPages() {
-		return numberOfPages;
-	}
-
-	public void setNumberOfPages(int numberOfPages) {
-		this.numberOfPages = numberOfPages;
-	}
-
-	@Column(name = "cover_type")
-	public String getCoverType() {
-		return coverType;
-	}
-
-	public void setCoverType(String coverType) {
-		this.coverType = coverType;
-	}
-
-	@Column(name = "content")
-	public String getContent() {
-		return content;
-	}
-
-	public void setContent(String content) {
-		this.content = content;
-	}
-
 	@Column(name = "description")
 	public String getDescription() {
 		return description;
@@ -123,15 +65,6 @@ public class Book extends BaseEntity{
 
 	public void setDescription(String description) {
 		this.description = description;
-	}
-
-	@Column(name = "language")
-	public String getLanguage() {
-		return language;
-	}
-
-	public void setLanguage(String language) {
-		this.language = language;
 	}
 
 	@Column(name = "raiting")
@@ -198,5 +131,83 @@ public class Book extends BaseEntity{
 	public void setPhotos(List<String> photos) {
 		this.photos = photos;
 	}
+
+	@Column(name = "isbn")
+	public String getIsbn() {
+		return isbn;
+	}
+
+	public void setIsbn(String isbn) {
+		this.isbn = isbn;
+	}
+
+	@ManyToOne
+	public Author getAuthor() {
+		return author;
+	}
+
+	public void setAuthor(Author author) {
+		this.author = author;
+	}
+
+	@Column(name = "year_of_issue")
+	public String getYearOfIssue() {
+		return yearOfIssue;
+	}
+
+	public void setYearOfIssue(String yearOfIssue) {
+		this.yearOfIssue = yearOfIssue;
+	}
+
+	@Column(name = "publishing_house")
+	public String getPublishingHouse() {
+		return publishingHouse;
+	}
+
+	public void setPublishingHouse(String publishingHouse) {
+		this.publishingHouse = publishingHouse;
+	}
+
+
+
+	@Column(name = "number_of_pages")
+	public int getNumberOfPages() {
+		return numberOfPages;
+	}
+
+	public void setNumberOfPages(int numberOfPages) {
+		this.numberOfPages = numberOfPages;
+	}
+
+	@Column(name = "cover_type")
+	public String getCoverType() {
+		return coverType;
+	}
+
+	public void setCoverType(String coverType) {
+		this.coverType = coverType;
+	}
+
+	@Column(name = "content")
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
+	}
+
+
+
+	@Column(name = "language")
+	public String getLanguage() {
+		return language;
+	}
+
+	public void setLanguage(String language) {
+		this.language = language;
+	}
+
+
 
 }
