@@ -10,6 +10,7 @@ public class UserServiceModel extends BaseServiceModel {
     private String password;
     private String email;
     private List<Address> address;
+    private CartServiceModel cartServiceModel;
 
     public UserServiceModel() {
     }
@@ -44,5 +45,13 @@ public class UserServiceModel extends BaseServiceModel {
 
     public void setAddress(List<Address> address) {
         this.address = address;
+    }
+
+    public CartServiceModel getCartServiceModel() {
+        return cartServiceModel;
+    }
+
+    public void setCartServiceModel(CartServiceModel cartServiceModel) {
+        this.cartServiceModel = cartServiceModel;
     }
 }

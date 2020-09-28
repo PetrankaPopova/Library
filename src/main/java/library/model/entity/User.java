@@ -14,10 +14,20 @@ public class User extends BaseEntity {
     private String lastName;
     private String password;
     private String email;
+    private Cart cart;
     private List<Address> address;
 
     public User() {
 
+    }
+
+    @OneToOne
+    public Cart getCart() {
+        return cart;
+    }
+
+    public void setCart(Cart cart) {
+        this.cart = cart;
     }
 
     @Column(name = "username", unique = true, nullable = false)
