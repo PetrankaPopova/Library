@@ -10,7 +10,7 @@ public class BookServiceModel extends BaseServiceModel {
     private String title;
     private String isbn;
 
-    private Author author;
+    private AuthorServiceModel author;
     private String yearOfIssue;
     private String publishingHouse;
     private String availabilityStatus;
@@ -47,11 +47,11 @@ public class BookServiceModel extends BaseServiceModel {
         this.isbn = isbn;
     }
 
-    public Author getAuthor() {
+    public AuthorServiceModel getAuthor() {
         return author;
     }
 
-    public void setAuthor(Author author) {
+    public void setAuthor(AuthorServiceModel author) {
         this.author = author;
     }
 
