@@ -8,7 +8,7 @@ public interface BookService {
 
     BookServiceModel addNewBook (BookServiceModel bookServiceModel);
 
-    BookServiceModel deleteBookByName (String bookName);
+    String deleteBookByName (String bookName);
 
     List<BookServiceModel> getAllBooksByCategory (String category);
 

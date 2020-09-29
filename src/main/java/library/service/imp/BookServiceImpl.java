@@ -80,13 +80,15 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public BookServiceModel deleteBookByName(String bookTitle) {
-        BookServiceModel deletedBook = null;
+    //FOR TEST!!!
+    public String deleteBookByName(String bookTitle) {
+        String deletedBook = null;
         Book foundedBook = this.bookRepository.findBookByTitle(bookTitle).orElse(null);
         if (foundedBook != null) {
-            deletedBook = this.modelMapper.map(foundedBook, BookServiceModel.class);
+            deletedBook = foundedBook.getTitle();
+            this.bookRepository.deleteById(foundedBook.getId());
         }
-        return deletedBook;
+        return deletedBook != null ? "No exist book for remove" : deletedBook;
     }
 
     @Override
