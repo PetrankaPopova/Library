@@ -5,7 +5,7 @@ import library.model.service.CategoryServiceModel;
 
 public interface CategoryService {
 
-    void addDefaultCate();
+    void addDefaultCategory();
 
     CategoryServiceModel getCategoryById(String id);
 
