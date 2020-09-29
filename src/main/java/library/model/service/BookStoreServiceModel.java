@@ -9,6 +9,7 @@ public class BookStoreServiceModel {
     private String storeHoursOfOperation;
     private String country;
     private String region;
+    private String state;
     private String postCode;
     private String city;
     private String streetAddress;
@@ -126,4 +127,12 @@ public class BookStoreServiceModel {
     public void setFaq(String faq) {
         this.faq = faq;
     }
+
+    public String getState() { return state; }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
+
 }
