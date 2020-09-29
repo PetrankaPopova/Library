@@ -52,13 +52,14 @@ public class UserServiceImp implements UserService {
 
     @Override
     public UserServiceModel findByUsernameAndPassword(String username, String password) {
-        return null;
+        User findedUser = this.userRepository.findUserByUsernameAndPassword(username, password).orElse(null);
+        return findedUser == null ? null : this.modelMapper.map(findedUser, UserServiceModel.class);
     }
 
     @Override
     public UserServiceModel findByUsername(String username) {
-
-        return null;
+        User findedUser = this.userRepository.findUserByUsername(username).orElse(null);
+        return this.modelMapper.map(findedUser, UserServiceModel.class);
     }
 
     @Override
