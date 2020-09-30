@@ -4,6 +4,7 @@ import library.model.entity.Author;
 import library.model.entity.BaseEntity;
 import library.model.entity.Category;
 import library.model.entity.Size;
+import library.validation.book.BookTitleCheck;
 
 import java.math.BigDecimal;
 import java.util.List;
