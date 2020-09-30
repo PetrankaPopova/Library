@@ -25,6 +25,7 @@ public class Book extends BaseEntity {
 	private String content;
 	private String language;
 
+	@BookTitleCheck(message = "khaskdhfasdkjfhaksdjhfkasjhdf")
 	private String title;
 	private String availabilityStatus;
 	private String description;

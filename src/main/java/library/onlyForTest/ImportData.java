@@ -47,7 +47,7 @@ public class ImportData implements CommandLineRunner {
         //methods for tests
         //this.AddAuthorsToDB();
         //this.printAuthorNames();
-       // this.addOneBookToDb();
+        //this.addOneBookToDb();
         //this.deleteByBookName("Java Tricks");
 
 
