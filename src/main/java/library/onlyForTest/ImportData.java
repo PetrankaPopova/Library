@@ -80,7 +80,7 @@ public class ImportData implements CommandLineRunner {
         Errors errors = new BeanPropertyBindingResult(bannerServiceModel,"valid banner");
         validator.validate(bannerServiceModel,errors);
         if(errors.hasErrors()){
-            System.out.println("Error");
+            errors.getAllErrors().forEach(System.out::println);
         }else {
         this.bannerService.add(bannerServiceModel);
         }
@@ -94,7 +94,7 @@ public class ImportData implements CommandLineRunner {
         Errors errorrrr = new BeanPropertyBindingResult(bsm,"valid banner1");
         validator.validate(bsm,errorrrr);
         if(errorrrr.hasErrors()){
-            System.out.println("Error");
+        errorrrr.getAllErrors().forEach(System.out::println);
         }else {
             this.bannerService.add(bsm);
         }
