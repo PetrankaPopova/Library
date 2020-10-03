@@ -30,8 +30,12 @@ public class BannerServiceImpl implements BannerService {
 
     @Override
     public BannerServiceModel edit(BannerServiceModel bannerServiceModel) {
-
-        return null;
+        BannerServiceModel bsm = new BannerServiceModel();
+        bsm.setPrice(bannerServiceModel.getPrice());
+        bsm.setStartingDate(bannerServiceModel.getStartingDate());
+        bsm.setEndingDate(bannerServiceModel.getEndingDate());
+        bsm.setCompanyName(bannerServiceModel.getCompanyName());
+        return bsm;
     }
 
     @Override
