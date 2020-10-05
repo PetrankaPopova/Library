@@ -6,10 +6,12 @@ import library.model.views.BannerViewModel;
 import library.repository.BannerRepository;
 import library.service.BannerService;
 import org.modelmapper.ModelMapper;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Service
 public class BannerServiceImpl implements BannerService {
 
     private final ModelMapper modelMapper;
