@@ -98,6 +98,21 @@ public class ImportData implements CommandLineRunner {
         }else {
             this.bannerService.add(bsm);
         }
+
+        BannerServiceModel bsm2= new BannerServiceModel();
+        LocalDateTime startdate1 = LocalDateTime.of(2020, Month.NOVEMBER,29,19,30,40) ;
+        LocalDateTime enddate2 = LocalDateTime.of(2020, Month.DECEMBER,29,19,30,40) ;
+        bsm2.setCompanyName("Harry Walker");
+        bsm2.setStartingDate(startdate1);
+        bsm2.setEndingDate(enddate2);
+        bsm2.setPrice(-10.00);
+        Errors errors1 = new BeanPropertyBindingResult(bannerServiceModel,"valid banner");
+        validator.validate(bannerServiceModel,errors1);
+        if(errors1.hasErrors()){
+            errors1.getAllErrors().forEach(System.out::println);
+        }else {
+            this.bannerService.add(bsm2);
+        }
     }
 
     private void deleteByBookName(String bookName) {
