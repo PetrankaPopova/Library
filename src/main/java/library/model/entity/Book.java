@@ -207,7 +207,4 @@ public class Book extends BaseEntity {
 	public void setLanguage(String language) {
 		this.language = language;
 	}
-
-
-
 }

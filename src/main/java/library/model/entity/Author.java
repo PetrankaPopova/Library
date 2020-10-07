@@ -2,7 +2,6 @@ package library.model.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -10,6 +9,7 @@ import javax.persistence.Table;
 public class Author extends BaseEntity{
 	
 	private String name;
+	private String imageUrl;
 
 	public Author() {
 		super();
@@ -24,4 +24,12 @@ public class Author extends BaseEntity{
 		this.name = name;
 	}
 
+	@Column(name = "imageUrl")
+	public String getImageUrl() {
+		return imageUrl;
+	}
+
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
+	}
 }

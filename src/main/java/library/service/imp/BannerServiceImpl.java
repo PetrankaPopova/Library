@@ -54,10 +54,8 @@ public class BannerServiceImpl implements BannerService {
     public List<BannerViewModel> findAllItems() {
         return this.bannerRepository.findAll().stream()
                 .map(banner -> {
-                    BannerViewModel bannerViewModel = this.modelMapper
-                            .map(banner, BannerViewModel.class);
-                    bannerViewModel.setImgurl(String.format("/img/%s-%s.jpg"
-                            , banner.getCompanyName(), banner.getCount()));
+                    BannerViewModel bannerViewModel = this.modelMapper.map(banner, BannerViewModel.class);
+                    bannerViewModel.setImgurl(String.format("/img/%s-%s.jpg", banner.getCompanyName(), banner.getCount()));
                     return bannerViewModel;
                 }).collect(Collectors.toList());
     }
