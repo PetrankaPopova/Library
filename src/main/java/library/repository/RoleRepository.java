@@ -1,14 +1,14 @@
 package library.repository;
 
-import library.model.entity.UserRole;
+import library.model.entity.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
 @Repository
-public interface RoleRepository extends JpaRepository<UserRole, String> {
+public interface RoleRepository extends JpaRepository<Role, String> {
 
 
-    Optional<UserRole> findByAuthority(String authority);
+    Optional<Role> findByAuthority(String authority);
 }

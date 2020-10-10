@@ -1,13 +1,19 @@
 package library.model.entity;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "users")
-public class User extends BaseEntity {
+
+public class User extends BaseEntity implements UserDetails {
 
     private String username;
     private String firstName;
@@ -16,9 +22,20 @@ public class User extends BaseEntity {
     private String email;
     private Cart cart;
     private List<Address> address;
+    private Set<Role> roles;
 
     public User() {
 
+    }
+
+    @Override
+    @ManyToMany
+    public Set<Role> getAuthorities() {
+        return roles;
+    }
+
+    public void setAuthorities(Set<Role> roles) {
+        this.roles = roles;
     }
 
     @OneToOne
@@ -85,4 +102,27 @@ public class User extends BaseEntity {
         this.address = address;
     }
 
+    @Transient
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Transient
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Transient
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Transient
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
 }

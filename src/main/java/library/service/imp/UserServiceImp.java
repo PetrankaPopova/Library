@@ -14,6 +14,8 @@ import library.service.RoleService;
 import library.service.UserService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -35,7 +37,8 @@ public class UserServiceImp implements UserService {
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Autowired
-    public UserServiceImp(UserRepository userRepository, ModelMapper modelMapper, RoleService roleService, RoleRepository roleRepository, BookRepository bookRepository, BCryptPasswordEncoder bCryptPasswordEncoder) {
+    public UserServiceImp(UserRepository userRepository, ModelMapper modelMapper, RoleService roleService,
+                          RoleRepository roleRepository, BookRepository bookRepository, BCryptPasswordEncoder bCryptPasswordEncoder) {
         this.userRepository = userRepository;
         this.modelMapper = modelMapper;
         this.roleService = roleService;
@@ -68,6 +71,15 @@ public class UserServiceImp implements UserService {
     @Override
     public List<BookServiceModel> getAllBoughtBooks() {
         return null;
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        User findUser = this.userRepository.findByUsername(username).orElse(null);
+        if (findUser == null) {
+            throw new UsernameNotFoundException("User does not exists!");
+        }
+        return findUser;
     }
 }
 

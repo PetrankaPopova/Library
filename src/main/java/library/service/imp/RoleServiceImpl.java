@@ -1,6 +1,6 @@
 package library.service.imp;
 
-import library.model.entity.UserRole;
+import library.model.entity.Role;
 import library.repository.RoleRepository;
 import library.repository.UserRepository;
 import library.service.RoleService;
@@ -22,8 +22,8 @@ public class RoleServiceImpl implements RoleService {
     @Override
     public void seedRolesToDb() {
         if (this.roleRepository.count() == 0) {
-            this.roleRepository.saveAndFlush(new UserRole("ADMIN"));
-            this.roleRepository.saveAndFlush(new UserRole("USER"));
+            this.roleRepository.saveAndFlush(new Role("ADMIN"));
+            this.roleRepository.saveAndFlush(new Role("USER"));
         }
     }
 
