@@ -52,7 +52,8 @@ class AuthorServiceTest {
         Author author = this.modelMapper.map(authorServiceModel, Author.class);
         Author authorReturnFromDb = this.mockedAuthorRepository.saveAndFlush(author);
         AuthorServiceModel actualAuthor = this.modelMapper.map(authorReturnFromDb, AuthorServiceModel.class);
-        AuthorServiceModel expectedAuthor = this.authorServiceImpl.addNewAuthorByName(this.authorServiceModel);
+        AuthorServiceModel expectedAuthor = this.authorServiceImpl
+                .addNewAuthorByName(this.authorServiceModel);
         Assertions.assertEquals(expectedAuthor.getName(), actualAuthor.getName());
     }
 
