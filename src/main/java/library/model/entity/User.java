@@ -3,6 +3,7 @@ package library.model.entity;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.io.Serializable;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
@@ -13,7 +14,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "users")
 
-public class User extends BaseEntity implements UserDetails {
+public class User extends BaseEntity implements UserDetails, Serializable {
 
     private String username;
     private String firstName;
