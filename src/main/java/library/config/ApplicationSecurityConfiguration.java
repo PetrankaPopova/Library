@@ -1,30 +1,47 @@
 package library.config;
 
+import library.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
 @EnableWebSecurity
 public class ApplicationSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
-	private static final String[] ENABLE_ADDRESSES = { "/**" };
+	private static final String[] ENABLE_ADDRESSES = {
+			"/**"
+	};
 
-	private static final String[] ENABLE_RESOURCES = { "/static/**", "/css/**", "/js/**", "/img/**" };
+	@Autowired
+	private UserService userService;
+	@Autowired
+	private BCryptPasswordEncoder bCryptPasswordEncoder;
+
+	@Override
+	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+		auth.userDetailsService(this.userService).passwordEncoder(bCryptPasswordEncoder);
+	}
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
+		http
+				.csrf().disable()
+				.cors().disable()
+				.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+				.and()
+				.authorizeRequests().antMatchers(ENABLE_ADDRESSES).permitAll()
+				.anyRequest().authenticated()
+				.and()
+				.addFilter(new JwtAuthentication(authenticationManager()))
+				.addFilterBefore(new JwtAuthorization(), UsernamePasswordAuthenticationFilter.class);
 
-		http.csrf().disable().authorizeRequests().antMatchers(ENABLE_ADDRESSES).permitAll()
-				.antMatchers(ENABLE_RESOURCES).permitAll().anyRequest().authenticated().and().formLogin()
-				.loginPage("/user/login").permitAll().usernameParameter("username").passwordParameter("password")
-				.defaultSuccessUrl("/home").and().logout()
-				// .logoutUrl("/user/logout/")
-				.invalidateHttpSession(true).deleteCookies("JSESSIONID").logoutSuccessUrl("/user/login").permitAll()
-				.and().exceptionHandling().accessDeniedPage("/unauthorized");
-
-		http.headers().disable();
 	}
 
 }

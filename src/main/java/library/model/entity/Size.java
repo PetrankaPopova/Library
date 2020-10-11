@@ -3,10 +3,11 @@ package library.model.entity;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "sizes")
-public class Size extends BaseEntity{
+public class Size extends BaseEntity implements Serializable {
 
 	private int length;
 	private int width;

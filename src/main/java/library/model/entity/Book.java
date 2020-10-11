@@ -6,6 +6,7 @@ import library.model.entity.Category;
 import library.model.entity.Size;
 import library.validation.book.BookTitleCheck;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -14,7 +15,7 @@ import javax.validation.constraints.Digits;
 
 @Entity
 @Table(name = "books")
-public class Book extends BaseEntity {
+public class Book extends BaseEntity implements Serializable {
 
 	private String isbn;
 	private Author author;

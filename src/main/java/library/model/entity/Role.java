@@ -5,17 +5,18 @@ import org.springframework.security.core.GrantedAuthority;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "roles")
-public class UserRole extends BaseEntity implements GrantedAuthority {
+public class Role extends BaseEntity implements GrantedAuthority, Serializable {
 
     private String authority;
 
-    public UserRole() {
+    public Role() {
     }
 
-    public UserRole(String authority) {
+    public Role(String authority) {
         this.authority = authority;
     }
 
