@@ -1,16 +1,22 @@
 package library.model.service;
 
 import library.model.entity.Address;
+import library.model.entity.Cart;
+import library.model.entity.Role;
 
 import java.util.List;
+import java.util.Set;
 
 public class UserServiceModel extends BaseServiceModel {
 
     private String username;
+    private String firstName;
+    private String lastName;
     private String password;
     private String email;
-    private List<Address> address;
+    private List<AddressServiceModel> address;
     private CartServiceModel cartServiceModel;
+    private Set<RoleServiceModel> roles;
 
     public UserServiceModel() {
     }
@@ -39,19 +45,43 @@ public class UserServiceModel extends BaseServiceModel {
         this.email = email;
     }
 
-    public List<Address> getAddress() {
-        return address;
-    }
-
-    public void setAddress(List<Address> address) {
-        this.address = address;
-    }
-
     public CartServiceModel getCartServiceModel() {
         return cartServiceModel;
     }
 
     public void setCartServiceModel(CartServiceModel cartServiceModel) {
         this.cartServiceModel = cartServiceModel;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public List<AddressServiceModel> getAddress() {
+        return address;
+    }
+
+    public void setAddress(List<AddressServiceModel> address) {
+        this.address = address;
+    }
+
+    public Set<RoleServiceModel> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<RoleServiceModel> roles) {
+        this.roles = roles;
     }
 }
