@@ -20,4 +20,5 @@ public interface BannerService {
 
     List<BannerViewModel> findAllItems();
 
+    BannerServiceModel addBanner (BannerServiceModel bannerServiceModel);
 }

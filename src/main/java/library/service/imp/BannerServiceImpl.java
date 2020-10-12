@@ -1,5 +1,6 @@
 package library.service.imp;
 
+
 import library.model.entity.Banner;
 import library.model.service.BannerServiceModel;
 import library.model.views.BannerViewModel;
@@ -58,5 +59,12 @@ public class BannerServiceImpl implements BannerService {
                     bannerViewModel.setImgurl(String.format("/img/%s-%s.jpg", banner.getCompanyName(), banner.getCount()));
                     return bannerViewModel;
                 }).collect(Collectors.toList());
+    }
+
+    @Override
+    public BannerServiceModel addBanner(BannerServiceModel bannerServiceModel) {
+        Banner banner = this.modelMapper.map(bannerServiceModel, Banner.class);
+        Banner bannerFromDb = this.bannerRepository.saveAndFlush(banner);
+        return this.modelMapper.map(bannerFromDb, BannerServiceModel.class);
     }
 }
