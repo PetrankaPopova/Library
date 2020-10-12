@@ -13,6 +13,7 @@ import java.util.List;
 import javax.persistence.*;
 import javax.validation.constraints.Digits;
 
+@SuppressWarnings("ALL")
 @Entity
 @Table(name = "books")
 public class Book extends BaseEntity implements Serializable {

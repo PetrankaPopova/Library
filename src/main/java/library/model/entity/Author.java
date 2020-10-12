@@ -4,6 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
+@SuppressWarnings("ALL")
 @Entity
 @Table(name = "authors")
 public class Author extends BaseEntity{

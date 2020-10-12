@@ -7,6 +7,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+@SuppressWarnings("ALL")
 @Entity
 @Table(name = "carts")
 public class Cart extends BaseEntity implements Serializable {

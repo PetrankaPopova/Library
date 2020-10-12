@@ -7,6 +7,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import java.io.Serializable;
 
+@SuppressWarnings("ALL")
 @Entity
 @Table(name = "roles")
 public class Role extends BaseEntity implements GrantedAuthority, Serializable {

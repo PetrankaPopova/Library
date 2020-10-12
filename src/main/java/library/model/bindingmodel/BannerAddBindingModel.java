@@ -14,7 +14,6 @@ public class BannerAddBindingModel {
     private LocalDateTime endingDate;
     private double price;
 
-
     public BannerAddBindingModel() {
     }
 

@@ -9,6 +9,7 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 
+@SuppressWarnings("ALL")
 @Entity
 @Table(name = "banners")
 public class Banner extends BaseEntity implements Serializable {

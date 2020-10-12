@@ -15,33 +15,33 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @EnableWebSecurity
 public class ApplicationSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
-	private static final String[] ENABLE_ADDRESSES = {
-			"/**"
-	};
+    private static final String[] ENABLE_ADDRESSES = {
+            "/**"
+    };
 
-	@Autowired
-	private UserService userService;
-	@Autowired
-	private BCryptPasswordEncoder bCryptPasswordEncoder;
+    @Autowired
+    private UserService userService;
+    @Autowired
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
 
-	@Override
-	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		auth.userDetailsService(this.userService).passwordEncoder(bCryptPasswordEncoder);
-	}
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.userDetailsService(this.userService).passwordEncoder(bCryptPasswordEncoder);
+    }
 
-	@Override
-	protected void configure(HttpSecurity http) throws Exception {
-		http
-				.csrf().disable()
-				.cors().disable()
-				.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-				.and()
-				.authorizeRequests().antMatchers(ENABLE_ADDRESSES).permitAll()
-				.anyRequest().authenticated()
-				.and()
-				.addFilter(new JwtAuthentication(authenticationManager()))
-				.addFilterBefore(new JwtAuthorization(), UsernamePasswordAuthenticationFilter.class);
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http
+                .csrf().disable()
+                .cors().disable()
+                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                .and()
+                .authorizeRequests().antMatchers(ENABLE_ADDRESSES).permitAll()
+                .anyRequest().authenticated()
+                .and()
+                .addFilter(new JwtAuthentication(authenticationManager()))
+                .addFilterBefore(new JwtAuthorization(), UsernamePasswordAuthenticationFilter.class);
 
-	}
+    }
 
 }

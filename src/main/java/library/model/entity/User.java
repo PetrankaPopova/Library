@@ -4,6 +4,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
@@ -11,6 +12,7 @@ import java.util.Set;
 
 import javax.persistence.*;
 
+@SuppressWarnings("ALL")
 @Entity
 @Table(name = "users")
 
@@ -22,11 +24,12 @@ public class User extends BaseEntity implements UserDetails, Serializable {
     private String password;
     private String email;
     private Cart cart;
+    private LocalDateTime lastLoginDate;
+    private LocalDateTime registerDate;
     private List<Address> address;
     private Set<Role> roles;
 
     public User() {
-
     }
 
     @Override

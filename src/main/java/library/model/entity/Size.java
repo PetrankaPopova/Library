@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 import java.io.Serializable;
 
+@SuppressWarnings("ALL")
 @Entity
 @Table(name = "sizes")
 public class Size extends BaseEntity implements Serializable {

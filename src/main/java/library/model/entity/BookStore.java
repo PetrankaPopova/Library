@@ -6,6 +6,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import java.io.Serializable;
 
+@SuppressWarnings("ALL")
 @Entity
 @Table(name = "book_store")
 
