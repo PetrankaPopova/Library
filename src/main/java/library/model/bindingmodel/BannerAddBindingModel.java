@@ -7,6 +7,8 @@ import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.FutureOrPresent;
 import java.time.LocalDateTime;
 
+import static library.constant.GlobalConstants.*;
+
 public class BannerAddBindingModel {
 
     private String companyName;
@@ -17,7 +19,7 @@ public class BannerAddBindingModel {
     public BannerAddBindingModel() {
     }
 
-    @Length(min = 3, max = 20, message = "Company name length must be between 3 and 20 characters.")
+    @Length(min = 3, max = 20, message = COMPANY_NAME_SIZE)
     public String getCompanyName() {
         return companyName;
     }
@@ -27,7 +29,7 @@ public class BannerAddBindingModel {
     }
 
     @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
-    @FutureOrPresent(message = "The date cannot be in the past.")
+    @FutureOrPresent(message = DATE_IN_FUTURE)
     public LocalDateTime getStartingDate() {
         return startingDate;
     }
@@ -37,7 +39,7 @@ public class BannerAddBindingModel {
     }
 
     @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
-    @FutureOrPresent(message = "The date cannot be in the past.")
+    @FutureOrPresent(message = DATE_IN_FUTURE)
     public LocalDateTime getEndingDate() {
         return endingDate;
     }
@@ -46,7 +48,7 @@ public class BannerAddBindingModel {
         this.endingDate = endingDate;
     }
 
-    @DecimalMin(value = "0",message = "Enter valid price.")
+    @DecimalMin(value = "0",message = VALID_PRICE)
     public double getPrice() {
         return price;
     }

@@ -43,7 +43,7 @@ public class BannerServiceTest {
         this.bannerServiceModel = null;
     }
     @Test
-    public  void addBanner_ifDateIsCorrect(){
+    public  void addBanner_Correct(){
         Mockito.when(this.mockedBannerRepository.saveAndFlush(Mockito.any()))
                 .thenReturn(this.bannerFromDb);
         Banner banner = this.modelMapper.map(bannerServiceModel, Banner.class);
