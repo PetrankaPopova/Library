@@ -3,10 +3,12 @@ package library.model.entity;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import java.io.Serializable;
 
+@SuppressWarnings("ALL")
 @Entity
 @Table(name = "categories")
-public class Category extends BaseEntity {
+public class Category extends BaseEntity implements Serializable {
     private String name;
     private String description;
 

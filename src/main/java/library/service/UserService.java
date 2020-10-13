@@ -8,10 +8,11 @@ import library.model.service.BookServiceModel;
 import library.model.service.UserEditServiceModel;
 import library.model.service.UserServiceModel;
 import library.model.views.BookViewModel;
+import org.springframework.security.core.userdetails.UserDetailsService;
 
 import java.util.List;
 
-public interface UserService  {
+public interface UserService extends UserDetailsService {
 
     String registerUser(UserServiceModel userServiceModel);
 

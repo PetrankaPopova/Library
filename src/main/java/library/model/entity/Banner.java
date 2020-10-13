@@ -4,13 +4,15 @@ import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 
+@SuppressWarnings("ALL")
 @Entity
 @Table(name = "banners")
-public class Banner extends BaseEntity {
+public class Banner extends BaseEntity implements Serializable {
 
     private String companyName;
     private LocalDateTime startingDate;
