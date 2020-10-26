@@ -12,7 +12,8 @@ public class UserRegisterBindingModel {
     private String confirmPassword;
     private String userPhone;
     private String email;
-
+    private String firstName;
+    private String lastName;
     private String country;
     private String street;
     private String city;
@@ -116,6 +117,22 @@ public class UserRegisterBindingModel {
 
     public void setRegion(String region) {
         this.region = region;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getStreetNumber() {
