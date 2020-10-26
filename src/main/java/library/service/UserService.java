@@ -11,6 +11,7 @@ import library.model.views.BookViewModel;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface UserService extends UserDetailsService {
 
@@ -19,6 +20,8 @@ public interface UserService extends UserDetailsService {
     UserServiceModel findByUsernameAndPassword(String username, String password);
 
     UserServiceModel findByUsername(String username);
+
+    User findByEmail(String email);
 
     UserEditServiceModel editUserProfile(UserEditServiceModel userEditServiceModel, String oldPassword) throws UserPasswordsNotMatchException, UserWithUsernameAlreadyExistException;
 

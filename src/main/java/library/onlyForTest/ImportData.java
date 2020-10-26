@@ -61,7 +61,7 @@ public class ImportData implements CommandLineRunner {
         //this.printAuthorNames();
         //this.addOneBookToDb();
         //this.deleteByBookName("Java Tricks");
-       // this.addBannertodb();
+        //this.addBannertodb();
         //this.deleteBannerByCompanyName("Hard Consult");
 
     }

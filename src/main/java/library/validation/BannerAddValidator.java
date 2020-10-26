@@ -35,8 +35,7 @@ public class BannerAddValidator implements org.springframework.validation.Valida
         }
     @Override
     public boolean supports(Class<?> aClass) {
-        return false;
-    }
+        return BannerAddBindingModel.class.equals(aClass);    }
 
 }
 

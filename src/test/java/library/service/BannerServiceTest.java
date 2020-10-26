@@ -53,5 +53,16 @@ public class BannerServiceTest {
                 addBanner(this.bannerServiceModel);
         Assertions.assertEquals(whatMustBe.getCompanyName(), realBanner.getCompanyName());
     }
+//    @Test
+//    public  void deleteBanner_Correctly(){
+//        Mockito.when(this.mockedBannerRepository.saveAndFlush(Mockito.any()))
+//                .thenReturn(this.bannerFromDb);
+//        Banner banner = this.modelMapper.map(bannerServiceModel, Banner.class);
+//        Banner bannerFromDB = this.mockedBannerRepository.saveAndFlush(banner);
+//        BannerServiceModel realBanner = this.modelMapper.map(bannerFromDB, BannerServiceModel.class);
+//        BannerServiceModel whatMustBe = this.bannerServiceImpl.
+//                addBanner(this.bannerServiceModel);
+//        Assertions.assertEquals(whatMustBe.getCompanyName(), realBanner.getCompanyName());
+//    }
 
 }

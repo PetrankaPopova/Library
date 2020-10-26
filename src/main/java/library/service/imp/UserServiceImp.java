@@ -64,6 +64,11 @@ public class UserServiceImp implements UserService {
     }
 
     @Override
+    public User findByEmail(String email) {
+        return this.userRepository.findByEmail(email).orElse(null);
+    }
+
+    @Override
     public UserEditServiceModel editUserProfile(UserEditServiceModel userEditServiceModel, String oldPassword) throws UserPasswordsNotMatchException, UserWithUsernameAlreadyExistException {
         return null;
     }
