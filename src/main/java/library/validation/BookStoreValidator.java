@@ -26,34 +26,34 @@ public class BookStoreValidator implements org.springframework.validation.Valida
         if (this.bookStoreRepository.findBookStoreByStoreName(bookStoreBindingModel.getStoreName())
                 .isPresent()) {
             errors.rejectValue("bookstore",
-                    String.format(ValidationConstants.ALREADY_EXISTS, bookStoreBindingModel.getStoreName()),
-                    String.format(ValidationConstants.ALREADY_EXISTS, bookStoreBindingModel.getStoreName())
+                    String.format(ValidationConstants.ALREADY_EXISTS, "Book store"),
+                    String.format(ValidationConstants.ALREADY_EXISTS, "Book store")
             );
         }
 
 
         if (this.bookStoreRepository.findBookStoreByStorePhoneNumber(bookStoreBindingModel.getStorePhoneNumber())
                 .isPresent()) {
-            errors.rejectValue("bookstore",
-                    String.format(ValidationConstants.ALREADY_EXISTS, bookStoreBindingModel.getStoreName()),
-                    String.format(ValidationConstants.ALREADY_EXISTS, bookStoreBindingModel.getStoreName())
+            errors.rejectValue("phoneNumber",
+                    String.format(ValidationConstants.ALREADY_EXISTS, "Phone number"),
+                    String.format(ValidationConstants.ALREADY_EXISTS, "Phone number")
             );
         }
 
 
         if (this.bookStoreRepository.findBookStoreByVatNumber(bookStoreBindingModel.getVatNumber())
                 .isPresent()) {
-            errors.rejectValue("bookstore",
-                    String.format(ValidationConstants.ALREADY_EXISTS, bookStoreBindingModel.getStoreName()),
-                    String.format(ValidationConstants.ALREADY_EXISTS, bookStoreBindingModel.getStoreName())
+            errors.rejectValue("vatNumber",
+                    String.format(ValidationConstants.ALREADY_EXISTS, "Vat number"),
+                    String.format(ValidationConstants.ALREADY_EXISTS, "Vat number")
             );
         }
 
         if (bookStoreBindingModel.getStoreName().length() < 3 ||
                 bookStoreBindingModel.getStoreName().length() > 20) {
             errors.rejectValue("bookStoreName",
-                    String.format(ValidationConstants.NAME_LENGTH, bookStoreBindingModel.getStoreName()),
-                    String.format(ValidationConstants.NAME_LENGTH, bookStoreBindingModel.getStoreName())
+                    String.format(ValidationConstants.NAME_LENGTH, "Store name"),
+                    String.format(ValidationConstants.NAME_LENGTH, "Store name")
 
             );
         }
@@ -61,23 +61,23 @@ public class BookStoreValidator implements org.springframework.validation.Valida
 
         if (bookStoreBindingModel.getCity().isEmpty()) {
             errors.rejectValue("city",
-                    String.format(ValidationConstants.NAME_LENGTH, bookStoreBindingModel.getCity()),
-                    String.format(ValidationConstants.NAME_LENGTH, bookStoreBindingModel.getCity())
+                    String.format(ValidationConstants.CAN_NOT_BE_EMPTY, "City"),
+                    String.format(ValidationConstants.CAN_NOT_BE_EMPTY, "City")
             );
         }
 
         if (bookStoreBindingModel.getCountry().isEmpty()) {
             errors.rejectValue("country",
-                    String.format(ValidationConstants.NAME_LENGTH, bookStoreBindingModel.getCountry()),
-                    String.format(ValidationConstants.NAME_LENGTH, bookStoreBindingModel.getCountry())
+                    String.format(ValidationConstants.CAN_NOT_BE_EMPTY, "Country"),
+                    String.format(ValidationConstants.CAN_NOT_BE_EMPTY, "Country")
 
             );
         }
 
         if (bookStoreBindingModel.getPostCode().isEmpty()) {
             errors.rejectValue("postcode",
-                    String.format(ValidationConstants.NAME_LENGTH, bookStoreBindingModel.getPostCode()),
-                    String.format(ValidationConstants.NAME_LENGTH, bookStoreBindingModel.getPostCode())
+                    String.format(ValidationConstants.CAN_NOT_BE_EMPTY, "Postcode"),
+                    String.format(ValidationConstants.CAN_NOT_BE_EMPTY, "Postcode")
 
             );
         }
@@ -85,8 +85,8 @@ public class BookStoreValidator implements org.springframework.validation.Valida
         if (bookStoreBindingModel.getStorePhoneNumber().length() < 3 ||
                 bookStoreBindingModel.getStorePhoneNumber().length() > 20) {
             errors.rejectValue("phoneNumber",
-                    String.format(ValidationConstants.NAME_LENGTH, bookStoreBindingModel.getStorePhoneNumber()),
-                    String.format(ValidationConstants.NAME_LENGTH, bookStoreBindingModel.getStoreName())
+                    String.format(ValidationConstants.NAME_LENGTH, "Phone number"),
+                    String.format(ValidationConstants.NAME_LENGTH, "Phone number")
 
             );
         }
@@ -94,8 +94,8 @@ public class BookStoreValidator implements org.springframework.validation.Valida
         if (bookStoreBindingModel.getRegion().length() < 3 ||
                 bookStoreBindingModel.getRegion().length() > 20) {
             errors.rejectValue("region",
-                    String.format(ValidationConstants.NAME_LENGTH, bookStoreBindingModel.getRegion()),
-                    String.format(ValidationConstants.NAME_LENGTH, bookStoreBindingModel.getRegion())
+                    String.format(ValidationConstants.NAME_LENGTH, "Region"),
+                    String.format(ValidationConstants.NAME_LENGTH, "Region")
 
             );
         }
@@ -103,8 +103,8 @@ public class BookStoreValidator implements org.springframework.validation.Valida
         if (bookStoreBindingModel.getStreetAddress().length() < 3 ||
                 bookStoreBindingModel.getStreetAddress().length() > 20) {
             errors.rejectValue("streetAddress",
-                    String.format(ValidationConstants.NAME_LENGTH, bookStoreBindingModel.getStreetAddress()),
-                    String.format(ValidationConstants.NAME_LENGTH, bookStoreBindingModel.getStreetAddress())
+                    String.format(ValidationConstants.NAME_LENGTH, "Street address"),
+                    String.format(ValidationConstants.NAME_LENGTH, "Street address")
 
             );
         }
@@ -120,16 +120,16 @@ public class BookStoreValidator implements org.springframework.validation.Valida
         if (bookStoreBindingModel.getVatNumber().length() < 3 ||
                 bookStoreBindingModel.getVatNumber().length() > 20) {
             errors.rejectValue("bookstoreVatNumber",
-                    String.format(ValidationConstants.NAME_LENGTH, bookStoreBindingModel.getVatNumber()),
-                    String.format(ValidationConstants.NAME_LENGTH, bookStoreBindingModel.getVatNumber())
+                    String.format(ValidationConstants.NAME_LENGTH, "Vat number"),
+                    String.format(ValidationConstants.NAME_LENGTH, "Vat number")
 
             );
         }
 
         if (bookStoreBindingModel.getInformation().isEmpty()) {
             errors.rejectValue("information",
-                    String.format(ValidationConstants.NAME_LENGTH, bookStoreBindingModel.getInformation()),
-                    String.format(ValidationConstants.NAME_LENGTH, bookStoreBindingModel.getInformation())
+                    String.format(ValidationConstants.CAN_NOT_BE_EMPTY, "Information"),
+                    String.format(ValidationConstants.CAN_NOT_BE_EMPTY, "Information")
 
             );
         }
