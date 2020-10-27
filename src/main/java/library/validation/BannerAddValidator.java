@@ -10,6 +10,7 @@ public class BannerAddValidator implements org.springframework.validation.Valida
    private final BannerRepository bannerRepository;
 
     public BannerAddValidator(BannerRepository bannerRepository) {
+
         this.bannerRepository = bannerRepository;
     }
 
