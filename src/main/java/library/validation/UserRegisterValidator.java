@@ -32,8 +32,8 @@ public class UserRegisterValidator implements org.springframework.validation.Val
         if (userRegisterBindingModel.getUsername().length() < 3 ||
                 userRegisterBindingModel.getUsername().length() > 20) {
             errors.rejectValue("username",
-                    String.format(ValidationConstants.NAME_LENGTH, userRegisterBindingModel.getUsername()),
-                    String.format(ValidationConstants.NAME_LENGTH, userRegisterBindingModel.getUsername())
+                    String.format(ValidationConstants.NAME_LENGTH, "username"),
+                    String.format(ValidationConstants.NAME_LENGTH, "username")
 
             );
         }
@@ -41,8 +41,26 @@ public class UserRegisterValidator implements org.springframework.validation.Val
         if (userRegisterBindingModel.getPassword().length() < 3 ||
                 userRegisterBindingModel.getPassword().length() > 20) {
             errors.rejectValue("password",
-                    String.format(ValidationConstants.NAME_LENGTH, userRegisterBindingModel.getPassword()),
-                    String.format(ValidationConstants.NAME_LENGTH, userRegisterBindingModel.getPassword())
+                    String.format(ValidationConstants.NAME_LENGTH, "password"),
+                    String.format(ValidationConstants.NAME_LENGTH, "password")
+
+            );
+        }
+
+        if (userRegisterBindingModel.getFirstName().length() < 3 ||
+                userRegisterBindingModel.getFirstName().length() > 20) {
+            errors.rejectValue("firstName",
+                    String.format(ValidationConstants.NAME_LENGTH, "First name"),
+                    String.format(ValidationConstants.NAME_LENGTH, "First name")
+
+            );
+        }
+
+        if (userRegisterBindingModel.getLastName().length() < 3 ||
+                userRegisterBindingModel.getLastName().length() > 20) {
+            errors.rejectValue("lastName",
+                    String.format(ValidationConstants.NAME_LENGTH, "Last name"),
+                    String.format(ValidationConstants.NAME_LENGTH, "Last name")
 
             );
         }
@@ -50,8 +68,8 @@ public class UserRegisterValidator implements org.springframework.validation.Val
         if (userRegisterBindingModel.getCity().length() < 3 ||
                 userRegisterBindingModel.getCity().length() > 20) {
             errors.rejectValue("city",
-                    String.format(ValidationConstants.NAME_LENGTH, userRegisterBindingModel.getCity()),
-                    String.format(ValidationConstants.NAME_LENGTH, userRegisterBindingModel.getCity())
+                    String.format(ValidationConstants.NAME_LENGTH, "City name"),
+                    String.format(ValidationConstants.NAME_LENGTH, "City name")
 
             );
         }
@@ -59,8 +77,8 @@ public class UserRegisterValidator implements org.springframework.validation.Val
         if (userRegisterBindingModel.getCountry().length() < 3 ||
                 userRegisterBindingModel.getCountry().length() > 20) {
             errors.rejectValue("country",
-                    String.format(ValidationConstants.NAME_LENGTH, userRegisterBindingModel.getCountry()),
-                    String.format(ValidationConstants.NAME_LENGTH, userRegisterBindingModel.getCountry())
+                    String.format(ValidationConstants.NAME_LENGTH, "Country name"),
+                    String.format(ValidationConstants.NAME_LENGTH, "Country name")
 
             );
         }
@@ -68,8 +86,8 @@ public class UserRegisterValidator implements org.springframework.validation.Val
         if (userRegisterBindingModel.getPostCode().length() < 3 ||
                 userRegisterBindingModel.getPostCode().length() > 10) {
             errors.rejectValue("postcode",
-                    String.format(ValidationConstants.NAME_LENGTH, userRegisterBindingModel.getPostCode()),
-                    String.format(ValidationConstants.NAME_LENGTH, userRegisterBindingModel.getPostCode())
+                    String.format(ValidationConstants.NAME_LENGTH, "Postcode"),
+                    String.format(ValidationConstants.NAME_LENGTH, "Postcode")
 
             );
         }
@@ -77,8 +95,8 @@ public class UserRegisterValidator implements org.springframework.validation.Val
         if (userRegisterBindingModel.getRegion().length() < 3 ||
                 userRegisterBindingModel.getRegion().length() > 20) {
             errors.rejectValue("region",
-                    String.format(ValidationConstants.NAME_LENGTH, userRegisterBindingModel.getRegion()),
-                    String.format(ValidationConstants.NAME_LENGTH, userRegisterBindingModel.getRegion())
+                    String.format(ValidationConstants.NAME_LENGTH, "Region"),
+                    String.format(ValidationConstants.NAME_LENGTH, "Region")
 
             );
         }
@@ -86,8 +104,8 @@ public class UserRegisterValidator implements org.springframework.validation.Val
         if (userRegisterBindingModel.getStreet().length() < 3 ||
                 userRegisterBindingModel.getStreet().length() > 20) {
             errors.rejectValue("street",
-                    String.format(ValidationConstants.NAME_LENGTH, userRegisterBindingModel.getStreet()),
-                    String.format(ValidationConstants.NAME_LENGTH, userRegisterBindingModel.getStreet())
+                    String.format(ValidationConstants.NAME_LENGTH, "Street name"),
+                    String.format(ValidationConstants.NAME_LENGTH, "Street name")
 
             );
         }
@@ -102,8 +120,8 @@ public class UserRegisterValidator implements org.springframework.validation.Val
         if (userRegisterBindingModel.getState().length() < 3 ||
                 userRegisterBindingModel.getState().length() > 20) {
             errors.rejectValue("state",
-                    String.format(ValidationConstants.NAME_LENGTH, userRegisterBindingModel.getState()),
-                    String.format(ValidationConstants.NAME_LENGTH, userRegisterBindingModel.getState())
+                    String.format(ValidationConstants.NAME_LENGTH, "State name"),
+                    String.format(ValidationConstants.NAME_LENGTH, "State name")
 
             );
         }
@@ -126,8 +144,8 @@ public class UserRegisterValidator implements org.springframework.validation.Val
 
         if (userRegisterBindingModel.getEmail().isEmpty()) {
             errors.rejectValue("email",
-                    String.format(ValidationConstants.CAN_NOT_BE_NULL, userRegisterBindingModel.getEmail()),
-                    String.format(ValidationConstants.CAN_NOT_BE_NULL, userRegisterBindingModel.getEmail())
+                    String.format(ValidationConstants.CAN_NOT_BE_NULL, "Email"),
+                    String.format(ValidationConstants.CAN_NOT_BE_NULL, "Email")
 
             );
         }

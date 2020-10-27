@@ -19,8 +19,8 @@ public class BannerAddValidator implements org.springframework.validation.Valida
 
             if (this.bannerRepository.findByCompanyName(bannerAddBindingModel.getCompanyName()).isPresent()) {
                 errors.rejectValue("companyName",
-                        String.format(ValidationConstants.COMPANY_ALREADY_EXISTS, bannerAddBindingModel.getCompanyName()),
-                        String.format(ValidationConstants.COMPANY_ALREADY_EXISTS, bannerAddBindingModel.getCompanyName())
+                        String.format(ValidationConstants.ALREADY_EXISTS, bannerAddBindingModel.getCompanyName()),
+                        String.format(ValidationConstants.ALREADY_EXISTS, bannerAddBindingModel.getCompanyName())
                 );
             }
 
