@@ -12,4 +12,11 @@ public class GlobalConstants {
 
     public static final String VALID_PRICE = "Enter valid price.";
 
+    /* AUTHOR */
+
+    public static final String AUTHOR_NAME_REGEX = "[A-Z][a-z]+\\s[A-Z][a-z]+";
+    public static final String AUTHOR_NAME_IS_NULL_OR_EMPTY = "Author name si Null or Empty";
+
+    public static final String AUTHOR_IMAGE_URL_REGEX = "[A-Z][a-z]+\\s[A-Z][a-z]+";
+    public static final String AUTHOR_IMAGE_URL_IS_NULL_OR_EMPTY = "Author image url si Null or Empty";
 }
