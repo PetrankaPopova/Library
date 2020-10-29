@@ -4,6 +4,9 @@ import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.Column;
 import javax.validation.constraints.Email;
+import javax.validation.constraints.Pattern;
+
+import static library.constant.GlobalConstants.*;
 
 public class UserRegisterBindingModel {
 
@@ -43,14 +46,6 @@ public class UserRegisterBindingModel {
         this.password = password;
     }
 
-    public String getConfirmPassword() {
-        return confirmPassword;
-    }
-
-    public void setConfirmPassword(String confirmPassword) {
-        this.confirmPassword = confirmPassword;
-    }
-
     @Column(name = "userPhone",nullable = false)
     public String getUserPhone() {
         return userPhone;
@@ -70,7 +65,7 @@ public class UserRegisterBindingModel {
         this.email = email;
     }
 
-
+    @Pattern(regexp = COUNTRY_NAME_REGEX, message = COUNTRY_NAME_IS_NULL_OR_EMPTY)
     public String getCountry() {
         return country;
     }
@@ -79,6 +74,7 @@ public class UserRegisterBindingModel {
         this.country = country;
     }
 
+    @Pattern(regexp = STREET_NAME_REGEX, message = STREET_NAME_IS_NULL_OR_EMPTY)
     public String getStreet() {
         return street;
     }
@@ -87,6 +83,7 @@ public class UserRegisterBindingModel {
         this.street = street;
     }
 
+    @Pattern(regexp = CITY_NAME_REGEX, message = CITY_NAME_IS_NULL_OR_EMPTY)
     public String getCity() {
         return city;
     }
@@ -95,6 +92,7 @@ public class UserRegisterBindingModel {
         this.city = city;
     }
 
+    @Pattern(regexp = STATE_NAME_REGEX, message = STATE_NAME_IS_NULL_OR_EMPTY)
     public String getState() {
         return state;
     }
@@ -103,6 +101,7 @@ public class UserRegisterBindingModel {
         this.state = state;
     }
 
+    @Pattern(regexp = POST_CODE_REGEX, message = POST_CODE_IS_NULL_OR_EMPTY)
     public String getPostCode() {
         return postCode;
     }
@@ -111,6 +110,7 @@ public class UserRegisterBindingModel {
         this.postCode = postCode;
     }
 
+    @Pattern(regexp = REGION_NAME_REGEX, message = REGION_NAME_IS_NULL_OR_EMPTY)
     public String getRegion() {
         return region;
     }
@@ -119,6 +119,7 @@ public class UserRegisterBindingModel {
         this.region = region;
     }
 
+    @Pattern(regexp = FIRST_NAME_REGEX, message = FIRST_NAME_IS_NULL_OR_EMPTY)
     public String getFirstName() {
         return firstName;
     }
@@ -127,6 +128,7 @@ public class UserRegisterBindingModel {
         this.firstName = firstName;
     }
 
+    @Pattern(regexp = LAST_NAME_REGEX, message = LAST_NAME_IS_NULL_OR_EMPTY)
     public String getLastName() {
         return lastName;
     }
@@ -135,6 +137,7 @@ public class UserRegisterBindingModel {
         this.lastName = lastName;
     }
 
+    @Pattern(regexp = STREET_NUMBER_REGEX, message = STREET_NUMBER_IS_NULL_OR_EMPTY)
     public String getStreetNumber() {
         return streetNumber;
     }
