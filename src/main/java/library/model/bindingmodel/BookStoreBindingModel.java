@@ -1,5 +1,7 @@
 package library.model.bindingmodel;
 
+import javax.validation.constraints.Pattern;
+
 public class BookStoreBindingModel {
 
     private String storeName;
@@ -19,6 +21,7 @@ public class BookStoreBindingModel {
     public BookStoreBindingModel() {
     }
 
+    @Pattern(regexp = "[a-zA-Z ]+", message = "Incorrect store name!")
     public String getStoreName() {
         return storeName;
     }
@@ -27,6 +30,7 @@ public class BookStoreBindingModel {
         this.storeName = storeName;
     }
 
+    @Pattern(regexp = "[0-9- ]+", message = "Incorrect store number!")
     public String getStorePhoneNumber() {
         return storePhoneNumber;
     }
@@ -35,6 +39,7 @@ public class BookStoreBindingModel {
         this.storePhoneNumber = storePhoneNumber;
     }
 
+    //???
     public String getStoreHoursOfOperation() {
         return storeHoursOfOperation;
     }
@@ -43,6 +48,7 @@ public class BookStoreBindingModel {
         this.storeHoursOfOperation = storeHoursOfOperation;
     }
 
+    @Pattern(regexp = "[a-zA-Z ]+", message = "Incorrect country name!")
     public String getCountry() {
         return country;
     }
@@ -51,6 +57,7 @@ public class BookStoreBindingModel {
         this.country = country;
     }
 
+    @Pattern(regexp = "[a-zA-Z ]+", message = "Incorrect region name!")
     public String getRegion() {
         return region;
     }
@@ -59,6 +66,7 @@ public class BookStoreBindingModel {
         this.region = region;
     }
 
+    @Pattern(regexp = "[a-zA-Z0-9 ]+", message = "Incorrect post code!")
     public String getPostCode() {
         return postCode;
     }
@@ -67,6 +75,7 @@ public class BookStoreBindingModel {
         this.postCode = postCode;
     }
 
+    @Pattern(regexp = "[a-zA-Z ]+", message = "Incorrect city name!")
     public String getCity() {
         return city;
     }
@@ -75,6 +84,7 @@ public class BookStoreBindingModel {
         this.city = city;
     }
 
+    @Pattern(regexp = "[a-zA-Z ]+", message = "Incorrect street!")
     public String getStreetAddress() {
         return streetAddress;
     }
@@ -83,6 +93,7 @@ public class BookStoreBindingModel {
         this.streetAddress = streetAddress;
     }
 
+    @Pattern(regexp = "[a-zA-Z0-9 ]+", message = "Incorrect street number!")
     public String getStreetNumber() {
         return streetNumber;
     }
@@ -91,6 +102,7 @@ public class BookStoreBindingModel {
         this.streetNumber = streetNumber;
     }
 
+    @Pattern(regexp = "[a-zA-Z0-9 ]+", message = "Incorrect vat name!")
     public String getVatNumber() {
         return vatNumber;
     }
@@ -99,6 +111,7 @@ public class BookStoreBindingModel {
         this.vatNumber = vatNumber;
     }
 
+    @Pattern(regexp = "[a-zA-Z0-9. ]+", message = "Incorrect information!")
     public String getInformation() {
         return information;
     }
@@ -107,6 +120,7 @@ public class BookStoreBindingModel {
         this.information = information;
     }
 
+    @Pattern(regexp = "[a-zA-Z0-9.\\- ]+", message = "Incorrect terms and conditions!")
     public String getTermsAndConditions() {
         return termsAndConditions;
     }
@@ -115,6 +129,7 @@ public class BookStoreBindingModel {
         this.termsAndConditions = termsAndConditions;
     }
 
+    @Pattern(regexp = "[a-zA-Z0-9.\\-? ]+", message = "Incorrect faq!")
     public String getFaq() {
         return faq;
     }

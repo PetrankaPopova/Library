@@ -1,5 +1,9 @@
 package library.model.bindingmodel;
 
+import javax.validation.Valid;
+import javax.validation.constraints.DecimalMax;
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.Pattern;
 import java.math.BigDecimal;
 
 class BookAddBindingModel{
@@ -33,6 +37,7 @@ class BookAddBindingModel{
     public BookAddBindingModel() {
     }
 
+    @Pattern(regexp = "[a-zA-Z]", message = "Title is not correct!")
     public String getTitle() {
         return title;
     }
@@ -41,6 +46,7 @@ class BookAddBindingModel{
         this.title = title;
     }
 
+    @Pattern(regexp = "[A-Z0-9]+", message = "ISBN number is not correct!")
     public String getIsbn() {
         return isbn;
     }
@@ -49,6 +55,7 @@ class BookAddBindingModel{
         this.isbn = isbn;
     }
 
+    //???
     public String[] getCategories() {
         return categories;
     }
@@ -57,6 +64,7 @@ class BookAddBindingModel{
         this.categories = categories;
     }
 
+    @Pattern(regexp = "[0-9]+", message = "Year is not correct!")
     public String getYearOfIssue() {
         return yearOfIssue;
     }
@@ -65,6 +73,7 @@ class BookAddBindingModel{
         this.yearOfIssue = yearOfIssue;
     }
 
+    @Pattern(regexp = "[a-zA-Z]+", message = "Publishing house is not correct")
     public String getPublishingHouse() {
         return publishingHouse;
     }
@@ -73,6 +82,7 @@ class BookAddBindingModel{
         this.publishingHouse = publishingHouse;
     }
 
+    @Pattern(regexp = "[a-zA-Z]+", message = "Availability status is not correct!")
     public String getAvailabilityStatus() {
         return availabilityStatus;
     }
@@ -81,6 +91,7 @@ class BookAddBindingModel{
         this.availabilityStatus = availabilityStatus;
     }
 
+    @Pattern(regexp = "[0-9]+", message = "Number of pages is not correct!")
     public int getNumberOfPages() {
         return numberOfPages;
     }
@@ -89,6 +100,7 @@ class BookAddBindingModel{
         this.numberOfPages = numberOfPages;
     }
 
+    @Pattern(regexp = "[a-zA-Z]+", message = "Cover Type is not correct!")
     public String getCoverType() {
         return coverType;
     }
@@ -97,6 +109,7 @@ class BookAddBindingModel{
         this.coverType = coverType;
     }
 
+    @Pattern(regexp = "[a-zA-Z.;0-9-]+", message = "Content is not correct!")
     public String getContent() {
         return content;
     }
@@ -105,6 +118,7 @@ class BookAddBindingModel{
         this.content = content;
     }
 
+    @Pattern(regexp = "[a-zA-Z.;0-9-]+", message = "Content is not correct!")
     public String getDescription() {
         return description;
     }
@@ -113,6 +127,7 @@ class BookAddBindingModel{
         this.description = description;
     }
 
+    @Pattern(regexp = "[a-zA-Z]+", message = "Language is not correct!")
     public String getLanguage() {
         return language;
     }
@@ -121,6 +136,7 @@ class BookAddBindingModel{
         this.language = language;
     }
 
+    @Pattern(regexp = "[0-9]+", message = "Rating is not correct!")
     public double getRating() {
         return rating;
     }
@@ -129,6 +145,8 @@ class BookAddBindingModel{
         this.rating = rating;
     }
 
+    @DecimalMin(value = "0.01", message = "Incorrect price!")
+    @DecimalMax(value = "150.00", message = "Incorrect price!")
     public BigDecimal getPrice() {
         return price;
     }
@@ -137,6 +155,8 @@ class BookAddBindingModel{
         this.price = price;
     }
 
+    @DecimalMin(value = "1", message = "Incorrect quantity!")
+    @DecimalMax(value = "100", message = "Incorrect quantity!")
     public int getQuantity() {
         return quantity;
     }
@@ -145,6 +165,8 @@ class BookAddBindingModel{
         this.quantity = quantity;
     }
 
+    @DecimalMin(value = "1", message = "Incorrect discount!")
+    @DecimalMax(value = "100", message = "Incorrect discount!")
     public BigDecimal getDiscount() {
         return discount;
     }
@@ -153,6 +175,7 @@ class BookAddBindingModel{
         this.discount = discount;
     }
 
+    @Pattern(regexp = "[a-zA-Z ]", message = "Incorrect author name")
     public String getAuthorName() {
         return authorName;
     }
@@ -161,6 +184,7 @@ class BookAddBindingModel{
         this.authorName = authorName;
     }
 
+    @Pattern(regexp = "[a-zA-Z0-9/:.]+", message = "Incorrect image Url")
     public String getAuthorImageUrl() {
         return authorImageUrl;
     }
@@ -169,6 +193,7 @@ class BookAddBindingModel{
         this.authorImageUrl = authorImageUrl;
     }
 
+    @Pattern(regexp = "[0-9]+", message = "Incorrect length!")
     public int getLength() {
         return length;
     }
@@ -177,6 +202,7 @@ class BookAddBindingModel{
         this.length = length;
     }
 
+    @Pattern(regexp = "[0-9]+", message = "Incorrect width!")
     public int getWidth() {
         return width;
     }
@@ -185,6 +211,7 @@ class BookAddBindingModel{
         this.width = width;
     }
 
+    @Pattern(regexp = "[0-9]+", message = "Incorrect height!")
     public int getHeight() {
         return height;
     }
@@ -193,6 +220,7 @@ class BookAddBindingModel{
         this.height = height;
     }
 
+    @Pattern(regexp = "[0-9]+", message = "Incorrect weight!")
     public int getWeight() {
         return weight;
     }
@@ -201,6 +229,7 @@ class BookAddBindingModel{
         this.weight = weight;
     }
 
+    //???
     public String[] getPhotos() {
         return photos;
     }
