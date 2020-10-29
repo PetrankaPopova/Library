@@ -126,15 +126,6 @@ public class UserRegisterValidator implements org.springframework.validation.Val
             );
         }
 
-
-
-        if (!userRegisterBindingModel.getPassword().equals(userRegisterBindingModel.getConfirmPassword())) {
-            errors.rejectValue("password",
-                    ValidationConstants.PASSWORD_DO_NOT_MATCH,
-                    ValidationConstants.PASSWORD_DO_NOT_MATCH
-            );
-        }
-
         if (this.userRepository.findByEmail(userRegisterBindingModel.getEmail()).isPresent()) {
             errors.rejectValue("email",
                     String.format(ValidationConstants.EMAIL_ALREADY_EXISTS, userRegisterBindingModel.getEmail()),
