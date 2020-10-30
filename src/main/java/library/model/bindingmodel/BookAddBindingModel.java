@@ -6,7 +6,7 @@ import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.Pattern;
 import java.math.BigDecimal;
 
-class BookAddBindingModel{
+public class BookAddBindingModel{
 
     private String title;
     private String isbn;

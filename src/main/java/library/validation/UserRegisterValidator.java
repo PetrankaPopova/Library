@@ -133,10 +133,20 @@ public class UserRegisterValidator implements org.springframework.validation.Val
             );
         }
 
-        if (userRegisterBindingModel.getEmail().isEmpty()) {
+        if (userRegisterBindingModel.getEmail().length() < 3 ||
+        userRegisterBindingModel.getEmail().length() >20) {
             errors.rejectValue("email",
-                    String.format(ValidationConstants.CAN_NOT_BE_EMPTY, "Email"),
-                    String.format(ValidationConstants.CAN_NOT_BE_EMPTY, "Email")
+                    String.format(ValidationConstants.NAME_LENGTH, "Email"),
+                    String.format(ValidationConstants.NAME_LENGTH, "Email")
+
+            );
+        }
+
+        if (userRegisterBindingModel.getUserPhone().length() < 3 ||
+                userRegisterBindingModel.getUserPhone().length() >20) {
+            errors.rejectValue("userphone",
+                    String.format(ValidationConstants.NAME_LENGTH, "User phone number"),
+                    String.format(ValidationConstants.NAME_LENGTH, "User phone number")
 
             );
         }
