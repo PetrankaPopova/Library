@@ -10,6 +10,7 @@ public class BannerAddValidator implements org.springframework.validation.Valida
    private final BannerRepository bannerRepository;
 
     public BannerAddValidator(BannerRepository bannerRepository) {
+
         this.bannerRepository = bannerRepository;
     }
 
@@ -19,8 +20,8 @@ public class BannerAddValidator implements org.springframework.validation.Valida
 
             if (this.bannerRepository.findByCompanyName(bannerAddBindingModel.getCompanyName()).isPresent()) {
                 errors.rejectValue("companyName",
-                        String.format(ValidationConstants.COMPANY_ALREADY_EXISTS, bannerAddBindingModel.getCompanyName()),
-                        String.format(ValidationConstants.COMPANY_ALREADY_EXISTS, bannerAddBindingModel.getCompanyName())
+                        String.format(ValidationConstants.ALREADY_EXISTS, bannerAddBindingModel.getCompanyName()),
+                        String.format(ValidationConstants.ALREADY_EXISTS, bannerAddBindingModel.getCompanyName())
                 );
             }
 
@@ -35,8 +36,7 @@ public class BannerAddValidator implements org.springframework.validation.Valida
         }
     @Override
     public boolean supports(Class<?> aClass) {
-        return false;
-    }
+        return BannerAddBindingModel.class.equals(aClass);    }
 
 }
 

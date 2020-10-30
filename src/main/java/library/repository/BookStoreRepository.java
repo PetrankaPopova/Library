@@ -10,4 +10,8 @@ import java.util.Optional;
 public interface BookStoreRepository extends JpaRepository<BookStore, String> {
 
     Optional<BookStore> findBookStoreByStoreName(String name);
+
+    Optional<BookStore> findBookStoreByStorePhoneNumber(String phoneNumber);
+
+    Optional<BookStore> findBookStoreByVatNumber(String vatNumber);
 }

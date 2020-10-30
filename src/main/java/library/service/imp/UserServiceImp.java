@@ -55,18 +55,21 @@ public class UserServiceImp implements UserService {
 
     @Override
     public UserServiceModel findByUsernameAndPassword(String username, String password) {
-        User findedUser = this.userRepository.findUserByUsernameAndPassword(username, password).orElse(null);
-        return findedUser == null ? null : this.modelMapper.map(findedUser, UserServiceModel.class);
+        return null;
     }
 
     @Override
     public UserServiceModel findByUsername(String username) {
-        User findedUser = this.userRepository.findUserByUsername(username).orElse(null);
-        return this.modelMapper.map(findedUser, UserServiceModel.class);
+        return null;
     }
 
     @Override
-    public UserEditServiceModel editUserProfile(UserEditServiceModel userEditServiceModel){
+    public User findByEmail(String email) {
+        return this.userRepository.findByEmail(email).orElse(null);
+    }
+
+    @Override
+    public UserEditServiceModel editUserProfile(UserEditServiceModel userEditServiceModel, String oldPassword) throws UserPasswordsNotMatchException, UserWithUsernameAlreadyExistException {
         return null;
     }
 

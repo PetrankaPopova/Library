@@ -57,11 +57,11 @@ public class ImportData implements CommandLineRunner {
     public void run(String... args) throws Exception {
 
         //methods for tests
-        //this.AddAuthorsToDB();
+        this.AddAuthorsToDB();
         //this.printAuthorNames();
         //this.addOneBookToDb();
         //this.deleteByBookName("Java Tricks");
-       // this.addBannertodb();
+        //this.addBannertodb();
         //this.deleteBannerByCompanyName("Hard Consult");
 
     }
