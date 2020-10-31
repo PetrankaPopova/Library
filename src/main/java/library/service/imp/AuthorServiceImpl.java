@@ -39,7 +39,7 @@ public class AuthorServiceImpl implements AuthorService {
     @Override
     public List<AuthorServiceModel> getAuthorsBySymbolsFromName(String symbols) {
         List<Author> foundAuthors = this.authorRepository.searchByPartOfAuthorName(symbols);
-        if (foundAuthors == null){
+        if (foundAuthors == null) {
             return null;
             //throw new AuthorWithThisNameIsNotExist("Author with this name is not exist!");
         }
@@ -48,7 +48,9 @@ public class AuthorServiceImpl implements AuthorService {
     }
 
     @Override
-    public AuthorServiceModel addNewAuthorByName(AuthorServiceModel authorServiceModel) {
+    public AuthorServiceModel addNewAuthor(AuthorServiceModel authorServiceModel) {
+        Author foundedAuthor = this.authorRepository.findAuthorByName(authorServiceModel.getName()).orElse(null);
+        if (foundedAuthor != null) return null;
         Author author = this.modelMapper.map(authorServiceModel, Author.class);
         Author authorReturnFromDb = this.authorRepository.saveAndFlush(author);
         return this.modelMapper.map(authorReturnFromDb, AuthorServiceModel.class);
