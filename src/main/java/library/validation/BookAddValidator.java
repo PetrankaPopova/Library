@@ -94,28 +94,5 @@ public class BookAddValidator implements org.springframework.validation.Validato
                     String.format(ValidationConstants.NUMBER_NEGATIVE, "Rating")
             );
         }
-
-        /*if (bookBindingModel.getWidth() <= 0) {
-            errors.rejectValue("width",
-                    String.format(ValidationConstants.NUMBER_NEGATIVE, "Width"),
-                    String.format(ValidationConstants.NUMBER_NEGATIVE, "Width")
-            );
-        }
-
-        if (bookBindingModel.getWeight() <= 0) {
-            errors.rejectValue("weight",
-                    String.format(ValidationConstants.NUMBER_NEGATIVE, "Weight"),
-                    String.format(ValidationConstants.NUMBER_NEGATIVE, "Weight")
-            );
-        }
-
-        if (bookBindingModel.getLength() <= 0) {
-            errors.rejectValue("length",
-                    String.format(ValidationConstants.NUMBER_NEGATIVE, "Length"),
-                    String.format(ValidationConstants.NUMBER_NEGATIVE, "Length")
-            );
-        }*/
-
-
     }
 }
