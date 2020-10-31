@@ -1,0 +1,27 @@
+{
+    "title": "Java for begginer",
+    "isbn": "987JHT742K",
+    "categories": ["Computers", "Programming"],
+    "yearOfIssue": 2010,
+    "publishingHouse": "Ivanovi House",
+    "availabilityStatus": "Yes",
+    "numberOfPages": 550,
+    "coverType": "Hard",
+    "content": "kjsdh ksjdh kjsd ksdjh ksjd",
+    "language": "bulgarian",
+    "rating": 6,
+    "price": "10.56",
+    "quantity": 6,
+    "discount": 10,
+    "author": {
+        "authorName": "Desislava",
+        "authorImageUrl": "http://"
+    },
+    "size": {
+        "length": 10,
+        "height": 11,
+        "width": 12,
+        "weight": 1
+    },
+    "photos": ["photo1", "photo2"]
+}
