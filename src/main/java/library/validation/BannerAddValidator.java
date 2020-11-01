@@ -25,7 +25,7 @@ public class BannerAddValidator implements org.springframework.validation.Valida
                 );
             }
 
-            if (bannerAddBindingModel.getPrice() <=   0) {
+            if (bannerAddBindingModel.getPrice() <=  0) {
                 errors.rejectValue("price",
                         ValidationConstants.PRICE_NEGATIVE,
                         ValidationConstants.PRICE_NEGATIVE

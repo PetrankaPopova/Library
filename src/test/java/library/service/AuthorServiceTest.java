@@ -16,7 +16,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
 import static java.util.Optional.ofNullable;
-import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 class AuthorServiceTest {
@@ -53,7 +52,7 @@ class AuthorServiceTest {
         Author authorReturnFromDb = this.mockedAuthorRepository.saveAndFlush(author);
         AuthorServiceModel actualAuthor = this.modelMapper.map(authorReturnFromDb, AuthorServiceModel.class);
         AuthorServiceModel expectedAuthor = this.authorServiceImpl
-                .addNewAuthorByName(this.authorServiceModel);
+                .addNewAuthor(this.authorServiceModel);
         Assertions.assertEquals(expectedAuthor.getName(), actualAuthor.getName());
     }
 

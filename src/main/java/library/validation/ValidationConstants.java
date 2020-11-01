@@ -10,5 +10,6 @@ public class ValidationConstants {
     public final static String STREET_NUMBER = "User street number must be between 1 and 20 characters!";
     public final static String ALREADY_EXISTS = "%s already exists!";
     public final static String PRICE_NEGATIVE = "The price can not be negative.";
+    public final static String NUMBER_NEGATIVE = "The %s can not be negative.";
 
 }

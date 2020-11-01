@@ -12,7 +12,7 @@ public interface AuthorService {
 
     List<AuthorServiceModel> getAuthorsBySymbolsFromName(String symbols);
 
-    AuthorServiceModel addNewAuthorByName(AuthorServiceModel asm);
+    AuthorServiceModel addNewAuthor(AuthorServiceModel asm);
 
     AuthorServiceModel deleteAuthorByName(String authorName);
 

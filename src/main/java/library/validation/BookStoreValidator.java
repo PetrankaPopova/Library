@@ -51,6 +51,7 @@ public class BookStoreValidator implements org.springframework.validation.Valida
 
         if (bookStoreBindingModel.getStoreName().length() < 3 ||
                 bookStoreBindingModel.getStoreName().length() > 20) {
+
             errors.rejectValue("bookStoreName",
                     String.format(ValidationConstants.NAME_LENGTH, "Store name"),
                     String.format(ValidationConstants.NAME_LENGTH, "Store name")
@@ -58,26 +59,34 @@ public class BookStoreValidator implements org.springframework.validation.Valida
             );
         }
 
+        if (bookStoreBindingModel.getCity().length() < 3 ||
+                bookStoreBindingModel.getCity().length() > 20) {
 
-        if (bookStoreBindingModel.getCity().isEmpty()) {
-            errors.rejectValue("city",
-                    String.format(ValidationConstants.CAN_NOT_BE_EMPTY, "City"),
-                    String.format(ValidationConstants.CAN_NOT_BE_EMPTY, "City")
-            );
-        }
+                errors.rejectValue("City",
+                        String.format(ValidationConstants.NAME_LENGTH, "City"),
+                        String.format(ValidationConstants.NAME_LENGTH, "City")
 
-        if (bookStoreBindingModel.getCountry().isEmpty()) {
-            errors.rejectValue("country",
-                    String.format(ValidationConstants.CAN_NOT_BE_EMPTY, "Country"),
-                    String.format(ValidationConstants.CAN_NOT_BE_EMPTY, "Country")
+                );
+            }
 
-            );
-        }
 
-        if (bookStoreBindingModel.getPostCode().isEmpty()) {
+
+        if (bookStoreBindingModel.getCountry().length() < 3 ||
+                bookStoreBindingModel.getCountry().length() > 20) {
+
+                errors.rejectValue("country",
+                        String.format(ValidationConstants.NAME_LENGTH, "Country"),
+                        String.format(ValidationConstants.NAME_LENGTH, "Country")
+
+                );
+            }
+
+
+        if (bookStoreBindingModel.getPostCode().length() < 3 ||
+                bookStoreBindingModel.getPostCode().length() > 20) {
             errors.rejectValue("postcode",
-                    String.format(ValidationConstants.CAN_NOT_BE_EMPTY, "Postcode"),
-                    String.format(ValidationConstants.CAN_NOT_BE_EMPTY, "Postcode")
+                    String.format(ValidationConstants.NAME_LENGTH, "Postcode"),
+                    String.format(ValidationConstants.NAME_LENGTH, "Postcode")
 
             );
         }
@@ -126,14 +135,32 @@ public class BookStoreValidator implements org.springframework.validation.Valida
             );
         }
 
-        if (bookStoreBindingModel.getInformation().isEmpty()) {
+        if (bookStoreBindingModel.getInformation().length() < 3 ||
+                bookStoreBindingModel.getInformation().length() > 20) {
             errors.rejectValue("information",
-                    String.format(ValidationConstants.CAN_NOT_BE_EMPTY, "Information"),
-                    String.format(ValidationConstants.CAN_NOT_BE_EMPTY, "Information")
+                    String.format(ValidationConstants.NAME_LENGTH, "Information"),
+                    String.format(ValidationConstants.NAME_LENGTH, "Information")
 
             );
         }
 
+        if (bookStoreBindingModel.getTermsAndConditions().length() < 3 ||
+                bookStoreBindingModel.getTermsAndConditions().length() > 20) {
+            errors.rejectValue("termsAndConditions",
+                    String.format(ValidationConstants.NAME_LENGTH, "Terms and Conditions"),
+                    String.format(ValidationConstants.NAME_LENGTH, "Terms and Conditions")
+
+            );
+        }
+
+        if (bookStoreBindingModel.getFaq().length() < 3 ||
+                bookStoreBindingModel.getFaq().length() > 20) {
+            errors.rejectValue("faq",
+                    String.format(ValidationConstants.NAME_LENGTH, "Faq"),
+                    String.format(ValidationConstants.NAME_LENGTH, "Faq")
+
+            );
+        }
 
     }
 }

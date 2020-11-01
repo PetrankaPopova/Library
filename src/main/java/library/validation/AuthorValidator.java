@@ -29,6 +29,5 @@ public class AuthorValidator  implements org.springframework.validation.Validato
 
             );
         }
-
     }
 }
