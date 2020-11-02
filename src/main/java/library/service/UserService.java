@@ -27,6 +27,8 @@ public interface UserService extends UserDetailsService {
 
     List<BookServiceModel> getAllBoughtBooks ();
 
+    List<UserServiceModel> getAllUser();
+
     //UserServiceModel findById(String userId);
     //List<ProductViewModel> getAllBoughtProducts ();
     //List<UserServiceModel> findAllUsers();

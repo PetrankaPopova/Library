@@ -19,6 +19,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.lang.reflect.Type;
+import java.util.HashSet;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -50,7 +52,26 @@ public class UserServiceImp implements UserService {
 
     @Override
     public String registerUser(UserServiceModel userServiceModel) {
-        return null;
+        User user = this.modelMapper.map(userServiceModel, User.class);
+        User returnedUserFromDb = this.userRepository.findUserByUsername(userServiceModel.getUsername()).orElse(null);
+        if (userRepository.existsByUsername(userServiceModel.getUsername())) {
+            throw new AlreadyExistsException("username", USER_NAME_EXISTS_MESSAGE);
+        }
+        if (userRepository.existsByEmail(userServiceModel.getEmail())) {
+            throw new AlreadyExistsException("email", USER_EMAIL_EXISTS_MASSAGE);
+        }
+
+        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+        if (this.userRepository.count() == 0) {
+            this.roleService.seedRolesToDb();
+            user.setAuthorities(new HashSet<>(this.roleRepository.findAll()));
+        } else {
+            user.setAuthorities(new HashSet<>());
+            user.getAuthorities().add(this.roleRepository.findByAuthority("USER").orElse(null));
+        }
+        this.userRepository.saveAndFlush(user);
+        return this.modelMapper.map(user, (Type) UserServiceModel.class);
+
     }
 
     @Override
@@ -75,6 +96,12 @@ public class UserServiceImp implements UserService {
 
     @Override
     public List<BookServiceModel> getAllBoughtBooks() {
+        return null;
+    }
+
+    @Override
+    public List<UserServiceModel> getAllUser() {
+
         return null;
     }
 

@@ -12,6 +12,7 @@ public class UserRegisterBindingModel {
 
     private String username;
     private String password;
+    private String confirmPassword;
     private String userPhone;
     private String email;
     private String firstName;
@@ -52,6 +53,14 @@ public class UserRegisterBindingModel {
 
     public void setUserPhone(String userPhone) {
         this.userPhone = userPhone;
+    }
+
+    public String getConfirmPassword() {
+        return confirmPassword;
+    }
+
+    public void setConfirmPassword(String confirmPassword) {
+        this.confirmPassword = confirmPassword;
     }
 
     //@NotNull(message = "Cannot be null.")
