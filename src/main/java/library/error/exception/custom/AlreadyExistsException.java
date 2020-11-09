@@ -1,4 +1,4 @@
-package library.error.exception;
+package library.error.exception.custom;
 
 public class AlreadyExistsException extends RuntimeException {
     private String fieldName;

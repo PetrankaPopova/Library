@@ -26,11 +26,4 @@ public class BookController {
         this.modelMapper = modelMapper;
     }
 
-    @RequestMapping(value = "/book/add", consumes = MediaType.APPLICATION_JSON_VALUE,
-            method = RequestMethod.POST)
-    public void createEmployee(@Valid @RequestBody BookBindingModel newBook) {
-
-        System.out.println();
-
-    }
 }

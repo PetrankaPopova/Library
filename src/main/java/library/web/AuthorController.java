@@ -7,7 +7,9 @@ import library.repository.AuthorRepository;
 import library.service.AuthorService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,6 +18,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
+@RequestMapping("/author")
 public class AuthorController {
 
     private final AuthorService authorService;
@@ -27,16 +30,12 @@ public class AuthorController {
         this.modelMapper = modelMapper;
     }
 
-    @GetMapping("/author/all")
-    public List<AuthorViewModel> getAllAuthors() {
-        return this.authorService.getAllAuthors() //List<AuthorServiceModel>
+    @GetMapping("/all")
+    public ResponseEntity<List<AuthorViewModel>> getAllAuthors() {
+        List<AuthorViewModel> authors = this.authorService.getAllAuthors() //List<AuthorServiceModel>
                 .stream().map(authorServiceModel -> this.modelMapper.map(authorServiceModel, AuthorViewModel.class))
                 .collect(Collectors.toList());
+        return new ResponseEntity<>(authors, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/author/new", consumes = MediaType.APPLICATION_JSON_VALUE,
-            method = RequestMethod.POST)
-    public void createEmployee(@Valid @RequestBody AuthorBindingModel authorBindingModel) {
-        this.authorService.addNewAuthor(this.modelMapper.map(authorBindingModel, AuthorServiceModel.class));
-    }
 }

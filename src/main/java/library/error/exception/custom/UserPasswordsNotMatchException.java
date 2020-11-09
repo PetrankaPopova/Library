@@ -1,10 +1,9 @@
-package library.error.exception;
+package library.error.exception.custom;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-@ResponseStatus(code = HttpStatus.NOT_FOUND, reason = "User is not exist!")
-public class UserPasswordsNotMatchException extends Throwable {
+public class UserPasswordsNotMatchException extends Exception {
     public UserPasswordsNotMatchException(String msg) {
         super();
     }

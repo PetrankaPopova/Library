@@ -1,12 +1,12 @@
 package library.service.imp;
 
-import library.error.exception.*;
-import library.model.entity.Book;
+import library.error.exception.custom.AlreadyExistsException;
+import library.error.exception.custom.UserPasswordsNotMatchException;
+import library.error.exception.custom.UserWithUsernameAlreadyExistException;
 import library.model.entity.User;
 import library.model.service.BookServiceModel;
 import library.model.service.UserEditServiceModel;
 import library.model.service.UserServiceModel;
-import library.model.views.BookViewModel;
 import library.repository.BookRepository;
 import library.repository.RoleRepository;
 import library.repository.UserRepository;
@@ -22,7 +22,6 @@ import org.springframework.stereotype.Service;
 import java.lang.reflect.Type;
 import java.util.HashSet;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static library.constant.GlobalConstants.USER_EMAIL_EXISTS_MASSAGE;
 import static library.constant.GlobalConstants.USER_NAME_EXISTS_MESSAGE;

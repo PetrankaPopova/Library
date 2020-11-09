@@ -20,12 +20,5 @@ public class HomeController {
 		this.modelMapper = modelMapper;
 		this.bookStoreService = bookStoreService;
 	}
-
-	@GetMapping("/home")
-	public String home(@ModelAttribute ("bsbm") BookStoreBindingModel bsbm) {
-		BookStoreServiceModel bssm = this.modelMapper.map(bsbm, BookStoreServiceModel.class);
-		this.bookStoreService.addNewBookStore(bssm);
-		return "home";
-	}
 	
 }

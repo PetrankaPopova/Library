@@ -1,17 +1,14 @@
 package library.service;
 
-import library.error.exception.UserCannotSaveException;
-import library.error.exception.UserPasswordsNotMatchException;
-import library.error.exception.UserWithUsernameAlreadyExistException;
+import library.error.exception.custom.UserPasswordsNotMatchException;
+import library.error.exception.custom.UserWithUsernameAlreadyExistException;
 import library.model.entity.User;
 import library.model.service.BookServiceModel;
 import library.model.service.UserEditServiceModel;
 import library.model.service.UserServiceModel;
-import library.model.views.BookViewModel;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface UserService extends UserDetailsService {
 
