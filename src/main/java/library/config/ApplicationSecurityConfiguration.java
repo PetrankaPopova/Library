@@ -29,19 +29,4 @@ public class ApplicationSecurityConfiguration extends WebSecurityConfigurerAdapt
         auth.userDetailsService(this.userService).passwordEncoder(bCryptPasswordEncoder);
     }
 
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
-        http
-                .csrf().disable()
-                .cors().disable()
-                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-                .and()
-                .authorizeRequests().antMatchers(ENABLE_ADDRESSES).permitAll()
-                .anyRequest().authenticated()
-                .and()
-                .addFilter(new JwtAuthentication(authenticationManager()))
-                .addFilterBefore(new JwtAuthorization(), UsernamePasswordAuthenticationFilter.class);
-
-    }
-
 }
