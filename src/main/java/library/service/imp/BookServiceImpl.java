@@ -5,8 +5,6 @@ import library.model.entity.Book;
 import library.model.entity.Category;
 import library.model.entity.Size;
 import library.model.service.BookServiceModel;
-import library.model.service.CategoryServiceModel;
-import library.model.service.SizeServiceModel;
 import library.repository.AuthorRepository;
 import library.repository.BookRepository;
 import library.repository.CategoryRepository;
@@ -16,7 +14,6 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;

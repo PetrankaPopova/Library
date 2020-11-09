@@ -8,13 +8,13 @@ import library.model.service.UserServiceModel;
 import library.repository.BookRepository;
 import library.repository.CartRepository;
 import library.repository.UserRepository;
-import library.service.CartServive;
+import library.service.CartService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class CartImpl implements CartServive {
+public class CartImpl implements CartService {
 
     private final CartRepository cartRepository;
     private final BookRepository bookRepository;

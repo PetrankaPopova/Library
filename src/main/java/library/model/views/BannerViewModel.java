@@ -3,7 +3,7 @@ package library.model.views;
 public class BannerViewModel {
 
 private String companyName;
-private String imgurl;
+private String imgUrl;
 
     public BannerViewModel() {
     }
@@ -16,11 +16,11 @@ private String imgurl;
         this.companyName = companyName;
     }
 
-    public String getImgurl() {
-        return imgurl;
+    public String getImgUrl() {
+        return imgUrl;
     }
 
-    public void setImgurl(String imgurl) {
-        this.imgurl = imgurl;
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
     }
 }

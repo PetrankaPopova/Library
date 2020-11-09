@@ -1,7 +1,5 @@
 package library.model.service;
 
-import library.model.entity.Book;
-
 import java.util.ArrayList;
 import java.util.List;
 

@@ -7,5 +7,5 @@ public interface BookStoreService {
 
     BookStore findBookStoreByStoreName(String name);
 
-    void addNewBookStore(BookStoreServiceModel bssm);
+    void addNewBookStore(BookStoreServiceModel bookStore);
 }

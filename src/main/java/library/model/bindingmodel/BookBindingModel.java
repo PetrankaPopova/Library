@@ -1,9 +1,5 @@
 package library.model.bindingmodel;
 
-import javax.validation.Valid;
-import javax.validation.constraints.DecimalMax;
-import javax.validation.constraints.DecimalMin;
-import javax.validation.constraints.Pattern;
 import java.math.BigDecimal;
 
 public class BookBindingModel {

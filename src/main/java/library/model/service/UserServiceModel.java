@@ -1,12 +1,8 @@
 package library.model.service;
 
-import library.model.entity.Address;
-import library.model.entity.Cart;
-import library.model.entity.Role;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.validator.constraints.Length;
 
 import java.util.List;
 import java.util.Set;

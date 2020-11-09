@@ -29,13 +29,13 @@ import static library.constant.GlobalConstants.USER_NAME_EXISTS_MESSAGE;
 @Service
 public class UserServiceImp implements UserService {
 
-    private UserRepository userRepository;
-    private ModelMapper modelMapper;
-    private RoleService roleService;
-    private RoleRepository roleRepository;
-    private BookRepository bookRepository;
+    private final UserRepository userRepository;
+    private final ModelMapper modelMapper;
+    private final RoleService roleService;
+    private final RoleRepository roleRepository;
+    private final BookRepository bookRepository;
     //private UserEditServiceModel userEditServiceModel;
-    private BCryptPasswordEncoder bCryptPasswordEncoder;
+    private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Autowired
     public UserServiceImp(UserRepository userRepository, ModelMapper modelMapper, RoleService roleService,

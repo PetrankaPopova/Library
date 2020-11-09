@@ -18,9 +18,9 @@ public class BannerServiceImpl implements BannerService {
     private final ModelMapper modelMapper;
     private final BannerRepository bannerRepository;
 
-    public BannerServiceImpl(ModelMapper modelMapper, BannerRepository bannnerRepository) {
+    public BannerServiceImpl(ModelMapper modelMapper, BannerRepository bannerRepository) {
         this.modelMapper = modelMapper;
-        this.bannerRepository = bannnerRepository;
+        this.bannerRepository = bannerRepository;
     }
 
 
@@ -56,7 +56,7 @@ public class BannerServiceImpl implements BannerService {
         return this.bannerRepository.findAll().stream()
                 .map(banner -> {
                     BannerViewModel bannerViewModel = this.modelMapper.map(banner, BannerViewModel.class);
-                    bannerViewModel.setImgurl(String.format("/img/%s-%s.jpg", banner.getCompanyName(), banner.getCount()));
+                    bannerViewModel.setImgUrl(String.format("/img/%s-%s.jpg", banner.getCompanyName(), banner.getCount()));
                     return bannerViewModel;
                 }).collect(Collectors.toList());
     }

@@ -4,7 +4,6 @@ import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
-import javax.validation.constraints.Email;
 import java.io.Serializable;
 
 @SuppressWarnings("ALL")

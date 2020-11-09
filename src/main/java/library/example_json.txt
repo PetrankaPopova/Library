@@ -1,5 +1,5 @@
 {
-    "title": "Java for begginer",
+    "title": "Java for beginner",
     "isbn": "987JHT742K",
     "categories": ["Computers", "Programming"],
     "yearOfIssue": 2010,
@@ -7,7 +7,7 @@
     "availabilityStatus": "Yes",
     "numberOfPages": 550,
     "coverType": "Hard",
-    "content": "kjsdh ksjdh kjsd ksdjh ksjd",
+    "content": "some content",
     "language": "bulgarian",
     "rating": 6,
     "price": "10.56",

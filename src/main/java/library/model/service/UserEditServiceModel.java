@@ -1,9 +1,5 @@
 package library.model.service;
 
-import library.model.entity.Address;
-
-import java.util.List;
-
 public class UserEditServiceModel extends BaseServiceModel {
 
     private String username;

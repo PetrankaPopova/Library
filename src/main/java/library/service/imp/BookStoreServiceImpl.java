@@ -3,7 +3,6 @@ package library.service.imp;
 import library.model.entity.Address;
 import library.model.entity.BookStore;
 import library.model.service.BookStoreServiceModel;
-import library.repository.BookRepository;
 import library.repository.BookStoreRepository;
 import library.service.BookStoreService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,28 +26,28 @@ public class BookStoreServiceImpl implements BookStoreService {
     }
 
     @Override
-    public void addNewBookStore(BookStoreServiceModel bssm) {
-        BookStore bookStore = new BookStore();
+    public void addNewBookStore(BookStoreServiceModel bookStore) {
+        BookStore bookStoreForDb = new BookStore();
         Address address = new Address();
 
-        address.setCountry(bssm.getCountry());
-        address.setCity(bssm.getCity());
-        address.setPostCode(bssm.getPostCode());
-        address.setRegion(bssm.getRegion());
-        address.setState(bssm.getState());
-        address.setStreet(bssm.getStreetAddress());
-        address.setStreetNumber(bssm.getStreetNumber());
+        address.setCountry(bookStore.getCountry());
+        address.setCity(bookStore.getCity());
+        address.setPostCode(bookStore.getPostCode());
+        address.setRegion(bookStore.getRegion());
+        address.setState(bookStore.getState());
+        address.setStreet(bookStore.getStreetAddress());
+        address.setStreetNumber(bookStore.getStreetNumber());
 
-        bookStore.setAddress(address);
+        bookStoreForDb.setAddress(address);
 
-        bookStore.setStoreName(bssm.getStoreName());
-        bookStore.setStorePhoneNumber(bssm.getStorePhoneNumber());
-        bookStore.setStorePhoneNumber(bssm.getStoreHoursOfOperation());
-        bookStore.setVatNumber(bssm.getVatNumber());
-        bookStore.setInformation(bssm.getInformation());
-        bookStore.setTermsAndConditions(bssm.getTermsAndConditions());
-        bookStore.setFaq(bssm.getFaq());
+        bookStoreForDb.setStoreName(bookStore.getStoreName());
+        bookStoreForDb.setStorePhoneNumber(bookStore.getStorePhoneNumber());
+        bookStoreForDb.setStorePhoneNumber(bookStore.getStoreHoursOfOperation());
+        bookStoreForDb.setVatNumber(bookStore.getVatNumber());
+        bookStoreForDb.setInformation(bookStore.getInformation());
+        bookStoreForDb.setTermsAndConditions(bookStore.getTermsAndConditions());
+        bookStoreForDb.setFaq(bookStore.getFaq());
 
-        this.bookStoreRepository.saveAndFlush(bookStore);
+        this.bookStoreRepository.saveAndFlush(bookStoreForDb);
     }
 }

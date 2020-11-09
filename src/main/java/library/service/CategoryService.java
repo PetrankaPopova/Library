@@ -1,6 +1,5 @@
 package library.service;
 
-import library.model.entity.Category;
 import library.model.service.CategoryServiceModel;
 
 public interface CategoryService {

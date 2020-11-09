@@ -1,6 +1,6 @@
 package library.service;
 
-public interface CartServive {
+public interface CartService {
 
     String addBookToCart(String bookId, String loggedUserStr);
 

@@ -1,7 +1,5 @@
 package library.model.service;
 
-import library.model.entity.Address;
-
 public class BookStoreServiceModel {
 
     private String storeName;

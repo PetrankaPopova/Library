@@ -1,7 +1,7 @@
 package library.error.exception.custom;
 
 public class AlreadyExistsException extends RuntimeException {
-    private String fieldName;
+    private final String fieldName;
 
     public String getField(){
         return this.fieldName;
