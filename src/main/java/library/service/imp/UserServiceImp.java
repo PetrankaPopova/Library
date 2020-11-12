@@ -34,7 +34,6 @@ public class UserServiceImp implements UserService {
     private final RoleService roleService;
     private final RoleRepository roleRepository;
     private final BookRepository bookRepository;
-    //private UserEditServiceModel userEditServiceModel;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Autowired
@@ -45,7 +44,6 @@ public class UserServiceImp implements UserService {
         this.roleService = roleService;
         this.roleRepository = roleRepository;
         this.bookRepository = bookRepository;
-        //this.userEditServiceModel = userEditServiceModel;
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
 
@@ -53,12 +51,6 @@ public class UserServiceImp implements UserService {
     public String registerUser(UserServiceModel userServiceModel) {
         User user = this.modelMapper.map(userServiceModel, User.class);
         User returnedUserFromDb = this.userRepository.findUserByUsername(userServiceModel.getUsername()).orElse(null);
-        if (userRepository.existsByUsername(userServiceModel.getUsername())) {
-            throw new AlreadyExistsException("username", USER_NAME_EXISTS_MESSAGE);
-        }
-        if (userRepository.existsByEmail(userServiceModel.getEmail())) {
-            throw new AlreadyExistsException("email", USER_EMAIL_EXISTS_MASSAGE);
-        }
 
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         if (this.userRepository.count() == 0) {

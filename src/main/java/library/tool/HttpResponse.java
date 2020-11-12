@@ -1,17 +1,67 @@
 package library.tool;
 
-import org.springframework.security.access.AccessDeniedException;
-import org.springframework.security.web.access.AccessDeniedHandler;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.http.HttpStatus;
+import java.util.Date;
 
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
+//Edited
+public class HttpResponse {
 
-public class HttpResponse implements AccessDeniedHandler {
+    private Date responseTime;
+    private String message;
+    private String reason;
+    private int httpStatusCode;
+    private HttpStatus httpStatus;
 
-    @Override
-    public void handle(HttpServletRequest request, HttpServletResponse response, AccessDeniedException accessDeniedException) throws IOException, ServletException {
+    public HttpResponse() {}
 
+    public HttpResponse(int httpStatusCode, HttpStatus httpStatus, String reason, String message) {
+        this.responseTime = new Date();
+        this.httpStatusCode = httpStatusCode;
+        this.httpStatus = httpStatus;
+        this.reason = reason;
+        this.message = message;
     }
+
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "MM-dd-yyyy hh:mm:ss", timezone = JsonFormat.DEFAULT_TIMEZONE)
+    public Date getResponseTime() {
+        return responseTime;
+    }
+
+    public void setResponseTime(Date responseTime) {
+        this.responseTime = responseTime;
+    }
+
+    public int getHttpStatusCode() {
+        return httpStatusCode;
+    }
+
+    public void setHttpStatusCode(int httpStatusCode) {
+        this.httpStatusCode = httpStatusCode;
+    }
+
+    public HttpStatus getHttpStatus() {
+        return httpStatus;
+    }
+
+    public void setHttpStatus(HttpStatus httpStatus) {
+        this.httpStatus = httpStatus;
+    }
+
+    public String getReason() {
+        return reason;
+    }
+
+    public void setReason(String reason) {
+        this.reason = reason;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
 }
