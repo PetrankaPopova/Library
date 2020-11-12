@@ -40,6 +40,7 @@ public class JWTTokenProviderImpl implements JWTTokenProvider {
         this.userService = userService;
     }
 
+    @Override
     public String generateJwtToken(UserServiceModel user) {
         String[] claims = getClaimsFromUser(user);
         return JWT.create().withIssuer(GET_ARR_LLC).withAudience(GET_ARR_ADMIN)
@@ -49,6 +50,7 @@ public class JWTTokenProviderImpl implements JWTTokenProvider {
                 .sign(HMAC512(secret.getBytes()));
     }
 
+    @Override
     public Authentication getAuthentication(String username, List<GrantedAuthority> authorities, HttpServletRequest request) {
         UsernamePasswordAuthenticationToken userPasswordAuthToken = new
                 UsernamePasswordAuthenticationToken(username, null, authorities);
@@ -56,16 +58,19 @@ public class JWTTokenProviderImpl implements JWTTokenProvider {
         return userPasswordAuthToken;
     }
 
+    @Override
     public boolean isTokenValid(String username, String token) {
         JWTVerifier verifier = getJWTVerifier();
         return StringUtils.isNotEmpty(username) && !isTokenExpired(verifier, token);
     }
 
+    @Override
     public List<GrantedAuthority> getAuthorities(String token) {
         String[] claims = getClaimsFromToken(token);
         return stream(claims).map(SimpleGrantedAuthority::new).collect(Collectors.toList());
     }
 
+    @Override
     public String getSubject(String token) {
         JWTVerifier verifier = getJWTVerifier();
         return verifier.verify(token).getSubject();
