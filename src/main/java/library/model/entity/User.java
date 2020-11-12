@@ -24,19 +24,19 @@ public class User extends BaseEntity implements UserDetails, Serializable {
     private LocalDateTime lastLoginDate;
     private LocalDateTime registerDate;
     private List<Address> address;
-    private Set<Role> roles;
+    private List<Authority> authorities;
 
     public User() {
     }
 
     @Override
     @ManyToMany
-    public Set<Role> getAuthorities() {
-        return roles;
+    public List<Authority> getAuthorities() {
+        return authorities;
     }
 
-    public void setAuthorities(Set<Role> roles) {
-        this.roles = roles;
+    public void setAuthorities(List<Authority> authorities) {
+        this.authorities = authorities;
     }
 
     @OneToOne

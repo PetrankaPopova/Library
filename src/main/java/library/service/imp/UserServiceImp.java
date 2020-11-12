@@ -1,6 +1,7 @@
 package library.service.imp;
 
 import library.error.exception.custom.AlreadyExistsException;
+import library.error.exception.custom.UserNotFoundException;
 import library.error.exception.custom.UserPasswordsNotMatchException;
 import library.error.exception.custom.UserWithUsernameAlreadyExistException;
 import library.model.entity.User;
@@ -20,6 +21,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
@@ -55,9 +57,9 @@ public class UserServiceImp implements UserService {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         if (this.userRepository.count() == 0) {
             this.roleService.seedRolesToDb();
-            user.setAuthorities(new HashSet<>(this.roleRepository.findAll()));
+            user.setAuthorities(this.roleRepository.findAll());
         } else {
-            user.setAuthorities(new HashSet<>());
+            user.setAuthorities(new ArrayList<>());
             user.getAuthorities().add(this.roleRepository.findByAuthority("USER").orElse(null));
         }
         this.userRepository.saveAndFlush(user);
@@ -71,8 +73,12 @@ public class UserServiceImp implements UserService {
     }
 
     @Override
-    public UserServiceModel findByUsername(String username) {
-        return null;
+    public UserServiceModel findByUsername(String username) throws UserNotFoundException {
+        User u = this.userRepository.findByUsername(username).orElse(null);
+        if(u == null){
+            throw new UserNotFoundException("User not exist");
+        }
+        return this.modelMapper.map(u, UserServiceModel.class);
     }
 
     @Override

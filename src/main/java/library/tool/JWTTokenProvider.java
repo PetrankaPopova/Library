@@ -1,5 +1,6 @@
 package library.tool;
 
+import library.error.exception.custom.UserNotFoundException;
 import library.model.service.UserServiceModel;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
@@ -9,7 +10,7 @@ import java.util.List;
 
 public interface JWTTokenProvider {
 
-    public String generateJwtToken(UserServiceModel user);
+    public String generateJwtToken(UserServiceModel user) throws UserNotFoundException;
 
     public Authentication getAuthentication(String username,
                                             List<GrantedAuthority> authorities, HttpServletRequest request);

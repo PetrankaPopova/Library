@@ -1,5 +1,6 @@
 package library.service;
 
+import library.error.exception.custom.UserNotFoundException;
 import library.error.exception.custom.UserPasswordsNotMatchException;
 import library.error.exception.custom.UserWithUsernameAlreadyExistException;
 import library.model.entity.User;
@@ -16,7 +17,7 @@ public interface UserService extends UserDetailsService {
 
     UserServiceModel findByUsernameAndPassword(String username, String password);
 
-    UserServiceModel findByUsername(String username);
+    UserServiceModel findByUsername(String username) throws UserNotFoundException;
 
     User findByEmail(String email);
 

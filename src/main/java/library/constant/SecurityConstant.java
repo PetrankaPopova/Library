@@ -3,7 +3,8 @@ package library.constant;
 public class SecurityConstant {
 
     //Edited
-    public static final String[] PUBLIC_URLS = { "/user/login", "/user/register", "/", "/home" };
+    //public static final String[] PUBLIC_URLS = { "/user/login", "/user/register", "/", "/home" };
+    public static final String[] PUBLIC_URLS = { "/**" };
     public static final String ACCESS_DENIED_MSG = "You do not have permission for this page";
     public static final String FORBIDDEN_MSG = "You are not logged!";
     public static final String OPTIONS_HTTP_METHOD = "OPTIONS"; //?

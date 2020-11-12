@@ -5,9 +5,13 @@ import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTVerificationException;
 import com.auth0.jwt.interfaces.JWTVerifier;
 import io.micrometer.core.instrument.util.StringUtils;;
+import library.error.exception.custom.UserNotFoundException;
+import library.model.service.AuthorServiceModel;
+import library.model.service.AuthorityServiceModel;
 import library.model.service.UserServiceModel;
 import library.service.UserService;
 import library.tool.JWTTokenProvider;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -19,7 +23,9 @@ import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import static com.auth0.jwt.algorithms.Algorithm.HMAC512;
@@ -34,14 +40,16 @@ public class JWTTokenProviderImpl implements JWTTokenProvider {
     private String secret;
 
     private final UserService userService;
+    private final ModelMapper modelMapper;
 
     @Autowired
-    public JWTTokenProviderImpl(UserService userService) {
+    public JWTTokenProviderImpl(UserService userService, ModelMapper modelMapper) {
         this.userService = userService;
+        this.modelMapper = modelMapper;
     }
 
     @Override
-    public String generateJwtToken(UserServiceModel user) {
+    public String generateJwtToken(UserServiceModel user) throws UserNotFoundException {
         String[] claims = getClaimsFromUser(user);
         return JWT.create().withIssuer(GET_ARR_LLC).withAudience(GET_ARR_ADMIN)
                 .withIssuedAt(new Date()).withSubject(user.getUsername())
@@ -100,15 +108,16 @@ public class JWTTokenProviderImpl implements JWTTokenProvider {
     }
 
 
-    private String[] getClaimsFromUser(UserServiceModel user) {
+    private String[] getClaimsFromUser(UserServiceModel user) throws UserNotFoundException {
+
         UserServiceModel foundedUser = this.userService.findByUsername(user.getUsername());
-
-
-        //TODO
-        //RoleServiceModel[] claims = foundedUser.getRoles().stream().toArra
-
-
-
-        return null;
+        List<AuthorityServiceModel> authorities = foundedUser.getAuthority()
+                .stream().map(a -> this.modelMapper.map(a, AuthorityServiceModel.class))
+                .collect(Collectors.toList());
+        String[] claims = new String[authorities.size()];
+        for (int i = 0; i < authorities.size(); i++) {
+            claims[i] = authorities.get(i).getAuthority();
+        }
+        return claims;
     }
 }

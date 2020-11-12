@@ -9,14 +9,14 @@ import java.io.Serializable;
 @SuppressWarnings("ALL")
 @Entity
 @Table(name = "roles")
-public class Role extends BaseEntity implements GrantedAuthority, Serializable {
+public class Authority extends BaseEntity implements GrantedAuthority, Serializable {
 
     private String authority;
 
-    public Role() {
+    public Authority() {
     }
 
-    public Role(String authority) {
+    public Authority(String authority) {
         this.authority = authority;
     }
 

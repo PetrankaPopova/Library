@@ -4,11 +4,11 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-public class RoleServiceModel {
+public class AuthorityServiceModel {
 
     private String authority;
 
-    public RoleServiceModel() {
+    public AuthorityServiceModel() {
     }
 
     public String getAuthority() {

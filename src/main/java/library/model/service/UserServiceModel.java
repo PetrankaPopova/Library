@@ -1,9 +1,5 @@
 package library.model.service;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-
 import java.util.List;
 import java.util.Set;
 
@@ -16,7 +12,7 @@ public class UserServiceModel extends BaseServiceModel {
     private String email;
     private List<AddressServiceModel> address;
     private CartServiceModel cartServiceModel;
-    private Set<RoleServiceModel> roles;
+    private List<AuthorityServiceModel> authority;
     private String country;
     private String street;
     private String city;
@@ -84,12 +80,12 @@ public class UserServiceModel extends BaseServiceModel {
         this.cartServiceModel = cartServiceModel;
     }
 
-    public Set<RoleServiceModel> getRoles() {
-        return roles;
+    public List<AuthorityServiceModel> getAuthority() {
+        return authority;
     }
 
-    public void setRoles(Set<RoleServiceModel> roles) {
-        this.roles = roles;
+    public void setAuthority(List<AuthorityServiceModel> authority) {
+        this.authority = authority;
     }
 
     public String getCountry() {
