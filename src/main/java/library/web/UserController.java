@@ -25,7 +25,6 @@ public class UserController {
         this.modelMapper = modelMapper;
         this.userService = userService;
     }
-
     @RequestMapping(value = "/register", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE )
     public ResponseEntity<UserViewModel> register(){
         //todo
