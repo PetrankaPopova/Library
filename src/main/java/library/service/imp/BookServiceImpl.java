@@ -40,40 +40,7 @@ public class BookServiceImpl implements BookService {
     @Override
     public BookServiceModel addNewBook(BookServiceModel bookServiceModel) {
 
-        //PHOTOS???
-
-        Book newBook = new Book();
-
-        newBook.setIsbn(bookServiceModel.getIsbn());
-        Author author = this.authorRepository.findAuthorByName("Desislava Petrova").orElse(null);
-        newBook.setAuthor(author);
-        newBook.setYearOfIssue(bookServiceModel.getYearOfIssue());
-        newBook.setPublishingHouse(bookServiceModel.getPublishingHouse());
-        newBook.setNumberOfPages(bookServiceModel.getNumberOfPages());
-        newBook.setCoverType(bookServiceModel.getCoverType());
-        newBook.setContent(bookServiceModel.getContent());
-        newBook.setLanguage(bookServiceModel.getLanguage());
-        newBook.setTitle(bookServiceModel.getTitle());
-        newBook.setAvailabilityStatus(bookServiceModel.getAvailabilityStatus());
-        newBook.setDescription(bookServiceModel.getDescription());
-        newBook.setRating(bookServiceModel.getRating());
-        newBook.setPrice(bookServiceModel.getPrice());
-        newBook.setQuantity(bookServiceModel.getQuantity());
-        newBook.setDiscount(bookServiceModel.getDiscount());
-        Size size = new Size();
-        size.setLength(bookServiceModel.getLength());
-        size.setWidth(bookServiceModel.getWidth());
-        size.setHeight(bookServiceModel.getHeight());
-        size.setWeight(bookServiceModel.getWeight());
-        this.sizeRepository.saveAndFlush(size);
-        newBook.setSize(size);
-        List<Category> categories = new ArrayList<>();
-        for (String categoryName : bookServiceModel.getCategories()) {
-            categories.add(this.categoryRepository.findByName(categoryName).orElse(null));
-        }
-        newBook.setCategory(categories);
-        Book returnedBook = this.bookRepository.saveAndFlush(newBook);
-        return this.modelMapper.map(returnedBook, BookServiceModel.class);
+        return null;
     }
 
     @Override
@@ -96,7 +63,7 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public List<BookServiceModel> getAllBooksByAuthor(String authorName) {
+    public List<BookServiceModel> getAllBooksByAuthorName(String authorName) {
         List<Book> allBooksByCategory = bookRepository.findAllByAuthor(authorName);
         return bookListToBookServiceModelList(allBooksByCategory);
     }
@@ -109,10 +76,6 @@ public class BookServiceImpl implements BookService {
             //throw new BookWithThisNameIsNotExist("Book with this name is not exist!");
         }
         return bookListToBookServiceModelList(foundedBooks);
-    }
-
-    private void bookListToBookServiceModelList() {
-
     }
 
     private List<BookServiceModel> bookListToBookServiceModelList(List<Book> allBooksByCategory) {

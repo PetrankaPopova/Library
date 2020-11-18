@@ -12,7 +12,7 @@ public interface BookService {
 
     List<BookServiceModel> getAllBooksByCategory (String category);
 
-    List<BookServiceModel> getAllBooksByAuthor (String authorName);
+    List<BookServiceModel> getAllBooksByAuthorName (String authorName);
 
     List<BookServiceModel> getAllBooksByPartOfTitle(String strFromTitle);
 

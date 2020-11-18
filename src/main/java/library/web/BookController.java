@@ -53,7 +53,7 @@ public class BookController {
 
     @RequestMapping(value = "/book/{title}", method = RequestMethod.POST,
             consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<BookViewModel> getAllBookByTitle(@PathVariable String title){
+    public ResponseEntity<BookViewModel> getAllBooksByPartOfTitle(@PathVariable String strFromTitle){
         BookViewModel book1 = null;
         return new ResponseEntity<>(book1, HttpStatus.OK);
     }
