@@ -5,6 +5,7 @@ import library.service.UserService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,7 +26,13 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping("/user/all")
+    @RequestMapping(value = "/register", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE )
+    public ResponseEntity<UserViewModel> register(){
+        //todo
+        return new ResponseEntity<>(null, HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/all", method = RequestMethod.GET)
     public ResponseEntity<List<UserViewModel>> getAllUsers(){
         List<UserViewModel> users = this.userService.getAllUser()
                 .stream().map(u -> this.modelMapper.map(u, UserViewModel.class))

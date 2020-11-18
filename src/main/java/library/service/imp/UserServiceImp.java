@@ -87,7 +87,8 @@ public class UserServiceImp implements UserService {
     }
 
     @Override
-    public UserEditServiceModel editUserProfile(UserEditServiceModel userEditServiceModel, String oldPassword) throws UserPasswordsNotMatchException, UserWithUsernameAlreadyExistException {
+    public UserEditServiceModel editUserProfile(UserEditServiceModel userEditServiceModel, String oldPassword)
+            throws UserPasswordsNotMatchException, UserWithUsernameAlreadyExistException {
         return null;
     }
 
@@ -98,7 +99,6 @@ public class UserServiceImp implements UserService {
 
     @Override
     public List<UserServiceModel> getAllUser() {
-
         return null;
     }
 

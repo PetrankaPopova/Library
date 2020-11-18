@@ -6,7 +6,6 @@ import com.auth0.jwt.exceptions.JWTVerificationException;
 import com.auth0.jwt.interfaces.JWTVerifier;
 import io.micrometer.core.instrument.util.StringUtils;;
 import library.error.exception.custom.UserNotFoundException;
-import library.model.service.AuthorServiceModel;
 import library.model.service.AuthorityServiceModel;
 import library.model.service.UserServiceModel;
 import library.service.UserService;
@@ -23,9 +22,7 @@ import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 import static com.auth0.jwt.algorithms.Algorithm.HMAC512;
@@ -109,7 +106,6 @@ public class JWTTokenProviderImpl implements JWTTokenProvider {
 
 
     private String[] getClaimsFromUser(UserServiceModel user) throws UserNotFoundException {
-
         UserServiceModel foundedUser = this.userService.findByUsername(user.getUsername());
         List<AuthorityServiceModel> authorities = foundedUser.getAuthority()
                 .stream().map(a -> this.modelMapper.map(a, AuthorityServiceModel.class))

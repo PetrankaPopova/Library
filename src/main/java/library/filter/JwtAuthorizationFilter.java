@@ -1,6 +1,5 @@
 package library.filter;
 
-import library.tool.JWTTokenProvider;
 import library.tool.impl.JWTTokenProviderImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -34,6 +33,7 @@ public class JwtAuthorizationFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response,
                                     FilterChain filterChain) throws ServletException, IOException {
 
+        System.out.println();
         if (request.getMethod().equalsIgnoreCase(OPTIONS_HTTP_METHOD)) {
             response.setStatus(OK.value());
         } else {
