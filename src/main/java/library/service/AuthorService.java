@@ -16,4 +16,6 @@ public interface AuthorService {
     AuthorServiceModel deleteAuthorByName(String authorName);
 
     AuthorServiceModel deleteAuthorById(String id);
+
+    AuthorServiceModel editAuthor(AuthorServiceModel author);
 }

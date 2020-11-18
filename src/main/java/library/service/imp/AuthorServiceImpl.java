@@ -65,4 +65,10 @@ public class AuthorServiceImpl implements AuthorService {
         this.authorRepository.deleteById(id);
         return deletedAuthorServiceModel;
     }
+
+    @Override
+    public AuthorServiceModel editAuthor(AuthorServiceModel author) {
+        //todo
+        return null;
+    }
 }
