@@ -1,5 +1,7 @@
 package library.model.bindingmodel;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import java.math.BigDecimal;
 
 public class BookBindingModel {
@@ -23,7 +25,7 @@ public class BookBindingModel {
     private AuthorBindingModel author;
     private SizeBindingModel size;
 
-    private String[] photos;
+    private MultipartFile[] photos;
 
     public BookBindingModel() {
     }
