@@ -1,5 +1,6 @@
 package library.service.imp;
 
+import library.error.exception.BookIsNotExistException;
 import library.model.entity.Author;
 import library.model.entity.Book;
 import library.model.entity.Category;
@@ -38,13 +39,20 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public BookServiceModel addNewBook(BookServiceModel bookServiceModel) {
-
-        return null;
+    public BookServiceModel addNewBook(BookServiceModel book) throws BookIsNotExistException {
+        if (book == null){
+            throw new BookIsNotExistException("Error by saving book in database");
+        }
+        Book bookForDb = this.modelMapper.map(book, Book.class);
+        Author a = this.authorRepository.saveAndFlush(this.modelMapper.map(book.getAuthor(), Author.class));
+        Size s = this.sizeRepository.saveAndFlush(this.modelMapper.map(book.getSize(), Size.class));
+        bookForDb.setAuthor(a);
+        bookForDb.setSize(s);
+        Book returnedBook = this.bookRepository.saveAndFlush(bookForDb);
+        return this.modelMapper.map(returnedBook, BookServiceModel.class);
     }
 
     @Override
-    //FOR TEST!!!
     public String deleteBookByName(String bookTitle) {
         String deletedBook = null;
         Book foundedBook = this.bookRepository.findBookByTitle(bookTitle).orElse(null);

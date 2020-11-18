@@ -185,11 +185,11 @@ public class BookBindingModel {
     }
 
     //???
-    public String[] getPhotos() {
+    public MultipartFile[] getPhotos() {
         return photos;
     }
 
-    public void setPhotos(String[] photos) {
+    public void setPhotos(MultipartFile[] photos) {
         this.photos = photos;
     }
 }

@@ -44,14 +44,14 @@ public class BookController {
         return new ResponseEntity<>(book1, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/book/{authorName}", method = RequestMethod.POST,
+    @RequestMapping(value = "/all/{authorName}", method = RequestMethod.POST,
             consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<BookViewModel> getAllBookByAuthorName(@PathVariable String authorName){
         BookViewModel book1 = null;
         return new ResponseEntity<>(book1, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/book/{title}", method = RequestMethod.POST,
+    @RequestMapping(value = "/search/{strFromTitle}", method = RequestMethod.POST,
             consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<BookViewModel> getAllBooksByPartOfTitle(@PathVariable String strFromTitle){
         BookViewModel book1 = null;

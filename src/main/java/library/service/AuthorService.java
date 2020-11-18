@@ -1,5 +1,6 @@
 package library.service;
 
+import library.error.exception.custom.AuthorWithThisNameIsNotExist;
 import library.model.service.AuthorServiceModel;
 
 import java.util.List;
@@ -8,9 +9,7 @@ public interface AuthorService {
 
     List<AuthorServiceModel> getAllAuthors();
 
-    AuthorServiceModel getAuthorByName(String name);
-
-    List<AuthorServiceModel> getAuthorsBySymbolsFromName(String symbols);
+    List<AuthorServiceModel> getAuthorsBySymbolsFromName(String symbols) throws AuthorWithThisNameIsNotExist;
 
     AuthorServiceModel addNewAuthor(AuthorServiceModel asm);
 

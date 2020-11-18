@@ -1,12 +1,13 @@
 package library.service;
 
+import library.error.exception.BookIsNotExistException;
 import library.model.service.BookServiceModel;
 
 import java.util.List;
 
 public interface BookService {
 
-    BookServiceModel addNewBook (BookServiceModel bookServiceModel);
+    BookServiceModel addNewBook (BookServiceModel bookServiceModel) throws BookIsNotExistException;
 
     String deleteBookByName (String bookName);
 
