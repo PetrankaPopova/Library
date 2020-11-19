@@ -1,6 +1,6 @@
 package library.validation;
 
-import library.model.bindingmodel.UserRegisterBindingModel;
+import library.model.bindingmodel.UserBindingModel;
 import library.repository.UserRepository;
 import org.springframework.validation.Errors;
 
@@ -15,22 +15,22 @@ public class UserRegisterValidator implements org.springframework.validation.Val
 
     @Override
     public boolean supports(Class<?> aClass) {
-        return UserRegisterBindingModel.class.equals(aClass);
+        return UserBindingModel.class.equals(aClass);
     }
 
     @Override
     public void validate(Object o, Errors errors) {
-        UserRegisterBindingModel userRegisterBindingModel = (UserRegisterBindingModel) o;
+        UserBindingModel userBindingModel = (UserBindingModel) o;
 
-        if (this.userRepository.findByUsername(userRegisterBindingModel.getUsername()).isPresent()) {
+        if (this.userRepository.findByUsername(userBindingModel.getUsername()).isPresent()) {
             errors.rejectValue("username",
-                    String.format(ValidationConstants.USERNAME_ALREADY_EXISTS, userRegisterBindingModel.getUsername()),
-                    String.format(ValidationConstants.USERNAME_ALREADY_EXISTS, userRegisterBindingModel.getUsername())
+                    String.format(ValidationConstants.USERNAME_ALREADY_EXISTS, userBindingModel.getUsername()),
+                    String.format(ValidationConstants.USERNAME_ALREADY_EXISTS, userBindingModel.getUsername())
             );
         }
 
-        if (userRegisterBindingModel.getUsername().length() < 3 ||
-                userRegisterBindingModel.getUsername().length() > 20) {
+        if (userBindingModel.getUsername().length() < 3 ||
+                userBindingModel.getUsername().length() > 20) {
             errors.rejectValue("username",
                     String.format(ValidationConstants.NAME_LENGTH, "username"),
                     String.format(ValidationConstants.NAME_LENGTH, "username")
@@ -38,8 +38,8 @@ public class UserRegisterValidator implements org.springframework.validation.Val
             );
         }
 
-        if (userRegisterBindingModel.getPassword().length() < 3 ||
-                userRegisterBindingModel.getPassword().length() > 20) {
+        if (userBindingModel.getPassword().length() < 3 ||
+                userBindingModel.getPassword().length() > 20) {
             errors.rejectValue("password",
                     String.format(ValidationConstants.NAME_LENGTH, "password"),
                     String.format(ValidationConstants.NAME_LENGTH, "password")
@@ -47,8 +47,8 @@ public class UserRegisterValidator implements org.springframework.validation.Val
             );
         }
 
-        if (userRegisterBindingModel.getFirstName().length() < 3 ||
-                userRegisterBindingModel.getFirstName().length() > 20) {
+        if (userBindingModel.getFirstName().length() < 3 ||
+                userBindingModel.getFirstName().length() > 20) {
             errors.rejectValue("firstName",
                     String.format(ValidationConstants.NAME_LENGTH, "First name"),
                     String.format(ValidationConstants.NAME_LENGTH, "First name")
@@ -56,8 +56,8 @@ public class UserRegisterValidator implements org.springframework.validation.Val
             );
         }
 
-        if (userRegisterBindingModel.getLastName().length() < 3 ||
-                userRegisterBindingModel.getLastName().length() > 20) {
+        if (userBindingModel.getLastName().length() < 3 ||
+                userBindingModel.getLastName().length() > 20) {
             errors.rejectValue("lastName",
                     String.format(ValidationConstants.NAME_LENGTH, "Last name"),
                     String.format(ValidationConstants.NAME_LENGTH, "Last name")
@@ -65,8 +65,8 @@ public class UserRegisterValidator implements org.springframework.validation.Val
             );
         }
 
-        if (userRegisterBindingModel.getCity().length() < 3 ||
-                userRegisterBindingModel.getCity().length() > 20) {
+        if (userBindingModel.getCity().length() < 3 ||
+                userBindingModel.getCity().length() > 20) {
             errors.rejectValue("city",
                     String.format(ValidationConstants.NAME_LENGTH, "City name"),
                     String.format(ValidationConstants.NAME_LENGTH, "City name")
@@ -74,8 +74,8 @@ public class UserRegisterValidator implements org.springframework.validation.Val
             );
         }
 
-        if (userRegisterBindingModel.getCountry().length() < 3 ||
-                userRegisterBindingModel.getCountry().length() > 20) {
+        if (userBindingModel.getCountry().length() < 3 ||
+                userBindingModel.getCountry().length() > 20) {
             errors.rejectValue("country",
                     String.format(ValidationConstants.NAME_LENGTH, "Country name"),
                     String.format(ValidationConstants.NAME_LENGTH, "Country name")
@@ -83,8 +83,8 @@ public class UserRegisterValidator implements org.springframework.validation.Val
             );
         }
 
-        if (userRegisterBindingModel.getPostCode().length() < 3 ||
-                userRegisterBindingModel.getPostCode().length() > 10) {
+        if (userBindingModel.getPostCode().length() < 3 ||
+                userBindingModel.getPostCode().length() > 10) {
             errors.rejectValue("postcode",
                     String.format(ValidationConstants.NAME_LENGTH, "Postcode"),
                     String.format(ValidationConstants.NAME_LENGTH, "Postcode")
@@ -92,8 +92,8 @@ public class UserRegisterValidator implements org.springframework.validation.Val
             );
         }
 
-        if (userRegisterBindingModel.getRegion().length() < 3 ||
-                userRegisterBindingModel.getRegion().length() > 20) {
+        if (userBindingModel.getRegion().length() < 3 ||
+                userBindingModel.getRegion().length() > 20) {
             errors.rejectValue("region",
                     String.format(ValidationConstants.NAME_LENGTH, "Region"),
                     String.format(ValidationConstants.NAME_LENGTH, "Region")
@@ -101,24 +101,24 @@ public class UserRegisterValidator implements org.springframework.validation.Val
             );
         }
 
-        if (userRegisterBindingModel.getStreet().length() < 3 ||
-                userRegisterBindingModel.getStreet().length() > 20) {
+        if (userBindingModel.getStreet().length() < 3 ||
+                userBindingModel.getStreet().length() > 20) {
             errors.rejectValue("street",
                     String.format(ValidationConstants.NAME_LENGTH, "Street name"),
                     String.format(ValidationConstants.NAME_LENGTH, "Street name")
 
             );
         }
-        if (userRegisterBindingModel.getStreetNumber().length() < 1 ||
-                userRegisterBindingModel.getStreetNumber().length() > 20) {
+        if (userBindingModel.getStreetNumber().length() < 1 ||
+                userBindingModel.getStreetNumber().length() > 20) {
             errors.rejectValue("streetNumber",
                     ValidationConstants.STREET_NUMBER,
                     ValidationConstants.STREET_NUMBER
             );
         }
 
-        if (userRegisterBindingModel.getState().length() < 3 ||
-                userRegisterBindingModel.getState().length() > 20) {
+        if (userBindingModel.getState().length() < 3 ||
+                userBindingModel.getState().length() > 20) {
             errors.rejectValue("state",
                     String.format(ValidationConstants.NAME_LENGTH, "State name"),
                     String.format(ValidationConstants.NAME_LENGTH, "State name")
@@ -126,15 +126,15 @@ public class UserRegisterValidator implements org.springframework.validation.Val
             );
         }
 
-        if (this.userRepository.findByEmail(userRegisterBindingModel.getEmail()).isPresent()) {
+        if (this.userRepository.findByEmail(userBindingModel.getEmail()).isPresent()) {
             errors.rejectValue("email",
-                    String.format(ValidationConstants.EMAIL_ALREADY_EXISTS, userRegisterBindingModel.getEmail()),
-                    String.format(ValidationConstants.EMAIL_ALREADY_EXISTS, userRegisterBindingModel.getEmail())
+                    String.format(ValidationConstants.EMAIL_ALREADY_EXISTS, userBindingModel.getEmail()),
+                    String.format(ValidationConstants.EMAIL_ALREADY_EXISTS, userBindingModel.getEmail())
             );
         }
 
-        if (userRegisterBindingModel.getEmail().length() < 3 ||
-        userRegisterBindingModel.getEmail().length() >20) {
+        if (userBindingModel.getEmail().length() < 3 ||
+        userBindingModel.getEmail().length() >20) {
             errors.rejectValue("email",
                     String.format(ValidationConstants.NAME_LENGTH, "Email"),
                     String.format(ValidationConstants.NAME_LENGTH, "Email")
@@ -142,8 +142,8 @@ public class UserRegisterValidator implements org.springframework.validation.Val
             );
         }
 
-        if (userRegisterBindingModel.getUserPhone().length() < 3 ||
-                userRegisterBindingModel.getUserPhone().length() >20) {
+        if (userBindingModel.getUserPhone().length() < 3 ||
+                userBindingModel.getUserPhone().length() >20) {
             errors.rejectValue("userphone",
                     String.format(ValidationConstants.NAME_LENGTH, "User phone number"),
                     String.format(ValidationConstants.NAME_LENGTH, "User phone number")

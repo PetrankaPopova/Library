@@ -8,7 +8,7 @@ import javax.validation.constraints.Pattern;
 
 import static library.constant.GlobalConstants.*;
 
-public class UserRegisterBindingModel {
+public class UserBindingModel {
 
     private String username;
     private String password;
@@ -25,7 +25,7 @@ public class UserRegisterBindingModel {
     private String region;
     private String streetNumber;
 
-    public UserRegisterBindingModel() {
+    public UserBindingModel() {
     }
 
     @Length(min = 3, max = 20, message = "Username length must be between 3 and 20 characters (inclusive 3 and 20).")

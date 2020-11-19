@@ -1,87 +1,70 @@
 package library.config;
 
-import library.filter.JwtAccessDeniedHandler;
-import library.filter.JwtAuthenticationEntryPoint;
-import library.filter.JwtAuthorizationFilter;
-import library.model.entity.User;
+import library.jwt.JwtAuthUsernameAndPassword;
+import library.jwt.JwtTokenVerifired;
 import library.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
-import static library.constant.SecurityConstant.PUBLIC_URLS;
-import static org.springframework.security.config.http.SessionCreationPolicy.STATELESS;
+import javax.crypto.SecretKey;
 
-//EDITED
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
-public class ApplicationSecurityConfiguration extends WebSecurityConfigurerAdapter {
-    private final BCryptPasswordEncoder bCryptPasswordEncoder;
-    private final JwtAuthorizationFilter jwtAuthorizationFilter;
-    private final JwtAccessDeniedHandler jwtAccessDeniedHandler;
-    private final JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint;
+public class ApplicationSecurityConfiguration extends WebSecurityConfigurerAdapter{
+
+    private static final String[] ENANLED_URLs = new String[]{"/", "/user/register", "/user/login"};
+    private final SecretKey secretKey;
+    private final PasswordEncoder bCryptPasswordEncoder;
     private final UserService userService;
 
-    @Autowired
-    public ApplicationSecurityConfiguration(BCryptPasswordEncoder bCryptPasswordEncoder,
-                                            JwtAuthorizationFilter jwtAuthorizationFilter,
-                                            JwtAccessDeniedHandler jwtAccessDeniedHandler,
-                                            JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint,
-                                            UserService userService) {
-        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
-        this.jwtAuthorizationFilter = jwtAuthorizationFilter;
-        this.jwtAccessDeniedHandler = jwtAccessDeniedHandler;
-        this.jwtAuthenticationEntryPoint = jwtAuthenticationEntryPoint;
-        this.userService = userService;
-    }
 
-    @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(this.userService).passwordEncoder(bCryptPasswordEncoder);
+    @Autowired
+    public ApplicationSecurityConfiguration(SecretKey secretKey,
+                                 UserService userService,
+                                 PasswordEncoder bCryptPasswordEncoder) {
+        this.secretKey = secretKey;
+        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
+        this.userService = userService;
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-                .csrf()
-                .disable()
-                .cors()
-
+                .csrf().disable()
+                .sessionManagement()
+                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
-
-                .sessionManagement().sessionCreationPolicy(STATELESS)
-
-                .and()
-
+                .addFilter(new JwtAuthUsernameAndPassword(this.authenticationManager(), this.secretKey))
+                .addFilterAfter(new JwtTokenVerifired(this.secretKey), JwtAuthUsernameAndPassword.class)
                 .authorizeRequests()
-                .antMatchers(PUBLIC_URLS)
-                .permitAll()
+                .antMatchers(ENANLED_URLs).permitAll()
+                .antMatchers("/**").hasRole("ADMIN")
+                .antMatchers("/store/**").hasRole("USER")
                 .anyRequest()
-                .authenticated()
-
-                .and()
-
-                .exceptionHandling()
-                .accessDeniedHandler(jwtAccessDeniedHandler)
-                .authenticationEntryPoint(jwtAuthenticationEntryPoint)
-
-                .and()
-
-                .addFilterBefore(jwtAuthorizationFilter, UsernamePasswordAuthenticationFilter.class);
+                .authenticated();
     }
 
-   /* @Bean
     @Override
-    public AuthenticationManager authenticationManagerBean() throws Exception {
-        return super.authenticationManagerBean();
-    }*/
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.authenticationProvider(this.daoAuthenticationProvider());
+    }
+
+    @Bean
+    public DaoAuthenticationProvider daoAuthenticationProvider() {
+        DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
+        provider.setPasswordEncoder(this.bCryptPasswordEncoder);
+        provider.setUserDetailsService(this.userService);
+        return provider;
+    }
 }
+

@@ -1,9 +1,14 @@
 package library.config;
 
+import io.jsonwebtoken.security.Keys;
+import library.jwt.JwtConstant;
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+
+import javax.crypto.SecretKey;
 
 @Configuration
 public class ApplicationBeanConfiguration {
@@ -16,5 +21,10 @@ public class ApplicationBeanConfiguration {
     @Bean
     public BCryptPasswordEncoder bcrypt() {
         return new BCryptPasswordEncoder();
+    }
+
+    @Bean
+    public SecretKey secretKey() {
+        return Keys.hmacShaKeyFor(JwtConstant.RAW_SECRET_KEY.getBytes());
     }
 }

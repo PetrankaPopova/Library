@@ -56,7 +56,7 @@ public class UserServiceImp implements UserService {
 
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         if (this.userRepository.count() == 0) {
-            this.roleService.seedRolesToDb();
+            //this.roleService.seedRolesToDb();
             user.setAuthorities(this.roleRepository.findAll());
         } else {
             user.setAuthorities(new ArrayList<>());
