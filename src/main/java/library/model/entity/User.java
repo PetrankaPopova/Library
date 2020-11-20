@@ -126,4 +126,6 @@ public class User extends BaseEntity implements UserDetails, Serializable {
     public boolean isEnabled() {
         return true;
     }
+
+
 }

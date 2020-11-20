@@ -1,6 +1,5 @@
 package library.service.imp;
 
-import library.error.exception.custom.AlreadyExistsException;
 import library.error.exception.custom.UserNotFoundException;
 import library.error.exception.custom.UserPasswordsNotMatchException;
 import library.error.exception.custom.UserWithUsernameAlreadyExistException;
@@ -22,11 +21,8 @@ import org.springframework.stereotype.Service;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-
-import static library.constant.GlobalConstants.USER_EMAIL_EXISTS_MASSAGE;
-import static library.constant.GlobalConstants.USER_NAME_EXISTS_MESSAGE;
+import java.util.stream.Collectors;
 
 @Service
 public class UserServiceImp implements UserService {
@@ -43,6 +39,16 @@ public class UserServiceImp implements UserService {
                           RoleRepository roleRepository, BookRepository bookRepository, BCryptPasswordEncoder bCryptPasswordEncoder) {
         this.userRepository = userRepository;
         this.modelMapper = modelMapper;
+        this.roleService = roleService;
+        this.roleRepository = roleRepository;
+        this.bookRepository = bookRepository;
+        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
+    }
+
+
+    public UserServiceImp(UserRepository mockedUserRepository, ModelMapper modelMapper, UserRepository userRepository, ModelMapper modelMapper1, RoleService roleService, RoleRepository roleRepository, BookRepository bookRepository, BCryptPasswordEncoder bCryptPasswordEncoder) {
+        this.userRepository = userRepository;
+        this.modelMapper = modelMapper1;
         this.roleService = roleService;
         this.roleRepository = roleRepository;
         this.bookRepository = bookRepository;
@@ -69,7 +75,8 @@ public class UserServiceImp implements UserService {
 
     @Override
     public UserServiceModel findByUsernameAndPassword(String username, String password) {
-        return null;
+        User findedUser = this.userRepository.findUserByUsernameAndPassword(username, password).orElse(null);
+        return findedUser == null ? null : this.modelMapper.map(findedUser, UserServiceModel.class);
     }
 
     @Override
@@ -98,8 +105,10 @@ public class UserServiceImp implements UserService {
     }
 
     @Override
-    public List<UserServiceModel> getAllUser() {
-        return null;
+    public List<UserServiceModel> findAllUser() {
+        return this.userRepository.findAll().
+                stream()
+                .map(u -> this.modelMapper.map(u, UserServiceModel.class)).collect(Collectors.toList());
     }
 
     @Override
@@ -109,6 +118,14 @@ public class UserServiceImp implements UserService {
             throw new UsernameNotFoundException("User does not exists!");
         }
         return findUser;
+    }
+
+    public UserServiceModel addNewUser(UserServiceModel userServiceModel) {
+       User foundedUser = this.userRepository.findByUsername(userServiceModel.getUsername()).orElse(null);
+        if (foundedUser != null) return null;
+        User user = this.modelMapper.map(userServiceModel, User.class);
+        User userReturnFromDb = this.userRepository.saveAndFlush(user);
+        return this.modelMapper.map(userReturnFromDb, UserServiceModel.class);
     }
 }
 

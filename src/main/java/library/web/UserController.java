@@ -33,7 +33,7 @@ public class UserController {
 
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     public ResponseEntity<List<UserViewModel>> getAllUsers(){
-        List<UserViewModel> users = this.userService.getAllUser()
+        List<UserViewModel> users = this.userService.findAllUser()
                 .stream().map(u -> this.modelMapper.map(u, UserViewModel.class))
                 .collect(Collectors.toList());
         return new ResponseEntity<>(users, HttpStatus.OK);
