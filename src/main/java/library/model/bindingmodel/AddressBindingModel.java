@@ -1,10 +1,6 @@
-package library.model.service;
+package library.model.bindingmodel;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-
-public class AddressServiceModel {
+public class AddressBindingModel {
 
     private String country;
     private String street;
@@ -14,7 +10,7 @@ public class AddressServiceModel {
     private String region;
     private String streetNumber;
 
-    public AddressServiceModel() {
+    public AddressBindingModel() {
     }
 
     public String getCountry() {

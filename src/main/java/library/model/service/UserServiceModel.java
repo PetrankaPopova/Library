@@ -10,16 +10,9 @@ public class UserServiceModel extends BaseServiceModel {
     private String lastName;
     private String password;
     private String email;
-    private List<AddressServiceModel> address;
+    private AddressServiceModel address;
     private CartServiceModel cartServiceModel;
     private List<AuthorityServiceModel> authority;
-    private String country;
-    private String street;
-    private String city;
-    private String state;
-    private String postCode;
-    private String region;
-    private String streetNumber;
 
     public UserServiceModel() {
     }
@@ -64,11 +57,11 @@ public class UserServiceModel extends BaseServiceModel {
         this.email = email;
     }
 
-    public List<AddressServiceModel> getAddress() {
+    public AddressServiceModel getAddress() {
         return address;
     }
 
-    public void setAddress(List<AddressServiceModel> address) {
+    public void setAddress(AddressServiceModel address) {
         this.address = address;
     }
 
@@ -88,59 +81,4 @@ public class UserServiceModel extends BaseServiceModel {
         this.authority = authority;
     }
 
-    public String getCountry() {
-        return country;
-    }
-
-    public void setCountry(String country) {
-        this.country = country;
-    }
-
-    public String getStreet() {
-        return street;
-    }
-
-    public void setStreet(String street) {
-        this.street = street;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public String getState() {
-        return state;
-    }
-
-    public void setState(String state) {
-        this.state = state;
-    }
-
-    public String getPostCode() {
-        return postCode;
-    }
-
-    public void setPostCode(String postCode) {
-        this.postCode = postCode;
-    }
-
-    public String getRegion() {
-        return region;
-    }
-
-    public void setRegion(String region) {
-        this.region = region;
-    }
-
-    public String getStreetNumber() {
-        return streetNumber;
-    }
-
-    public void setStreetNumber(String streetNumber) {
-        this.streetNumber = streetNumber;
-    }
 }

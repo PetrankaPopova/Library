@@ -22,7 +22,7 @@ import javax.crypto.SecretKey;
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class ApplicationSecurityConfiguration extends WebSecurityConfigurerAdapter{
 
-    private static final String[] ENANLED_URLs = new String[]{"/", "/user/register", "/user/login"};
+    private static final String[] ENANLED_URLs = new String[]{"/login", "/user/register"};
     private final SecretKey secretKey;
     private final PasswordEncoder bCryptPasswordEncoder;
     private final UserService userService;
@@ -47,11 +47,11 @@ public class ApplicationSecurityConfiguration extends WebSecurityConfigurerAdapt
                 .addFilter(new JwtAuthUsernameAndPassword(this.authenticationManager(), this.secretKey))
                 .addFilterAfter(new JwtTokenVerifired(this.secretKey), JwtAuthUsernameAndPassword.class)
                 .authorizeRequests()
-                .antMatchers(ENANLED_URLs).permitAll()
-                .antMatchers("/**").hasRole("ADMIN")
-                .antMatchers("/store/**").hasRole("USER")
-                .anyRequest()
-                .authenticated();
+                .antMatchers(ENANLED_URLs).permitAll();
+//                .antMatchers("/**").hasRole("ADMIN")
+//                .antMatchers("/store/**").hasRole("USER")
+//                 .anyRequest()
+//                .authenticated();
     }
 
     @Override

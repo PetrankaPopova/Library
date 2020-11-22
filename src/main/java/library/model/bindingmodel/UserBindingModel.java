@@ -17,15 +17,17 @@ public class UserBindingModel {
     private String email;
     private String firstName;
     private String lastName;
-    private String country;
-    private String street;
-    private String city;
-    private String state;
-    private String postCode;
-    private String region;
-    private String streetNumber;
+    private AddressBindingModel address;
 
     public UserBindingModel() {
+    }
+
+    public AddressBindingModel getAddress() {
+        return address;
+    }
+
+    public void setAddress(AddressBindingModel address) {
+        this.address = address;
     }
 
     @Length(min = 3, max = 20, message = "Username length must be between 3 and 20 characters (inclusive 3 and 20).")
@@ -73,60 +75,6 @@ public class UserBindingModel {
         this.email = email;
     }
 
-    @Pattern(regexp = COUNTRY_NAME_REGEX, message = COUNTRY_NAME_IS_NULL_OR_EMPTY)
-    public String getCountry() {
-        return country;
-    }
-
-    public void setCountry(String country) {
-        this.country = country;
-    }
-
-    @Pattern(regexp = STREET_NAME_REGEX, message = STREET_NAME_IS_NULL_OR_EMPTY)
-    public String getStreet() {
-        return street;
-    }
-
-    public void setStreet(String street) {
-        this.street = street;
-    }
-
-    @Pattern(regexp = CITY_NAME_REGEX, message = CITY_NAME_IS_NULL_OR_EMPTY)
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    @Pattern(regexp = STATE_NAME_REGEX, message = STATE_NAME_IS_NULL_OR_EMPTY)
-    public String getState() {
-        return state;
-    }
-
-    public void setState(String state) {
-        this.state = state;
-    }
-
-    @Pattern(regexp = POST_CODE_REGEX, message = POST_CODE_IS_NULL_OR_EMPTY)
-    public String getPostCode() {
-        return postCode;
-    }
-
-    public void setPostCode(String postCode) {
-        this.postCode = postCode;
-    }
-
-    @Pattern(regexp = REGION_NAME_REGEX, message = REGION_NAME_IS_NULL_OR_EMPTY)
-    public String getRegion() {
-        return region;
-    }
-
-    public void setRegion(String region) {
-        this.region = region;
-    }
-
     @Pattern(regexp = FIRST_NAME_REGEX, message = FIRST_NAME_IS_NULL_OR_EMPTY)
     public String getFirstName() {
         return firstName;
@@ -143,14 +91,5 @@ public class UserBindingModel {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
-    }
-
-    @Pattern(regexp = STREET_NUMBER_REGEX, message = STREET_NUMBER_IS_NULL_OR_EMPTY)
-    public String getStreetNumber() {
-        return streetNumber;
-    }
-
-    public void setStreetNumber(String streetNumber) {
-        this.streetNumber = streetNumber;
     }
 }
