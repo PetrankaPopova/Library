@@ -31,8 +31,9 @@ public class UserController {
     }
     @RequestMapping(value = "/register", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE )
     public ResponseEntity<UserViewModel> register(@RequestBody UserBindingModel user) throws UserWithUsernameAlreadyExistException {
-        this.userService.registerUser(this.modelMapper.map(user, UserServiceModel.class));
-        return new ResponseEntity<>(null, HttpStatus.OK);
+        UserServiceModel usm = this.userService.registerUser(this.modelMapper.map(user, UserServiceModel.class));
+        UserViewModel uvm = this.modelMapper.map(usm, UserViewModel.class);
+        return new ResponseEntity<>(uvm, HttpStatus.OK);
     }
 
 

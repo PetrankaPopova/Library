@@ -20,7 +20,7 @@ public class Address extends BaseEntity implements Serializable {
 	public Address() {
 	}
 
-	@Column(name = "street", nullable = false, unique = true)
+	@Column(name = "street", nullable = false)
 	public String getStreet() {
 		return street;
 	}
@@ -29,7 +29,7 @@ public class Address extends BaseEntity implements Serializable {
 		this.street = street;
 	}
 
-	@Column(name = "city", nullable = false, unique = true)
+	@Column(name = "city", nullable = false)
 	public String getCity() {
 		return city;
 	}

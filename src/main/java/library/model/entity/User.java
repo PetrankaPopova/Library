@@ -30,7 +30,7 @@ public class User extends BaseEntity implements UserDetails, Serializable {
     }
 
     @Override
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     public List<Authority> getAuthorities() {
         return authorities;
     }

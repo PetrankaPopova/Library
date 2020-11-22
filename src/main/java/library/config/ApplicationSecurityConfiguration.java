@@ -20,9 +20,9 @@ import javax.crypto.SecretKey;
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
-public class ApplicationSecurityConfiguration extends WebSecurityConfigurerAdapter{
+public class ApplicationSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
-    private static final String[] ENANLED_URLs = new String[]{"/user/register", "/test"};
+    private static final String[] ENANLED_URLs = new String[]{"/user/register"};
     private final SecretKey secretKey;
     private final PasswordEncoder bCryptPasswordEncoder;
     private final UserService userService;
@@ -30,8 +30,8 @@ public class ApplicationSecurityConfiguration extends WebSecurityConfigurerAdapt
 
     @Autowired
     public ApplicationSecurityConfiguration(SecretKey secretKey,
-                                 UserService userService,
-                                 PasswordEncoder bCryptPasswordEncoder) {
+                                            UserService userService,
+                                            PasswordEncoder bCryptPasswordEncoder) {
         this.secretKey = secretKey;
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
         this.userService = userService;
@@ -47,11 +47,13 @@ public class ApplicationSecurityConfiguration extends WebSecurityConfigurerAdapt
                 .addFilter(new JwtAuthUsernameAndPassword(this.authenticationManager(), this.secretKey))
                 .addFilterAfter(new JwtTokenVerifired(this.secretKey), JwtAuthUsernameAndPassword.class)
                 .authorizeRequests()
-                .antMatchers(ENANLED_URLs).permitAll();
-//                .antMatchers("/**").hasRole("ADMIN")
-//                .antMatchers("/store/**").hasRole("USER")
-//                 .anyRequest()
-//                .authenticated();
+                .antMatchers(ENANLED_URLs).permitAll()
+                .antMatchers("/**").authenticated();
+    /*
+                .antMatchers("/**").hasRole("ADMIN")
+                .antMatchers("/**").hasRole("USER")
+                .anyRequest()
+                .authenticated();*/
     }
 
     @Override
