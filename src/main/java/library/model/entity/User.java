@@ -23,7 +23,7 @@ public class User extends BaseEntity implements UserDetails, Serializable {
     private Cart cart;
     private LocalDateTime lastLoginDate;
     private LocalDateTime registerDate;
-    private List<Address> address;
+    private Address address;
     private List<Authority> authorities;
 
     public User() {
@@ -94,12 +94,12 @@ public class User extends BaseEntity implements UserDetails, Serializable {
         this.lastName = lastName;
     }
 
-    @OneToMany
-    public List<Address> getAddress() {
+    @OneToOne
+    public Address getAddress() {
         return address;
     }
 
-    public void setAddress(List<Address> address) {
+    public void setAddress(Address address) {
         this.address = address;
     }
 

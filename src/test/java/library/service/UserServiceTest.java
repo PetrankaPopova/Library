@@ -49,16 +49,16 @@ public class UserServiceTest {
         this.userServiceModel = null;
     }
 
-    @Test
-    void addNewAuthorByName_whenAuthorDateIsCorrect_returnAuthorServiceModel() {
-        Mockito.when(this.mockedUserRepository.saveAndFlush(Mockito.any()))
-                .thenReturn(this.returnedUserFromDb);
-        User user = this.modelMapper.map(userServiceModel, User.class);
-        User authorReturnFromDb = this.mockedUserRepository.saveAndFlush(user);
-        UserServiceModel actualUser = this.modelMapper.map(returnedUserFromDb, UserServiceModel.class);
-        UserServiceModel expectedUser = this.userServiceImpl
-                .addNewUser(this.userServiceModel);
-        Assertions.assertEquals(expectedUser.getUsername(), actualUser.getUsername());
-    }
+//    @Test
+//    void addNewAuthorByName_whenAuthorDateIsCorrect_returnAuthorServiceModel() {
+//        Mockito.when(this.mockedUserRepository.saveAndFlush(Mockito.any()))
+//                .thenReturn(this.returnedUserFromDb);
+//        User user = this.modelMapper.map(userServiceModel, User.class);
+//        User authorReturnFromDb = this.mockedUserRepository.saveAndFlush(user);
+//        UserServiceModel actualUser = this.modelMapper.map(returnedUserFromDb, UserServiceModel.class);
+//        UserServiceModel expectedUser = this.userServiceImpl
+//                .addNewUser(this.userServiceModel);
+//        Assertions.assertEquals(expectedUser.getUsername(), actualUser.getUsername());
+//    }
 }
 

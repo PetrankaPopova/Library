@@ -3,10 +3,12 @@ package library.service.imp;
 import library.error.exception.custom.UserNotFoundException;
 import library.error.exception.custom.UserPasswordsNotMatchException;
 import library.error.exception.custom.UserWithUsernameAlreadyExistException;
+import library.model.entity.Address;
 import library.model.entity.User;
 import library.model.service.BookServiceModel;
 import library.model.service.UserEditServiceModel;
 import library.model.service.UserServiceModel;
+import library.repository.AddressRepository;
 import library.repository.BookRepository;
 import library.repository.RoleRepository;
 import library.repository.UserRepository;
@@ -33,29 +35,21 @@ public class UserServiceImp implements UserService {
     private final RoleRepository roleRepository;
     private final BookRepository bookRepository;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
+    private final AddressRepository addressRepository;
 
     @Autowired
     public UserServiceImp(UserRepository userRepository, ModelMapper modelMapper, RoleService roleService,
-                          RoleRepository roleRepository, BookRepository bookRepository, BCryptPasswordEncoder bCryptPasswordEncoder) {
+                          RoleRepository roleRepository, BookRepository bookRepository, BCryptPasswordEncoder bCryptPasswordEncoder, AddressRepository addressRepository) {
         this.userRepository = userRepository;
         this.modelMapper = modelMapper;
         this.roleService = roleService;
         this.roleRepository = roleRepository;
         this.bookRepository = bookRepository;
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
+        this.addressRepository = addressRepository;
     }
 
-
-    public UserServiceImp(UserRepository mockedUserRepository, ModelMapper modelMapper, UserRepository userRepository, ModelMapper modelMapper1, RoleService roleService, RoleRepository roleRepository, BookRepository bookRepository, BCryptPasswordEncoder bCryptPasswordEncoder) {
-        this.userRepository = userRepository;
-        this.modelMapper = modelMapper1;
-        this.roleService = roleService;
-        this.roleRepository = roleRepository;
-        this.bookRepository = bookRepository;
-        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
-    }
-
-    @Override
+    /*@Override
     public String registerUser(UserServiceModel userServiceModel) {
         User user = this.modelMapper.map(userServiceModel, User.class);
         User returnedUserFromDb = this.userRepository.findUserByUsername(userServiceModel.getUsername()).orElse(null);
@@ -71,7 +65,7 @@ public class UserServiceImp implements UserService {
         this.userRepository.saveAndFlush(user);
         return this.modelMapper.map(user, (Type) UserServiceModel.class);
 
-    }
+    }*/
 
     @Override
     public UserServiceModel findByUsernameAndPassword(String username, String password) {
@@ -120,10 +114,24 @@ public class UserServiceImp implements UserService {
         return findUser;
     }
 
-    public UserServiceModel addNewUser(UserServiceModel userServiceModel) {
+    @Override
+    public UserServiceModel registerUser(UserServiceModel userServiceModel) throws UserWithUsernameAlreadyExistException {
        User foundedUser = this.userRepository.findByUsername(userServiceModel.getUsername()).orElse(null);
-        if (foundedUser != null) return null;
+        if (foundedUser != null) {
+            throw new UserWithUsernameAlreadyExistException("User exist!");
+        }
+        Address a = this.modelMapper.map(userServiceModel.getAddress(), Address.class);
+        Address returnedAddress = this.addressRepository.saveAndFlush(a);
+        String newPassword = this.bCryptPasswordEncoder.encode(userServiceModel.getPassword());
         User user = this.modelMapper.map(userServiceModel, User.class);
+        if (this.userRepository.count() == 0) {
+            user.setAuthorities(this.roleRepository.findAll());
+        } else {
+            user.setAuthorities(new ArrayList<>());
+            user.getAuthorities().add(this.roleRepository.findByAuthority("USER").orElse(null));
+        }
+        user.setPassword(newPassword);
+        user.setAddress(returnedAddress);
         User userReturnFromDb = this.userRepository.saveAndFlush(user);
         return this.modelMapper.map(userReturnFromDb, UserServiceModel.class);
     }

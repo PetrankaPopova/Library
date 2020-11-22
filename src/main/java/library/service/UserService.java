@@ -13,7 +13,7 @@ import java.util.List;
 
 public interface UserService extends UserDetailsService {
 
-    String registerUser(UserServiceModel userServiceModel);
+    UserServiceModel registerUser(UserServiceModel userServiceModel) throws UserWithUsernameAlreadyExistException;
 
     UserServiceModel findByUsernameAndPassword(String username, String password);
 
@@ -26,6 +26,9 @@ public interface UserService extends UserDetailsService {
     List<BookServiceModel> getAllBoughtBooks ();
 
     List<UserServiceModel> findAllUser();
+
+    //UserServiceModel addNewUser(UserServiceModel userServiceModel) throws UserWithUsernameAlreadyExistException;
+
 
     //UserServiceModel findById(String userId);
     //List<ProductViewModel> getAllBoughtProducts ();

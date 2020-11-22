@@ -65,7 +65,7 @@ public class UserRegisterValidator implements org.springframework.validation.Val
             );
         }
 
-        if (userBindingModel.getCity().length() < 3 ||
+        /*if (userBindingModel.getCity().length() < 3 ||
                 userBindingModel.getCity().length() > 20) {
             errors.rejectValue("city",
                     String.format(ValidationConstants.NAME_LENGTH, "City name"),
@@ -124,7 +124,7 @@ public class UserRegisterValidator implements org.springframework.validation.Val
                     String.format(ValidationConstants.NAME_LENGTH, "State name")
 
             );
-        }
+        }*/
 
         if (this.userRepository.findByEmail(userBindingModel.getEmail()).isPresent()) {
             errors.rejectValue("email",
