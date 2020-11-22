@@ -15,8 +15,6 @@ public interface UserService extends UserDetailsService {
 
     UserServiceModel registerUser(UserServiceModel userServiceModel) throws UserWithUsernameAlreadyExistException;
 
-    UserServiceModel findByUsernameAndPassword(String username, String password);
-
     UserServiceModel findByUsername(String username) throws UserNotFoundException;
 
     User findByEmail(String email);
@@ -30,8 +28,4 @@ public interface UserService extends UserDetailsService {
     //UserServiceModel addNewUser(UserServiceModel userServiceModel) throws UserWithUsernameAlreadyExistException;
 
 
-    //UserServiceModel findById(String userId);
-    //List<ProductViewModel> getAllBoughtProducts ();
-    //List<UserServiceModel> findAllUsers();
-    //void buyProduct(String productId);
 }

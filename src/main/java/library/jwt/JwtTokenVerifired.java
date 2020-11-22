@@ -16,7 +16,6 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
-import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -47,6 +46,7 @@ public class JwtTokenVerifired extends OncePerRequestFilter{
 		String token = autherizationHeader.replace(JwtConstant.TOKEN_PREFIX, "");
 		
 		try {
+
 			Jws<Claims> claimsJws = Jwts.parser()
 					.setSigningKey(this.secretKey)
 					.parseClaimsJws(token);

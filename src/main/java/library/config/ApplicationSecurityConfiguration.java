@@ -22,7 +22,7 @@ import javax.crypto.SecretKey;
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class ApplicationSecurityConfiguration extends WebSecurityConfigurerAdapter{
 
-    private static final String[] ENANLED_URLs = new String[]{"/login", "/user/register"};
+    private static final String[] ENANLED_URLs = new String[]{"/user/register", "/test"};
     private final SecretKey secretKey;
     private final PasswordEncoder bCryptPasswordEncoder;
     private final UserService userService;

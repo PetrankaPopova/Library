@@ -2,6 +2,7 @@ package library.web;
 
 import library.error.exception.custom.UserWithUsernameAlreadyExistException;
 import library.model.bindingmodel.UserBindingModel;
+import library.model.bindingmodel.UserLoginBindingModel;
 import library.model.service.UserServiceModel;
 import library.model.views.UserViewModel;
 import library.service.UserService;
@@ -30,9 +31,10 @@ public class UserController {
     }
     @RequestMapping(value = "/register", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE )
     public ResponseEntity<UserViewModel> register(@RequestBody UserBindingModel user) throws UserWithUsernameAlreadyExistException {
-        this.userService.addNewUser(this.modelMapper.map(user, UserServiceModel.class));
+        this.userService.registerUser(this.modelMapper.map(user, UserServiceModel.class));
         return new ResponseEntity<>(null, HttpStatus.OK);
     }
+
 
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     public ResponseEntity<List<UserViewModel>> getAllUsers(){
