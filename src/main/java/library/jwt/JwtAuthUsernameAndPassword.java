@@ -1,3 +1,4 @@
+/*
 
 package library.jwt;
 
@@ -20,6 +21,8 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.stereotype.Component;
+
 
 public class JwtAuthUsernameAndPassword extends UsernamePasswordAuthenticationFilter {
 
@@ -36,9 +39,6 @@ public class JwtAuthUsernameAndPassword extends UsernamePasswordAuthenticationFi
 	@Override
 	public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response)
 			throws AuthenticationException {
-
-		System.out.println();
-		
 		try {
 			UserBindingModel authUserRequest = new ObjectMapper().readValue(request.getInputStream(),
 					UserBindingModel.class);
@@ -70,3 +70,4 @@ public class JwtAuthUsernameAndPassword extends UsernamePasswordAuthenticationFi
 		response.addHeader(JwtConstant.AUTHORIZATION_HEADER, JwtConstant.TOKEN_PREFIX + token);
 	}
 }
+*/

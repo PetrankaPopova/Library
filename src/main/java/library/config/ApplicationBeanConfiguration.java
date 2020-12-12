@@ -1,7 +1,7 @@
 package library.config;
 
 import io.jsonwebtoken.security.Keys;
-import library.jwt.JwtConstant;
+//import library.jwt.JwtConstant;
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -18,13 +18,13 @@ public class ApplicationBeanConfiguration {
         return new ModelMapper();
     }
 
-    @Bean
-    public BCryptPasswordEncoder bcrypt() {
-        return new BCryptPasswordEncoder();
-    }
+  //  @Bean
+    //public BCryptPasswordEncoder bcrypt() {
+     //   return new BCryptPasswordEncoder();
+  //  }
 
-    @Bean
+    /*@Bean
     public SecretKey secretKey() {
         return Keys.hmacShaKeyFor(JwtConstant.RAW_SECRET_KEY.getBytes());
-    }
+    }*/
 }

@@ -1,5 +1,12 @@
 package library.model.bindingmodel;
 
+import org.hibernate.validator.constraints.Length;
+
+import javax.validation.constraints.DecimalMin;
+
+import static library.constant.GlobalConstants.COMPANY_NAME_SIZE;
+import static library.constant.GlobalConstants.VALID_PRICE;
+
 public class AddressBindingModel {
 
     private String country;
@@ -13,6 +20,7 @@ public class AddressBindingModel {
     public AddressBindingModel() {
     }
 
+    @Length(min = 3, max = 20, message = "Country name should be between 3 and 20 characters.")
     public String getCountry() {
         return country;
     }
@@ -21,6 +29,7 @@ public class AddressBindingModel {
         this.country = country;
     }
 
+    @Length(min = 3, max = 20, message = "Street name should be between 3 and 20 characters.")
     public String getStreet() {
         return street;
     }
@@ -29,6 +38,7 @@ public class AddressBindingModel {
         this.street = street;
     }
 
+    @Length(min = 3, max = 20, message = "City name should be between 3 and 20 characters.")
     public String getCity() {
         return city;
     }
@@ -37,6 +47,7 @@ public class AddressBindingModel {
         this.city = city;
     }
 
+    @Length(min = 3, max = 20, message = "State name should be between 3 and 20 characters.")
     public String getState() {
         return state;
     }
@@ -45,6 +56,7 @@ public class AddressBindingModel {
         this.state = state;
     }
 
+    @Length(min = 3, max = 20, message = "Post code should be between 3 and 20 characters.")
     public String getPostCode() {
         return postCode;
     }
@@ -53,6 +65,7 @@ public class AddressBindingModel {
         this.postCode = postCode;
     }
 
+    @Length(min = 3, max = 20, message = "Region name should be between 3 and 20 characters.")
     public String getRegion() {
         return region;
     }
@@ -61,6 +74,7 @@ public class AddressBindingModel {
         this.region = region;
     }
 
+    @DecimalMin(value = "0",message = "Enter a valid street number.")
     public String getStreetNumber() {
         return streetNumber;
     }
