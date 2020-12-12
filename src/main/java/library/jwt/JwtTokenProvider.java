@@ -1,5 +1,6 @@
 package library.jwt;
 
+import com.auth0.jwt.interfaces.Claim;
 import io.jsonwebtoken.*;
 import library.model.service.AuthorityServiceModel;
 import library.model.service.UserServiceModel;
@@ -22,7 +23,7 @@ import java.util.stream.Collectors;
 //import static library.jwt.JwtConstant.*;
 
 //@Component
-public class TokenProvider implements Serializable {
+public class JwtTokenProvider implements Serializable {
 
     private static String secretKey = "asdfSFS34wfsdfsdfSDSD32dfsddDDerQSNCK34SOWEK5354fdgdf4";
     private static final Key hmacKey =
@@ -46,13 +47,12 @@ public class TokenProvider implements Serializable {
     }
 
     public String getUsernameFromToken(String token) {
-        String jwt = Jwts.parserBuilder()
+        Jws<Claims> jwt = Jwts.parserBuilder()
                 .setSigningKey(hmacKey)
                 .build()
-                .parseClaimsJws(token)
-                .getSignature();
-        System.out.println(jwt);
-        return jwt;
+                .parseClaimsJws(token);
+        String username = jwt.getBody().getSubject();
+        return username;
     }
 
 

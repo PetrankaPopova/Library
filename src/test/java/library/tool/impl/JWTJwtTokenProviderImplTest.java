@@ -6,7 +6,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class JWTTokenProviderImplTest {
+public class JWTJwtTokenProviderImplTest {
 
     @Before
     public void setUp() throws Exception {
