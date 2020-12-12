@@ -41,13 +41,11 @@ public class TokenProvider implements Serializable {
                 .setExpiration(Date.from(now.plus(5l, ChronoUnit.MINUTES)))
                 .signWith(hmacKey)
                 .compact();
+        this.getUsernameFromToken(jwtToken);
         return  jwtToken;
     }
 
-    public String getUsernameFromToken() {
-
-        String token = "eyJhbGciOiJIUzI1NiJ9.eyJuYW1lIjoiSmFuZSBEb2UiLCJlbWFpbCI6ImphbmVAZXhhbXBsZS5jb20iLCJzdWIiOiJqYW5lIiwianRpIjoiYjMwMmU5NmUtODg2OS00NTJkLTg1ZjMtZGZjNDQzNTY3ZGUwIiwiaWF0IjoxNTkwNjE4NjI2LCJleHAiOjE1OTA2MTg5MjZ9.LJaar-3rnb3iuRXJBYK024l1PtEu3ay5ds24Q0bkf7w";
-
+    public String getUsernameFromToken(String token) {
         String jwt = Jwts.parserBuilder()
                 .setSigningKey(hmacKey)
                 .build()

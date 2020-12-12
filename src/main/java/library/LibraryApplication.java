@@ -1,15 +1,25 @@
 package library;
 
 import library.jwt.TokenProvider;
+import library.model.service.UserServiceModel;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+import java.util.ArrayList;
 
 @SpringBootApplication
 public class LibraryApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(LibraryApplication.class, args);
-        new TokenProvider().getUsernameFromToken();
+        new TokenProvider().generateToken(user());
+    }
+
+    private static UserServiceModel user (){
+        UserServiceModel user = new UserServiceModel();
+        user.setAuthority(new ArrayList<>());
+        user.setUsername("ivancho");
+        return user;
     }
 
 }
