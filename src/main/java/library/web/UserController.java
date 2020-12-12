@@ -2,7 +2,7 @@ package library.web;
 
 import library.error.exception.custom.UserWithUsernameAlreadyExistException;
 import library.model.bindingmodel.UserBindingModel;
-import library.model.bindingmodel.UserLoginBindingModel;
+import library.model.bindingmodel.UserBindingModel;
 import library.model.service.UserServiceModel;
 import library.model.views.UserViewModel;
 import library.service.UserService;
