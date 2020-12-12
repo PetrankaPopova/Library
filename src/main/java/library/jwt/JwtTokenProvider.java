@@ -8,6 +8,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.parameters.P;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
@@ -47,14 +48,46 @@ public class JwtTokenProvider implements Serializable {
     }
 
     public String getUsernameFromToken(String token) {
-        Jws<Claims> jwt = Jwts.parserBuilder()
-                .setSigningKey(hmacKey)
-                .build()
-                .parseClaimsJws(token);
+        Jws<Claims> jwt = getClaimsJws(token);
         String username = jwt.getBody().getSubject();
         return username;
     }
 
+    public Date getExpirationDateFromToken(String token) {
+        Jws<Claims> jwt = getClaimsJws(token);
+        Date expDate = jwt.getBody().getExpiration();
+        return expDate;
+    }
+
+    public Boolean validateToken(String token, UserServiceModel user) {
+        final String username = getUsernameFromToken(token);
+        //if token is not expired and usernames matches
+        if (username.equals(user.getUsername()) && !isTokenExpired(token)){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    UsernamePasswordAuthenticationToken getAuthentication(final String token, final Authentication existingAuth, final UserServiceModel user) {
+        Jws<Claims> jwtClaims = getClaimsJws(token);
+        final Claims claims = jwtClaims.getBody();
+
+        //???
+       /* List<AuthorityServiceModel> authorities = jwtClaims.getBody()
+                .get("authorities")
+                .stream()
+                .map(SimpleGrantedAuthority::new)
+                .collect(Collectors.toList());
+
+
+                Arrays.stream(claims.get(AUTHORITIES_KEY).toString().split(","))
+                        .map(SimpleGrantedAuthority::new)
+                        .collect(Collectors.toList());
+                new UsernamePasswordAuthenticationToken()
+        return new UsernamePasswordAuthenticationToken(userDetails, "", authorities);*/
+        return null;
+    }
 
     //for review
     /*public String getUsernameFromToken2(String token) {
@@ -100,11 +133,24 @@ public class JwtTokenProvider implements Serializable {
 
     //Private
 
+    private Jws<Claims> getClaimsJws(String token) {
+        Jws<Claims> jwt = Jwts.parserBuilder()
+                .setSigningKey(hmacKey)
+                .build()
+                .parseClaimsJws(token);
+        return jwt;
+    }
+
     private Map<String, Object> getClaimsForCurrentUser(UserServiceModel user) {
         Map<String, Object> claims = new HashMap<>();
         List<AuthorityServiceModel> authorities = new ArrayList<>();
         claims.put("authorities", authorities);
         return claims;
+    }
+
+    private Boolean isTokenExpired(String token) {
+        final Date expiration = getExpirationDateFromToken(token);
+        return expiration.before(new Date());
     }
 
    /* private Claims getAllClaimsFromToken(String token) {
