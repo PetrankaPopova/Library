@@ -1,16 +1,10 @@
 package library.jwt;
 
-import com.auth0.jwt.interfaces.Claim;
 import io.jsonwebtoken.*;
 import library.model.service.AuthorityServiceModel;
 import library.model.service.UserServiceModel;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.parameters.P;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.stereotype.Component;
 
 import javax.crypto.spec.SecretKeySpec;
 import java.io.Serializable;
@@ -18,10 +12,6 @@ import java.security.Key;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import java.util.*;
-import java.util.function.Function;
-import java.util.stream.Collectors;
-
-//import static library.jwt.JwtConstant.*;
 
 //@Component
 public class JwtTokenProvider implements Serializable {
