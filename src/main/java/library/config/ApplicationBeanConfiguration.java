@@ -18,10 +18,10 @@ public class ApplicationBeanConfiguration {
         return new ModelMapper();
     }
 
-  //  @Bean
-    //public BCryptPasswordEncoder bcrypt() {
-     //   return new BCryptPasswordEncoder();
-  //  }
+    @Bean
+    public BCryptPasswordEncoder bcrypt() {
+        return new BCryptPasswordEncoder();
+    }
 
     /*@Bean
     public SecretKey secretKey() {
