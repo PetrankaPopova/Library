@@ -8,5 +8,7 @@ public class UserConstant {
     public static final String NO_USER_FOUND_BY_EMAIL = "No user found for email!";
     public static final String USERNAME_ALREADY_EXISTS = "Username already exists!";
     public static final String EMAIL_ALREADY_EXISTS = "Email already exists!";
+    public static final String USER_PASSWORDS_DO_NOT_MATCH = "User passwords don't match!";
+    public static final String USER_NOT_FOUND ="User was not found!";
 
 }

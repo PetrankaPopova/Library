@@ -63,6 +63,7 @@ public class JwtTokenProvider implements Serializable {
         Jws<Claims> jwtClaims = getClaimsJws(token);
         final Claims claims = jwtClaims.getBody();
 
+
         //???
        /* List<AuthorityServiceModel> authorities = jwtClaims.getBody()
                 .get("authorities")

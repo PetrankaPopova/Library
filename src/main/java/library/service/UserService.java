@@ -1,5 +1,6 @@
 package library.service;
 
+import library.error.exception.UserIllegalArgumentsException;
 import library.error.exception.custom.UserNotFoundException;
 import library.error.exception.custom.UserPasswordsNotMatchException;
 import library.error.exception.custom.UserWithUsernameAlreadyExistException;
@@ -19,13 +20,10 @@ public interface UserService extends UserDetailsService {
 
     User findByEmail(String email);
 
-    UserEditServiceModel editUserProfile(UserEditServiceModel userEditServiceModel, String oldPassword) throws UserPasswordsNotMatchException, UserWithUsernameAlreadyExistException;
-
-    List<BookServiceModel> getAllBoughtBooks ();
+    UserEditServiceModel editUserProfile(UserEditServiceModel userEditServiceModel, String oldPassword) throws UserPasswordsNotMatchException, UserWithUsernameAlreadyExistException, UserIllegalArgumentsException, UserNotFoundException;
 
     List<UserServiceModel> findAllUser();
 
-    //UserServiceModel addNewUser(UserServiceModel userServiceModel) throws UserWithUsernameAlreadyExistException;
 
 
 }
