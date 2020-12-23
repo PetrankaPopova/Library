@@ -1,13 +1,11 @@
 package library.service.imp;
 
-import library.constant.UserConstant;
 import library.error.exception.UserIllegalArgumentsException;
 import library.error.exception.custom.UserNotFoundException;
 import library.error.exception.custom.UserPasswordsNotMatchException;
 import library.error.exception.custom.UserWithUsernameAlreadyExistException;
 import library.model.entity.Address;
 import library.model.entity.User;
-import library.model.service.BookServiceModel;
 import library.model.service.UserEditServiceModel;
 import library.model.service.UserServiceModel;
 import library.repository.AddressRepository;
@@ -54,6 +52,7 @@ public class UserServiceImp implements UserService {
 
     @Override
     public UserServiceModel registerUser(UserServiceModel userServiceModel) throws UserWithUsernameAlreadyExistException {
+        //todo
         User foundedUser = this.userRepository.findByUsername(userServiceModel.getUsername()).orElse(null);
         if (foundedUser != null) {
             throw new UserWithUsernameAlreadyExistException("User exist!");
@@ -89,9 +88,16 @@ public class UserServiceImp implements UserService {
     }
 
     @Override
+    public UserEditServiceModel editUserProfile(UserEditServiceModel userEditServiceModel) {
+        return null;
+    }
+
+    //@Override
+    @Deprecated
     public UserEditServiceModel editUserProfile(UserEditServiceModel userEditServiceModel, String oldPassword)
             throws UserPasswordsNotMatchException, UserWithUsernameAlreadyExistException, UserIllegalArgumentsException, UserNotFoundException {
         if (!userEditServiceModel.getPassword().equals(userEditServiceModel.getConfirmPassword())) {
+            //todo
             throw new UserPasswordsNotMatchException("Password not match!");
         }
         UserEditServiceModel returnUser = null;
@@ -115,6 +121,21 @@ public class UserServiceImp implements UserService {
         return this.userRepository.findAll().
                 stream()
                 .map(u -> this.modelMapper.map(u, UserServiceModel.class)).collect(Collectors.toList());
+    }
+
+    @Override
+    public void confirmAccount(String str) {
+
+    }
+
+    @Override
+    public UserServiceModel deleteUserById(String id) {
+        return null;
+    }
+
+    @Override
+    public void changePassword(UserServiceModel user) {
+
     }
 
     @Override

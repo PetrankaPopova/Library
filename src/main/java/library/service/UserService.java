@@ -20,10 +20,15 @@ public interface UserService extends UserDetailsService {
 
     User findByEmail(String email);
 
-    UserEditServiceModel editUserProfile(UserEditServiceModel userEditServiceModel, String oldPassword) throws UserPasswordsNotMatchException, UserWithUsernameAlreadyExistException, UserIllegalArgumentsException, UserNotFoundException;
+    UserEditServiceModel editUserProfile(UserEditServiceModel userEditServiceModel);
 
     List<UserServiceModel> findAllUser();
 
+    void confirmAccount(String str);
+
+    UserServiceModel deleteUserById(String id);
+
+    void changePassword(UserServiceModel user);
 
 
 }

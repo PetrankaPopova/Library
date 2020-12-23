@@ -12,7 +12,7 @@ public class LibraryApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(LibraryApplication.class, args);
-        new JwtTokenProvider().generateToken(user());
+        //new JwtTokenProvider().generateToken(user());
     }
 
     private static UserServiceModel user (){

@@ -14,15 +14,12 @@
           <element id="module-output" name="Library" />
         </element>
         <element id="directory" name="lib">
-          <element id="library" level="project" name="Maven: io.jsonwebtoken:jjwt-api:0.11.2" />
-          <element id="library" level="project" name="Maven: io.jsonwebtoken:jjwt-impl:0.11.2" />
-          <element id="library" level="project" name="Maven: io.jsonwebtoken:jjwt-jackson:0.11.2" />
-          <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.11.2" />
-          <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.11.2" />
-          <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-core:2.11.2" />
           <element id="library" level="project" name="Maven: com.sun.mail:javax.mail:1.6.2" />
           <element id="library" level="project" name="Maven: javax.activation:activation:1.1" />
           <element id="library" level="project" name="Maven: com.auth0:java-jwt:3.10.0" />
+          <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.11.2" />
+          <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.11.2" />
+          <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-core:2.11.2" />
           <element id="library" level="project" name="Maven: commons-codec:commons-codec:1.14" />
           <element id="library" level="project" name="Maven: org.apache.commons:commons-lang3:3.0" />
           <element id="library" level="project" name="Maven: com.google.guava:guava:28.1-jre" />

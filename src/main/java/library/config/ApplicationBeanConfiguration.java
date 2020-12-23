@@ -23,8 +23,4 @@ public class ApplicationBeanConfiguration {
         return new BCryptPasswordEncoder();
     }
 
-    /*@Bean
-    public SecretKey secretKey() {
-        return Keys.hmacShaKeyFor(JwtConstant.RAW_SECRET_KEY.getBytes());
-    }*/
 }
