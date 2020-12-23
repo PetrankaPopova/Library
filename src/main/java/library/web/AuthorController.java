@@ -4,7 +4,6 @@ import library.error.exception.custom.AuthorWithThisNameIsNotExist;
 import library.model.bindingmodel.AuthorBindingModel;
 import library.model.service.AuthorServiceModel;
 import library.model.views.AuthorViewModel;
-import library.model.views.BookViewModel;
 import library.service.AuthorService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;

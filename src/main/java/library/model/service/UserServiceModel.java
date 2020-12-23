@@ -1,7 +1,6 @@
 package library.model.service;
 
 import java.util.List;
-import java.util.Set;
 
 public class UserServiceModel extends BaseServiceModel {
 

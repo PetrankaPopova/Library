@@ -1,11 +1,8 @@
 package library.service;
 
-import library.error.exception.UserIllegalArgumentsException;
 import library.error.exception.custom.UserNotFoundException;
-import library.error.exception.custom.UserPasswordsNotMatchException;
 import library.error.exception.custom.UserWithUsernameAlreadyExistException;
 import library.model.entity.User;
-import library.model.service.BookServiceModel;
 import library.model.service.UserEditServiceModel;
 import library.model.service.UserServiceModel;
 import org.springframework.security.core.userdetails.UserDetailsService;

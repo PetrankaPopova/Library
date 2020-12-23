@@ -1,6 +1,5 @@
 package library;
 
-import library.jwt.JwtTokenProvider;
 import library.model.service.UserServiceModel;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

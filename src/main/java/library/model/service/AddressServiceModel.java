@@ -1,9 +1,5 @@
 package library.model.service;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-
 public class AddressServiceModel {
 
     private String country;

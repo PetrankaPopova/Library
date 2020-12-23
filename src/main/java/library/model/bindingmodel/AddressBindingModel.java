@@ -4,9 +4,6 @@ import org.hibernate.validator.constraints.Length;
 
 import javax.validation.constraints.DecimalMin;
 
-import static library.constant.GlobalConstants.COMPANY_NAME_SIZE;
-import static library.constant.GlobalConstants.VALID_PRICE;
-
 public class AddressBindingModel {
 
     private String country;

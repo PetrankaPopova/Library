@@ -3,7 +3,6 @@ package library.service.imp;
 import library.error.exception.BookIsNotExistException;
 import library.model.entity.Author;
 import library.model.entity.Book;
-import library.model.entity.Category;
 import library.model.entity.Size;
 import library.model.service.BookServiceModel;
 import library.repository.AuthorRepository;
@@ -15,7 +14,6 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
