@@ -1,5 +1,6 @@
 package library.model.service;
 
+@Deprecated
 public class UserEditServiceModel extends BaseServiceModel {
 
     private String username;
