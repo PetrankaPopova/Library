@@ -34,6 +34,7 @@ public class BannerController {
         return new ResponseEntity<>(banners, HttpStatus.OK);
     }
 
-
+    //todo
+    //methods
 
 }

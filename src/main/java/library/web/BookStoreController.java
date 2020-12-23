@@ -17,6 +17,9 @@ public class BookStoreController {
         this.bookStoreService = bookStoreService;
     }
 
+    //todo
+    //methods
+
 //    @GetMapping("/bookstore/all")
 //    @ResponseBody
 //    public String home(@ModelAttribute("bsbm") BookStoreBindingModel bsbm) {

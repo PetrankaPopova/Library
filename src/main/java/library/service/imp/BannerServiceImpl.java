@@ -43,6 +43,7 @@ public class BannerServiceImpl implements BannerService {
 
     @Override
     public void delete(String id) {
+        //todo
         this.bannerRepository.deleteById(id);
     }
 
@@ -53,6 +54,8 @@ public class BannerServiceImpl implements BannerService {
 
     @Override
     public List<BannerViewModel> findAllItems() {
+        //todo
+        //review
         return this.bannerRepository.findAll().stream()
                 .map(banner -> {
                     BannerViewModel bannerViewModel = this.modelMapper.map(banner, BannerViewModel.class);

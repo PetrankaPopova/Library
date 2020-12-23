@@ -3,7 +3,6 @@ package library.service;
 import library.error.exception.custom.UserNotFoundException;
 import library.error.exception.custom.UserWithUsernameAlreadyExistException;
 import library.model.entity.User;
-import library.model.service.UserEditServiceModel;
 import library.model.service.UserServiceModel;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
@@ -16,8 +15,6 @@ public interface UserService extends UserDetailsService {
     UserServiceModel findByUsername(String username) throws UserNotFoundException;
 
     User findByEmail(String email);
-
-    UserEditServiceModel editUserProfile(UserEditServiceModel userEditServiceModel);
 
     List<UserServiceModel> findAllUser();
 

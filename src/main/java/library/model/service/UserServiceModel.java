@@ -8,12 +8,21 @@ public class UserServiceModel extends BaseServiceModel {
     private String firstName;
     private String lastName;
     private String password;
+    private String oldPassword;
     private String email;
     private AddressServiceModel address;
     private CartServiceModel cartServiceModel;
     private List<AuthorityServiceModel> authority;
 
     public UserServiceModel() {
+    }
+
+    public String getOldPassword() {
+        return oldPassword;
+    }
+
+    public void setOldPassword(String oldPassword) {
+        this.oldPassword = oldPassword;
     }
 
     public String getUsername() {

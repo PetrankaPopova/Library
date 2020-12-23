@@ -35,16 +35,19 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     public CategoryServiceModel getCategoryById(String id) {
+        //todo
         return null;
     }
 
     @Override
     public CategoryServiceModel getCategoryByName(String categoryName) {
+        //todo
         return null;
     }
 
     @Override
     public CategoryServiceModel getAllCategories() {
+        //todo
         return null;
     }
 }

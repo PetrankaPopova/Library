@@ -26,6 +26,7 @@ public class BookController {
     @RequestMapping(value = "/add", method = RequestMethod.POST,
             consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<BookViewModel> addNewBook(@RequestBody BookBindingModel book){
+        //todo
         BookViewModel book1 = null;
         return new ResponseEntity<>(book1, HttpStatus.OK);
     }
@@ -33,6 +34,7 @@ public class BookController {
     @RequestMapping(value = "/delete/{bookName}", method = RequestMethod.DELETE,
             consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<BookViewModel> deleteBookByName(@PathVariable String bookName){
+        //todo
         BookViewModel book1 = null;
         return new ResponseEntity<>(book1, HttpStatus.OK);
     }
@@ -40,6 +42,7 @@ public class BookController {
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE,
             consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<BookViewModel> deleteBookById(@PathVariable String id){
+        //todo
         BookViewModel book1 = null;
         return new ResponseEntity<>(book1, HttpStatus.OK);
     }
@@ -47,6 +50,7 @@ public class BookController {
     @RequestMapping(value = "/all/{authorName}", method = RequestMethod.POST,
             consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<BookViewModel> getAllBookByAuthorName(@PathVariable String authorName){
+        //todo
         BookViewModel book1 = null;
         return new ResponseEntity<>(book1, HttpStatus.OK);
     }
@@ -54,6 +58,7 @@ public class BookController {
     @RequestMapping(value = "/search/{strFromTitle}", method = RequestMethod.POST,
             consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<BookViewModel> getAllBooksByPartOfTitle(@PathVariable String strFromTitle){
+        //todo
         BookViewModel book1 = null;
         return new ResponseEntity<>(book1, HttpStatus.OK);
     }
@@ -61,6 +66,7 @@ public class BookController {
     @RequestMapping(value = "/book/all", method = RequestMethod.POST,
             consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<BookViewModel> getAllBookByCategory(){
+        //todo
         BookViewModel book1 = null;
         return new ResponseEntity<>(book1, HttpStatus.OK);
     }

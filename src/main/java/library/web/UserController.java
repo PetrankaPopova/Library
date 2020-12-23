@@ -35,7 +35,6 @@ public class UserController {
         return new ResponseEntity<>(uvm, HttpStatus.OK);
     }
 
-
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     public ResponseEntity<List<UserViewModel>> getAllUsers(){
         List<UserViewModel> users = this.userService.findAllUser()

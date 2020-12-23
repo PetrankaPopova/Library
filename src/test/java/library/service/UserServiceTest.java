@@ -2,15 +2,12 @@ package library.service;
 
 import library.model.entity.User;
 import library.model.service.UserServiceModel;
-import library.repository.RoleRepository;
+import library.repository.AuthorityRepository;
 import library.repository.UserRepository;
 import library.service.imp.UserServiceImp;
 import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
-import org.mockito.Mockito;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -31,8 +28,8 @@ public class UserServiceTest {
     private UserServiceImp userServiceImpl;
     private UserRepository userRepository;
     private ModelMapper modelMapper1;
-    private RoleService roleService;
-    private RoleRepository roleRepository;
+    private AuthorityService authorityService;
+    private AuthorityRepository authorityRepository;
 
 
     @BeforeEach

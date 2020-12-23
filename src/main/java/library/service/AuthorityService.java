@@ -1,7 +1,7 @@
 package library.service;
 
 
-public interface RoleService {
+public interface AuthorityService {
 
     void seedRolesToDb();
 }

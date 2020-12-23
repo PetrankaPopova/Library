@@ -33,6 +33,8 @@ public class CartImpl implements CartService {
     //For TEST!!!
     @Override
     public String addBookToCart(String bookId, String loggedUserStr) {
+        //todo
+        //review
         String msg = "Not successfully add book!";
         Book foundedBook = this.bookRepository.findById(bookId).orElse(null);
         User foundedUser = this.userRepository.findByUsername(loggedUserStr).orElse(null);
@@ -50,11 +52,12 @@ public class CartImpl implements CartService {
 
     @Override
     public String deleteBookFromCartById(String id) {
+        //todo
         return null;
     }
 
     @Override
     public void deleteAllBooksFromCart() {
-        
+        //todo
     }
 }

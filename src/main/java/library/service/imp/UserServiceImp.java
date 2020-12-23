@@ -6,13 +6,12 @@ import library.error.exception.custom.UserPasswordsNotMatchException;
 import library.error.exception.custom.UserWithUsernameAlreadyExistException;
 import library.model.entity.Address;
 import library.model.entity.User;
-import library.model.service.UserEditServiceModel;
 import library.model.service.UserServiceModel;
 import library.repository.AddressRepository;
 import library.repository.BookRepository;
-import library.repository.RoleRepository;
+import library.repository.AuthorityRepository;
 import library.repository.UserRepository;
-import library.service.RoleService;
+import library.service.AuthorityService;
 import library.service.UserService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,20 +29,20 @@ public class UserServiceImp implements UserService {
 
     private final UserRepository userRepository;
     private final ModelMapper modelMapper;
-    private final RoleService roleService;
-    private final RoleRepository roleRepository;
+    private final AuthorityService authorityService;
+    private final AuthorityRepository authorityRepository;
     private final BookRepository bookRepository;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
     private final AddressRepository addressRepository;
 
 
     @Autowired
-    public UserServiceImp(UserRepository userRepository, ModelMapper modelMapper, RoleService roleService,
-                          RoleRepository roleRepository, BookRepository bookRepository, BCryptPasswordEncoder bCryptPasswordEncoder, AddressRepository addressRepository) {
+    public UserServiceImp(UserRepository userRepository, ModelMapper modelMapper, AuthorityService authorityService,
+                          AuthorityRepository authorityRepository, BookRepository bookRepository, BCryptPasswordEncoder bCryptPasswordEncoder, AddressRepository addressRepository) {
         this.userRepository = userRepository;
         this.modelMapper = modelMapper;
-        this.roleService = roleService;
-        this.roleRepository = roleRepository;
+        this.authorityService = authorityService;
+        this.authorityRepository = authorityRepository;
         this.bookRepository = bookRepository;
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
         this.addressRepository = addressRepository;
@@ -53,6 +52,7 @@ public class UserServiceImp implements UserService {
     @Override
     public UserServiceModel registerUser(UserServiceModel userServiceModel) throws UserWithUsernameAlreadyExistException {
         //todo
+        //refactoring!
         User foundedUser = this.userRepository.findByUsername(userServiceModel.getUsername()).orElse(null);
         if (foundedUser != null) {
             throw new UserWithUsernameAlreadyExistException("User exist!");
@@ -62,10 +62,10 @@ public class UserServiceImp implements UserService {
         String newPassword = this.bCryptPasswordEncoder.encode(userServiceModel.getPassword());
         User user = this.modelMapper.map(userServiceModel, User.class);
         if (this.userRepository.count() == 0) {
-            user.setAuthorities(this.roleRepository.findAll());
+            user.setAuthorities(this.authorityRepository.findAll());
         } else {
             user.setAuthorities(new ArrayList<>());
-            user.getAuthorities().add(this.roleRepository.findByAuthority("USER").orElse(null));
+            user.getAuthorities().add(this.authorityRepository.findByAuthority("USER").orElse(null));
         }
         user.setPassword(newPassword);
         user.setAddress(returnedAddress);
@@ -87,27 +87,23 @@ public class UserServiceImp implements UserService {
         return this.userRepository.findByEmail(email).orElse(null);
     }
 
-    @Override
-    public UserEditServiceModel editUserProfile(UserEditServiceModel userEditServiceModel) {
-        return null;
-    }
-
     //@Override
     @Deprecated
-    public UserEditServiceModel editUserProfile(UserEditServiceModel userEditServiceModel, String oldPassword)
+    public UserServiceModel editUserProfile(UserServiceModel inputUser, String oldPassword)
             throws UserPasswordsNotMatchException, UserWithUsernameAlreadyExistException, UserIllegalArgumentsException, UserNotFoundException {
-        if (!userEditServiceModel.getPassword().equals(userEditServiceModel.getConfirmPassword())) {
-            //todo
+        //refactoring!
+        //todo
+        /*if (!inputUser.getPassword().equals(inputUser.getConfirmPassword())) {
             throw new UserPasswordsNotMatchException("Password not match!");
-        }
-        UserEditServiceModel returnUser = null;
-        User u = this.userRepository.findByUsername(userEditServiceModel.getUsername()).orElse(null);
+        }*/
+        UserServiceModel returnUser = null;
+        User u = this.userRepository.findByUsername(inputUser.getUsername()).orElse(null);
         if (u != null) {
-
-            if (userEditServiceModel.getPassword() != null && !"".equals(userEditServiceModel.getPassword()) &&
-                    userEditServiceModel.getConfirmPassword()!=null && !"".equals(userEditServiceModel.getConfirmPassword())){
-                u.setPassword(this.bCryptPasswordEncoder.encode(userEditServiceModel.getPassword()));
-            }
+            //todo
+            /*if (inputUser.getPassword() != null && !"".equals(inputUser.getPassword()) &&
+                    inputUser.getConfirmPassword()!=null && !"".equals(inputUser.getConfirmPassword())){
+                u.setPassword(this.bCryptPasswordEncoder.encode(inputUser.getPassword()));
+            }*/
             this.userRepository.saveAndFlush(u);
 
         } else {
@@ -125,17 +121,19 @@ public class UserServiceImp implements UserService {
 
     @Override
     public void confirmAccount(String str) {
+        //todo
 
     }
 
     @Override
     public UserServiceModel deleteUserById(String id) {
+        //todo
         return null;
     }
 
     @Override
     public void changePassword(UserServiceModel user) {
-
+        //todo
     }
 
     @Override

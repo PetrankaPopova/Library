@@ -63,6 +63,7 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public List<BookServiceModel> getAllBooksByCategory(String category) {
+        //todo errors
         List<Book> allBooksByCategory = bookRepository.findAllByCategory(category);
         return bookListToBookServiceModelList(allBooksByCategory);
 
@@ -70,6 +71,7 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public List<BookServiceModel> getAllBooksByAuthorName(String authorName) {
+        //todo errors
         List<Book> allBooksByCategory = bookRepository.findAllByAuthor(authorName);
         return bookListToBookServiceModelList(allBooksByCategory);
     }
@@ -79,6 +81,7 @@ public class BookServiceImpl implements BookService {
         List<Book> foundedBooks = this.bookRepository.searchByPartOfTitle(strFromTitle);
         if (foundedBooks == null) {
             return null;
+            //todo
             //throw new BookWithThisNameIsNotExist("Book with this name is not exist!");
         }
         return bookListToBookServiceModelList(foundedBooks);
