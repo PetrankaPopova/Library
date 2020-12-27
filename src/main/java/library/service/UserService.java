@@ -2,6 +2,7 @@ package library.service;
 
 import library.error.exception.custom.UserNotFoundException;
 import library.error.exception.custom.UserWithUsernameAlreadyExistException;
+import library.model.bindingmodel.UserBindingModel;
 import library.model.entity.User;
 import library.model.service.UserServiceModel;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -23,6 +24,12 @@ public interface UserService extends UserDetailsService {
     UserServiceModel deleteUserById(String id);
 
     void changePassword(UserServiceModel user);
+
+  //  User updateUserProfile(UserBindingModel model, User user);
+
+   // User getUserProfile(User user);
+
+  //  User fetchByUsername(String name);
 
 
 }

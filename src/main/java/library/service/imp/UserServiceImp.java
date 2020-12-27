@@ -36,6 +36,7 @@ public class UserServiceImp implements UserService {
     private final AddressRepository addressRepository;
 
 
+
     @Autowired
     public UserServiceImp(UserRepository userRepository, ModelMapper modelMapper, AuthorityService authorityService,
                           AuthorityRepository authorityRepository, BookRepository bookRepository, BCryptPasswordEncoder bCryptPasswordEncoder, AddressRepository addressRepository) {
@@ -48,6 +49,7 @@ public class UserServiceImp implements UserService {
         this.addressRepository = addressRepository;
 
     }
+
 
     @Override
     public UserServiceModel registerUser(UserServiceModel userServiceModel) throws UserWithUsernameAlreadyExistException {
