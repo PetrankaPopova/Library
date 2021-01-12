@@ -28,7 +28,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 
-@RestController
+/*@RestController
 @CrossOrigin(origins = "*")
 @RequestMapping("/api/auth")
 public class AuthorController {
@@ -116,3 +116,5 @@ public class AuthorController {
         return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
     }
 }
+
+ */

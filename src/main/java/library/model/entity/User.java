@@ -4,6 +4,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -32,6 +33,7 @@ public class User extends BaseEntity implements UserDetails, Serializable {
     private Set<Role> roles;
 
     public User() {
+        this.roles = new HashSet<>();
     }
 
     @Override

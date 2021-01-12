@@ -26,13 +26,8 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 
-
-    @Autowired
     private AuthEntryPointJwt unauthorizedHandler;
-
-    @Autowired
     private UserDetailsServiceImpl userDetailsService;
-
 
 
     @Bean
@@ -66,8 +61,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .authorizeRequests().antMatchers("/api/auth/**").permitAll()
                 .antMatchers("/api/test/**").permitAll()
-                .antMatchers("/api/v1/convert").permitAll()
-                .antMatchers("/api/v1/currencies").permitAll()
+               // .antMatchers("/api/v1/convert").permitAll()
+               // .antMatchers("/api/v1/currencies").permitAll()
                 .anyRequest().authenticated();
 
         http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
