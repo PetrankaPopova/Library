@@ -143,6 +143,7 @@ public class UserServiceImp implements UserService {
             throw new UsernameNotFoundException("User does not exists!");
         }
         return findUser;
+
     }
 }
 
