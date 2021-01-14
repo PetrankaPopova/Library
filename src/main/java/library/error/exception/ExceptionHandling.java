@@ -1,6 +1,6 @@
 package library.error.exception;
 
-import library.tool.HttpResponse;
+import library.jwt.HttpResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.web.servlet.error.ErrorController;
