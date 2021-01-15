@@ -12,7 +12,6 @@ public class UserBindingModel {
 
     private String username;
     private String password;
-    private String oldPassword;
     private String confirmPassword;
     private String userPhone;
     private String email;
@@ -31,13 +30,6 @@ public class UserBindingModel {
         this.address = address;
     }
 
-    public String getOldPassword() {
-        return oldPassword;
-    }
-
-    public void setOldPassword(String oldPassword) {
-        this.oldPassword = oldPassword;
-    }
 
     @Length(min = 3, max = 20, message = "Username length must be between 3 and 20 characters (inclusive 3 and 20).")
     public String getUsername() {

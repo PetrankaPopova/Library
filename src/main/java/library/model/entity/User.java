@@ -19,6 +19,7 @@ public class User extends BaseEntity implements UserDetails, Serializable {
     private String lastName;
     private String password;
     private String email;
+    private String userPhone;
     private Cart cart;
     private LocalDateTime lastLoginDate;
     private LocalDateTime registerDate;
@@ -126,5 +127,12 @@ public class User extends BaseEntity implements UserDetails, Serializable {
         return true;
     }
 
+    @Column(name = "user_phone", nullable = false)
+    public String getUserPhone() {
+        return userPhone;
+    }
 
+    public void setUserPhone(String userPhone) {
+        this.userPhone = userPhone;
+    }
 }

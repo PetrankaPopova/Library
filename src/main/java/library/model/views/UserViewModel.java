@@ -3,8 +3,6 @@ package library.model.views;
 public class UserViewModel {
 
     private String username;
-    private String password;
-    private String confirmPassword;
     private String userPhone;
     private String email;
     private String firstName;
@@ -22,21 +20,6 @@ public class UserViewModel {
         this.username = username;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getConfirmPassword() {
-        return confirmPassword;
-    }
-
-    public void setConfirmPassword(String confirmPassword) {
-        this.confirmPassword = confirmPassword;
-    }
 
     public String getUserPhone() {
         return userPhone;
